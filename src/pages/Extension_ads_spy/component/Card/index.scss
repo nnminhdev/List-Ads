@@ -1,0 +1,54 @@
+/* index.css */
+.custom-card {
+	width: 300px;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 0.3s, box-shadow 0.3s;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+.custom-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.custom-card img {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	transition: transform 0.3s;
+}
+
+.custom-card:hover img {
+	transform: scale(1.05);
+}
+
+.custom-card .ant-card-actions {
+	border-top: none;
+}
+
+.custom-card .ant-card-meta-title {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.custom-card .ant-card-meta-description {
+	font-size: 1rem;
+}
+
+.custom-card .additional-info {
+	margin-top: 16px;
+}
+
+.custom-card .custom-button {
+	margin-top: 16px;
+	width: 100%;
+}
+
+.app-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #f0f2f5;
+}
