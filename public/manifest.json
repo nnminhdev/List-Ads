@@ -1,0 +1,56 @@
+{
+	"short_name": "List Ads",
+	"name": "ListAds",
+	"description": "List Ads extension",
+	"icons": {
+		"16": "icons/16x16.png",
+		"32": "icons/32x32.png",
+		"48": "icons/48x48.png",
+		"128": "icons/128x128.png"
+	},
+	"action": {
+		"default_icon": {
+			"16": "icons/16x16.png",
+			"32": "icons/32x32.png",
+			"48": "icons/48x48.png",
+			"128": "icons/128x128.png"
+		}
+	},
+	"options_ui": {
+		"page": "pages/option.html",
+		"open_in_tab": true
+	},
+	"manifest_version": 3,
+	"version": "1.0.0.0",
+	"host_permissions": ["https://*/*", "http://*/*"],
+	"permissions": ["storage", "tabs", "declarativeNetRequest"],
+	"declarative_net_request": {
+		"rule_resources": [
+			{
+				"id": "rule_1",
+				"enabled": true,
+				"path": "rules/cors.json"
+			}
+		]
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["static/content_scripts/main.js"],
+			"css": ["static/content_css/main.css"],
+			"run_at": "document_idle"
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": ["images/*", "svg/*", "static/*", "pages/*", "gifs/*", "fonts/*", "library/*", "rules/*"],
+			"matches": ["<all_urls>"]
+		}
+	],
+	"content_security_policy": {
+		"extension_pages": "script-src 'self'; object-src 'self';script-src-elem 'self' "
+	},
+	"background": {
+		"service_worker": "service_worker/background.bundle.js"
+	}
+}

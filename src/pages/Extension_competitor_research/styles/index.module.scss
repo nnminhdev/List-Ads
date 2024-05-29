@@ -1,0 +1,66 @@
+// .navbar {
+//   position: sticky;
+//   top: 0;
+//   left: 0;
+//   z-index: 1;
+//   width: 100%;
+// }
+
+.container {
+	padding: 0 24px 24px;
+	background: white;
+}
+
+.filterItem {
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	border-radius: 5px;
+
+	&.active {
+		background: #ff4c00;
+		color: white;
+	}
+	&:hover:not(.active) {
+		background: rgba(243, 203, 188, 0.43);
+	}
+}
+
+.inputEdit {
+	border-radius: 0;
+	width: auto;
+	border-bottom: 2px dashed #ff4c00;
+}
+
+.inputNumber {
+	width: 100%;
+
+	&::placeholder {
+		color: black;
+	}
+
+	:global {
+		.ant-input-number-prefix {
+			position: relative;
+			color: #333;
+			font-size: 14px;
+			font-weight: bold;
+			padding-right: 10px;
+			margin-right: 10px;
+
+			&:after {
+				position: absolute;
+				content: "";
+				height: 50%;
+				right: 0;
+				width: 1px;
+				background: #cacacc;
+			}
+		}
+	}
+}
+
+.heading {
+	font-size: 24px;
+	color: white;
+}

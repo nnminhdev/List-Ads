@@ -1,0 +1,11 @@
+.row_options {
+	rotate: 180deg;
+}
+@keyframes rotateArrow {
+	from {
+		rotate: 0deg;
+	}
+	to {
+		rotate: 180deg;
+	}
+}

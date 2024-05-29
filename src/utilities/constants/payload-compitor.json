@@ -1,0 +1,57 @@
+{
+	"page": 1,
+	"page_size": 50,
+	"ordering": [null],
+	"new_search": true,
+	"filters": {
+		"exclude_top_brands": false,
+		"exclude_unavailable": true,
+		"title": {
+			"include": "tshirt,",
+			"exclude": null
+		},
+		"description": {
+			"include": null,
+			"exclude": null
+		},
+		"domain": {
+			"include": null,
+			"exclude": null
+		},
+		"price": {
+			"min": null,
+			"max": null
+		},
+		"sales": {
+			"min": null,
+			"max": null
+		},
+		"revenue": {
+			"min": null,
+			"max": null
+		},
+		"products": {
+			"min": null,
+			"max": null
+		},
+		"images": {
+			"min": null,
+			"max": null
+		},
+		"variants": {
+			"min": null,
+			"max": null
+		},
+		"product_created_at": {
+			"min": null,
+			"max": null
+		},
+		"store_created_at": {
+			"min": null,
+			"max": null
+		},
+		"language": null,
+		"currency": null,
+		"domain_tld": null
+	}
+}

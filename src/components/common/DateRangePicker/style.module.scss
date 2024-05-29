@@ -1,0 +1,25 @@
+$primary-color: #FF4C00;
+
+.dropDownBtn {
+  border-radius: 6px;
+  min-height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #f2f3f8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s all;
+  flex-wrap: wrap;
+
+  &:focus, &:active, &:hover, &.active {
+    border-color: $primary-color;
+  }
+  .popupContent{
+    background: white;
+    padding: 20px;
+  }
+
+  .popupPicker {
+    position: relative;
+  }
+}

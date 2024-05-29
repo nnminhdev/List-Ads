@@ -1,0 +1,19 @@
+.nav {
+	// position: fixed;
+	z-index: 2000;
+	height: 60px;
+	min-height: 60px;
+	background-color: #ffffff;
+	border-color: #ffffff;
+	top: 0;
+	box-shadow: 0 10px 10px -6px rgba(170, 170, 170, 0.5);
+}
+.menu {
+    width: 30%;
+    list-style-type: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .87em;
+    word-spacing: 2px;
+}
