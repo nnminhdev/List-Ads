@@ -29,12 +29,9 @@ const ExtensionProduct = () => {
 			}}
 		>
 			<Layout>
-				{/* <Sidebar /> */}
 				<Content
 					style={{
-						padding: "0 24px 24px",
 						background: "white",
-						// marginLeft: 250,
 					}}
 				>
 					<Flex justify="space-between" align="center">

@@ -1,0 +1,30 @@
+.audience {
+    &__wrap {
+        max-width: 580px;
+
+        .audience__top {
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+        }
+        .audience__bottom {
+            padding: 10px;
+
+            &__gender {
+
+            }
+            &__age {
+
+            }
+            &__title {
+                width: 10%;
+                font-weight: bold;
+                text-align: right;
+            }
+            .group__button {
+                margin-top: 20px;
+            }
+        }
+     
+    }
+    
+}

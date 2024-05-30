@@ -21,25 +21,6 @@ const HeaderComponent = ({ setIndexMenu }) => {
 		setIndexMenu(e?.key);
 	};
 	return (
-		// <Header className={style.nav} style={styleHeader}>
-		// 	<Row flex>
-		// 		<Col span={2}>
-		// 			<div>
-		// 				<img />
-		// 			</div>
-		// 		</Col>
-		// 		<Col span={20}>
-		// 			<ul className={style.menu}>
-		// 				<Flex justify="space-between">
-		// 					<li>AD SPY</li>
-		// 					<li>SEARCH PRODUCT</li>
-		// 					<li>COMPETITOR SEARCH</li>
-		// 				</Flex>
-		// 			</ul>
-		// 		</Col>
-		// 	</Row>
-		// </Header>
-
 		<Header
 			style={{
 				display: "flex",

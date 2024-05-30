@@ -8,7 +8,7 @@ function DefaultLayout({ children, setIndexMenu }) {
 	return (
 		<div>
 			<HeaderComponent setIndexMenu={setIndexMenu} />
-			<Content style={{ padding: "20px", minHeight: "100vh" }}>
+			<Content style={{ minHeight: "100vh", padding: "20px 100px" }}>
 				<div>{children}</div>
 			</Content>
 			<FooterComponent />

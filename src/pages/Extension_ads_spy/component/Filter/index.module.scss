@@ -3,8 +3,14 @@
 		padding: 10px;
 	}
 	&__item {
-		border-top: 1px solid black;
+		border-top: 1px solid #eee;
 		padding: 10px 0px;
 		align-items: center;
+		&__title {
+			width: 5%;
+		}
+		&__right {
+			width: 95%;
+		}
 	}
 }
