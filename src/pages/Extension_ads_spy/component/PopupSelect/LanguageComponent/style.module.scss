@@ -1,0 +1,16 @@
+.language {
+    &__wrap {
+        max-width: 855px;
+        padding: 10px;
+    }
+    &__top {
+        border-bottom: 1px solid #eee;
+        padding: 0px 0px 10px 0px;
+    }
+    &__bottom {
+        padding: 20px;
+        &__item {
+            width: 12%;
+        }
+    }
+}

@@ -7,6 +7,7 @@ import AudienceAnalysis from "../PopupSelect/AudienceAnalysis";
 import style from "./index.module.scss";
 import Country from "../PopupSelect/Country";
 import MarketingObjectives from "../PopupSelect/Marketing Objectives";
+import Language from "../PopupSelect/LanguageComponent";
 
 const FilterComponent = () => {
 	return (
@@ -33,9 +34,12 @@ const FilterComponent = () => {
 					</div>
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
-							<SelectInput PopupComponent={AudienceAnalysis} placeholderSelect={"Country/Region"} />
-							<SelectInput PopupComponent={Country} placeholderSelect={"Language"} />
-							<SelectInput PopupComponent={MarketingObjectives} placeholderSelect={"Marketing Objectives"} />
+							<SelectInput PopupComponent={Country} placeholderSelect={"Country/Region"} />
+							<SelectInput PopupComponent={Language} placeholderSelect={"Language"} />
+							<SelectInput
+								PopupComponent={MarketingObjectives}
+								placeholderSelect={"Marketing Objectives"}
+							/>
 						</Flex>
 					</div>
 				</Flex>

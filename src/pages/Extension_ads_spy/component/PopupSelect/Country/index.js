@@ -1,25 +1,46 @@
-import { Button, Flex, Typography } from "antd";
-import { ListLanguages } from "../constant";
+import { Button, Checkbox, Flex, Input } from "antd";
+import { listCountry } from "../constant";
+import { useState } from "react";
 
-import style from "./style.module.scss";
 const Country = () => {
+	const [selectMulti, setSelectMulti] = useState(false);
+	const handleSelectMultiSelect = () => {
+		setSelectMulti(prev => !prev);
+	};
 	return (
-		<div className={style.country__wrap}>
-			<div className={style.country__top}>
-				<Flex justify="space-between" align="center">
-					<Typography>Language</Typography>
-					<Flex justify="start" gap={10}>
-						<Button>MultiSelect</Button>
-						<Button>All</Button>
-					</Flex>
+		<div>
+			<div>
+				<Flex justify="between">
+					<div>
+						<Input placeholder="Select" />
+					</div>
+					<div>
+						<Flex justify="start" gap={10}>
+							<Button onClick={handleSelectMultiSelect}>MultiSelect</Button>
+							<Button>All</Button>
+						</Flex>
+					</div>
 				</Flex>
 			</div>
-			<div className={style.country__bottom}>
-				<Flex justify="space-between" gap={10} wrap>
-					{ListLanguages.map((item, index) => {
-						return <Typography className={style.country__bottom__item} key={index}> {item.label}</Typography>;
-					})}
-				</Flex>
+			<div>
+				{listCountry.map((item, index) => {
+					return (
+						<div>
+							<p>{item.topic}</p>
+							<Flex>
+								{item?.list_country?.map((item, index) => {
+									return (
+										<Flex>
+                                            {selectMulti && <Checkbox />}
+											<img src={item?.image_country} width={14} alt="icon country" />
+											<p key={index}>{item.name}</p>
+										</Flex>
+									);
+								})}
+							</Flex>
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
