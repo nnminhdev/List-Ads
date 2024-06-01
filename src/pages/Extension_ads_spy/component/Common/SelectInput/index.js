@@ -12,6 +12,7 @@ const SelectInput = ({ PopupComponent, placeholderSelect }) => {
 				popupMatchSelectWidth={false}
 				// placeholder={placeholderSelect}
                 defaultValue={placeholderSelect}
+				open={true}
 			/>
 		</Space>
 	);

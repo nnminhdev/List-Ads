@@ -35,11 +35,11 @@ const FilterComponent = () => {
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
 							<SelectInput PopupComponent={Country} placeholderSelect={"Country/Region"} />
-							<SelectInput PopupComponent={Language} placeholderSelect={"Language"} />
-							<SelectInput
+							{/* <SelectInput PopupComponent={Language} placeholderSelect={"Language"} /> */}
+							{/* <SelectInput
 								PopupComponent={MarketingObjectives}
 								placeholderSelect={"Marketing Objectives"}
-							/>
+							/> */}
 						</Flex>
 					</div>
 				</Flex>
@@ -52,7 +52,7 @@ const FilterComponent = () => {
 					</div>
 					<div className={style.filter__item__right}>
 						<div>
-							<SelectInput PopupComponent={AudienceAnalysis} placeholderSelect={"Audience Analysis"} />
+							{/* <SelectInput PopupComponent={AudienceAnalysis} placeholderSelect={"Audience Analysis"} /> */}
 						</div>
 					</div>
 				</Flex>
