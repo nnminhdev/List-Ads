@@ -2,11 +2,17 @@ import { Card, Avatar, Typography, Button } from "antd";
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
 
 import "./index.scss";
+import { useEffect, useState } from "react";
 const { Meta } = Card;
 const { Title, Text } = Typography;
-const CardAdsComponent = ({
-	dataCard
-}) => {
+const CardAdsComponent = ({ dataComponentCard }) => {
+	const [isLoading, setLoading] = useState(true);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 1000);
+	});
 	return (
 		<Card
 			className="custom-card"
@@ -17,8 +23,11 @@ const CardAdsComponent = ({
 				<EllipsisOutlined key="ellipsis" />,
 			]}
 			hoverable={true}
-			// loading={true}
+			loading={isLoading}
 			title={<TopCardComponent />}
+			style={{
+				width: "24%",
+			}}
 		>
 			<div className="additional-info">
 				<Title level={5}>Additional Info</Title>

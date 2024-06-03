@@ -2,6 +2,7 @@ import { Button, Checkbox, Flex } from "antd";
 import { options, optionsAge } from "../constant";
 
 import style from "./style.module.scss";
+import "./index.scss";
 
 const AudienceAnalysis = () => {
 	const handleChangeSelectCheckBox = () => {};
@@ -20,8 +21,24 @@ const AudienceAnalysis = () => {
 							style={{
 								width: "90%",
 							}}
+							wrap
+							justify="start"
+							align="center"
 						>
-							<Checkbox.Group options={options} onChange={handleChangeSelectCheckBox} />
+							{/* <Checkbox.Group options={options} onChange={handleChangeSelectCheckBox} /> */}
+							{options.map((item, index) => {
+								return (
+									<Flex
+										style={{
+											width: "150px",
+										}}
+										gap={5}
+									>
+										<Checkbox />
+										<span>{item.label}</span>
+									</Flex>
+								);
+							})}
 						</Flex>
 					</Flex>
 				</div>
@@ -34,12 +51,29 @@ const AudienceAnalysis = () => {
 							style={{
 								width: "90%",
 							}}
+							wrap
+							justify="start"
+							align="center"
 						>
-							<Checkbox.Group options={optionsAge} onChange={handleChangeSelectCheckBox} />
+							{optionsAge.map((item, index) => {
+								return (
+									<Flex
+										style={{
+											width: "150px",
+										}}
+
+										gap={5}
+
+									>
+										<Checkbox />
+										<span>{item.label}</span>
+									</Flex>
+								);
+							})}
 						</Flex>
 					</Flex>
 				</div>
-				<div className={style.audience__group_button}>
+				<div className={style.audience__group__button}>
 					<Flex gap="small" wrap justify="center">
 						<Button type="primary">OK</Button>
 						<Button>Cancel</Button>
