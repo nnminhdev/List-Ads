@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DatePicker, Radio, Select } from "antd";
-import './index.scss';
+import "./index.scss";
 const Placement = () => {
 	const [placement, SetPlacement] = useState("topLeft");
 
@@ -17,14 +17,14 @@ const Placement = () => {
 				{/* <Radio.Button value="bottomRight"> */}
 				<Select
 					placeholder="More"
-					style={{ flex: 1, width: '100px' }}
-                    className="custom-select"
+					style={{ flex: 1, width: "100px", height: "32px", marginTop: "1px" }}
+					className="custom-select"
 					options={[
 						{ value: "180", label: "180 days" },
 						{ value: "365", label: "1 years" },
 						{ value: "730", label: "2 years" },
 					]}
-                    dropdownClassName="custom-dropdown"
+					dropdownClassName="custom-dropdown"
 				/>
 				{/* </Radio.Button> */}
 			</Radio.Group>

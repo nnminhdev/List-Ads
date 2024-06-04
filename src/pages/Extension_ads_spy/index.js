@@ -4,7 +4,8 @@ import style from "./styles/index.module.scss";
 import CardAdsComponent from "./component/Card";
 import FilterComponent from "./component/Filter";
 import databases from "../../databases/list_ads.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { apiGetDataAds } from "../../services/api/ads";
 
 const AdsSpyComponent = () => {
 	const [isSearch, setSearch] = useState(false);
@@ -18,14 +19,21 @@ const AdsSpyComponent = () => {
 	};
 	const { Search } = Input;
 	const handleChangePagination = (page, pageSize) => {
-		console.log(page, pageSize);
 		setNumberItem(page * pageSize);
 	};
+	const getDataApiAds = async () => {
+		const responseDataApi = await apiGetDataAds();
+		console.log(responseDataApi);
+	}
+	useEffect(() => {
+		getDataApiAds();
+	}, [])
 	return (
 		<div>
 			<div
 				style={{
 					width: "550px",
+					marginBottom: '20px'
 				}}
 			>
 				<Search

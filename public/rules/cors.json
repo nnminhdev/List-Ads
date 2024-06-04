@@ -15,17 +15,17 @@
 				{
 					"header": "Origin",
 					"operation": "set",
-					"value": "https://api.dropship.io/"
+					"value": "https://bigspy.com/*"
 				},
 				{
 					"header": "Referer",
 					"operation": "set",
-					"value": "https://api.dropship.io/"
+					"value": "https://bigspy.com/*"
 				}
 			]
 		},
 		"condition": {
-			"urlFilter": "https://api.dropship.io/*"
+			"urlFilter": "https://bigspy.com/*"
 		}
 	}
 ]

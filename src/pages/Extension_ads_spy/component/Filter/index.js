@@ -18,7 +18,7 @@ const FilterComponent = () => {
 						<span>NetWorks:</span>
 					</div>
 					<div className={style.filter__item__right}>
-						<Flex justify="start" gap={10}>
+						<Flex justify="start" gap={10} align="center">
 							{listFilterNetworks.map((item, index) => {
 								return <NetWorkComponent platForm={item?.platForm} icon={item?.icon} />;
 							})}
@@ -81,7 +81,9 @@ export default FilterComponent;
 
 const NetWorkComponent = ({ icon, platForm }) => {
 	return (
-		<div className="d-flex">
+		<Flex justify="start" gap={2} align="center" style={{
+			fontSize: '14px'
+		}}>
 			<img
 				style={{
 					width: "18px",
@@ -98,6 +100,6 @@ const NetWorkComponent = ({ icon, platForm }) => {
 			>
 				{platForm}
 			</span>
-		</div>
+		</Flex>
 	);
 };

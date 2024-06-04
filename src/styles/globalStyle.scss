@@ -1,6 +1,6 @@
-@import './_commonStyle.scss';
-@import './fontStyle';
-@import './animationStyle.scss';
+@import "./_commonStyle.scss";
+@import "./fontStyle";
+@import "./animationStyle.scss";
 
 // :root {
 
@@ -26,7 +26,12 @@
 // }
 
 body {
-    // font-family: "Inter", serif !important;
-    text-rendering: optimizespeed;
+	font-family: "Inter" !important;
+	// text-rendering: optimizespeed;
+    margin: 0px !important;
 }
 
+.ant-typography,
+.ant-btn {
+	font-family: "Inter", sans-serif !important;
+}

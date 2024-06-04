@@ -4,7 +4,9 @@ import axios from "axios";
 
 const instance = axios.create({
 	baseURL: process.env.REACT_APP_BASE_API_URL,
-	headers: {},
+	headers: {
+		"Authorization": "Bearer " + process.env.REACT_APP_TOKEN
+	},
 	timeout: 5000,
 });
 

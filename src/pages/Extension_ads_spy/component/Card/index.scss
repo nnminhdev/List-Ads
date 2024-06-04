@@ -52,3 +52,30 @@
 	height: 100vh;
 	background-color: #f0f2f5;
 }
+
+.single-line-text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 280px;
+	font-weight: 400;
+	font-size: 13px;
+	margin-top: 5px;
+	color: '#3333';
+}
+.custom-card .ant-card-head {
+	padding: 10px;
+}
+.custom-card .ant-card-body {
+	padding: 10px;
+}
+.custom-card  .ant-card-extra {
+	margin-bottom: 33px;
+}
+.custom-card .ant-tag {
+	margin-inline-end: 0px;
+}
+
+.ant-tooltip-inner {
+	color: #000000 !important;
+}
