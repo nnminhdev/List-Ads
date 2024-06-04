@@ -92,7 +92,7 @@ const ExtensionCompetitorResearch = () => {
 			<ConfigProvider
 				theme={{
 					token: {
-						colorPrimary: "#FF4C00",
+						colorPrimary: "#0C8CFA",
 					},
 					components: {
 						Select: {

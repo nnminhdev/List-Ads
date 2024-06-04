@@ -35,12 +35,6 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 		<Card
 			className="custom-card"
 			cover={<ImageCardComponent dataComponentCard={dataComponentCard} />}
-			// actions={[
-			// 	<SettingOutlined key="setting" />,
-			// 	<EditOutlined key="edit" />,
-			// 	<EllipsisOutlined key="ellipsis" />,
-			// ]}
-			// hoverable={false}
 			loading={isLoading}
 			title={<TopCardComponent dataComponentCard={dataComponentCard} />}
 			style={{

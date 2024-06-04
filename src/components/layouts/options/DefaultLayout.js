@@ -10,7 +10,7 @@ function DefaultLayout({ children, setIndexMenu }) {
 		<ConfigProvider
 			theme={{
 				token: {
-					colorPrimary: "#FF4C00",
+					colorPrimary: "#0C8CFA",
 					fontFamily: "Inter",
 				},
 				// components: {
