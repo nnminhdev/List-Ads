@@ -10,6 +10,7 @@ import { apiGetDataAds } from "../../services/api/ads";
 const AdsSpyComponent = () => {
 	const [isSearch, setSearch] = useState(false);
 	const [numberItem, setNumberItem] = useState(10);
+	const [listAds, setListAds] = useState([]);
 	const handleSearch = (value, _e, info) => {
 		console.log(info?.source, value);
 		setSearch(true);
@@ -23,7 +24,7 @@ const AdsSpyComponent = () => {
 	};
 	const getDataApiAds = async () => {
 		const responseDataApi = await apiGetDataAds();
-		console.log(responseDataApi);
+		if (responseDataApi?.length > 0) setListAds(responseDataApi);
 	}
 	useEffect(() => {
 		getDataApiAds();
@@ -48,13 +49,13 @@ const AdsSpyComponent = () => {
 			<FilterComponent />
 			<div className={style.content__list}>
 				<Flex justify="start" wrap gap={20}>
-					{databases.data.slice(0, numberItem).map((item, index) => {
+					{listAds.slice(0, numberItem).map((item, index) => {
 						return <CardAdsComponent dataComponentCard={item} />;
 					})}
 				</Flex>
 			</div>
 			<div className={style.content__pagination}>
-				<Pagination defaultCurrent={1} total={databases.data.length} onChange={handleChangePagination} />
+				<Pagination defaultCurrent={1} total={listAds.length} onChange={handleChangePagination} />
 			</div>
 		</div>
 	);

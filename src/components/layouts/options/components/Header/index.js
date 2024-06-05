@@ -2,6 +2,7 @@
 import style from "./style.module.scss";
 import { Layout, Menu, Avatar, Dropdown, Space } from "antd";
 import { UserOutlined, SettingOutlined, LogoutOutlined } from "@ant-design/icons";
+import logoSpypro from "../../../../../assets/layout/logo-spypro.png";
 const styleHeader = {};
 
 const userMenu = (
@@ -25,14 +26,13 @@ const HeaderComponent = ({ setIndexMenu }) => {
 			style={{
 				display: "flex",
 				justifyContent: "space-between",
-				alignItems: "center",
 				background: "#fff",
 				padding: "0 100px",
 			}}
 			className={style.nav}
 		>
 			<div className="logo" style={{ fontSize: "20px", fontWeight: "bold" }}>
-				MyLogo
+				<img src={logoSpypro} alt="logo" width={"110px"} height={"auto"} />
 			</div>
 			<Menu
 				theme="light"

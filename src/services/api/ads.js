@@ -70,7 +70,7 @@ const headerPayload = {
 const apiGetDataAds = async () => {
 	try {
 		const response = await get("/ecom/get-ecom-ads", headerPayload);
-		console.log("api", response);
+		return response?.data?.data;
 	} catch (err) {
 		console.error(err);
 	}
