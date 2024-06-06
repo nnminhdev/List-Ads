@@ -31,6 +31,12 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 		}, 1000);
 	});
 
+	const handleClickCard = () => {
+		window.open(
+			`http://localhost:3000/detail?id=${dataComponentCard.ad_key}&type=${dataComponentCard.tyoe}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`
+		);
+	};
+
 	return (
 		<Card
 			className="custom-card"
@@ -52,6 +58,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 					<Button type="text" icon={<EllipsisOutlined />} />
 				</Dropdown>
 			}
+			onClick={() => handleClickCard()}
 		>
 			<div>
 				<Flex justify="space-between" align="center">

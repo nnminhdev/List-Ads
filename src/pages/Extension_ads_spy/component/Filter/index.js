@@ -8,6 +8,7 @@ import style from "./index.module.scss";
 import Country from "../PopupSelect/Country";
 import MarketingObjectives from "../PopupSelect/Marketing Objectives";
 import Language from "../PopupSelect/LanguageComponent";
+import EngagementComponent from "../PopupSelect/Engagement";
 
 const FilterComponent = () => {
 	return (
@@ -51,9 +52,10 @@ const FilterComponent = () => {
 						<span>Advanced:</span>
 					</div>
 					<div className={style.filter__item__right}>
-						<div>
+						<Flex justify="start" gap={10}>
 							<SelectInput PopupComponent={AudienceAnalysis} placeholderSelect={"Audience Analysis"} />
-						</div>
+							<SelectInput PopupComponent={EngagementComponent} placeholderSelect={"Engagement"} />
+						</Flex>
 					</div>
 				</Flex>
 			</div>
@@ -81,9 +83,14 @@ export default FilterComponent;
 
 const NetWorkComponent = ({ icon, platForm }) => {
 	return (
-		<Flex justify="start" gap={2} align="center" style={{
-			fontSize: '14px'
-		}}>
+		<Flex
+			justify="start"
+			gap={2}
+			align="center"
+			style={{
+				fontSize: "14px",
+			}}
+		>
 			<img
 				style={{
 					width: "18px",

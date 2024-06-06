@@ -1,0 +1,12 @@
+.engagement {
+    &__top {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    &__bottom {
+        padding: 10px;
+    }
+    .item {
+        width: 100px;
+    }
+}
