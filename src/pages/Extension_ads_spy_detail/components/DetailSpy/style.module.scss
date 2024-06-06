@@ -1,0 +1,24 @@
+.detail {
+	&__wrapper {
+		padding: 16px;
+		--tw-shadow: 0 2px 15px 2px rgba(0, 0, 0, 0.1);
+		--tw-shadow-colored: 0 2px 15px 2px var(--tw-shadow-color);
+		box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+		.preview {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+    &__info {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        .item {
+            text-align: center;
+        }
+        &__bottom {
+            padding: 20px 30px;
+        }
+    }
+}
