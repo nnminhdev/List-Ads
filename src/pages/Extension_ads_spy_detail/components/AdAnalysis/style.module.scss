@@ -1,15 +1,25 @@
 .analysis {
 	.box {
 		width: 50%;
+		padding: 20px;
+
 		--tw-shadow: 0 2px 15px 2px rgba(0, 0, 0, 0.1);
 		--tw-shadow-colored: 0 2px 15px 2px var(--tw-shadow-color);
 		box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+		&__top {
+			padding-bottom: 20px;
+			border-bottom: 1px solid #eee;
+		}
+		&__title {
+			padding: 10px 0px;
+			font-size: 13px;
+		}
 		&__bottom {
 			width: 100%;
 			--tw-shadow: 0 2px 15px 2px rgba(0, 0, 0, 0.1);
 			--tw-shadow-colored: 0 2px 15px 2px var(--tw-shadow-color);
 			box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-            margin-top: 20px;
+			margin-top: 20px;
 		}
 	}
 }

@@ -103,33 +103,54 @@ const detail = {
 
 const columns = [
 	{
-		title: "Name",
-		dataIndex: "name",
-		key: "name",
+		title: "Country/Region",
+		dataIndex: "country",
+		key: "country",
 	},
 	{
-		title: "Age",
-		dataIndex: "age",
-		key: "age",
+		title: "impression",
+		dataIndex: "impression",
+		key: "impression",
 	},
 	{
-		title: "Address",
-		dataIndex: "address",
-		key: "address",
+		title: "Estimated internation",
+		dataIndex: "estimated_internation",
+		key: "estimated_internation",
+	},
+	{
+		title: "Estimated Conversion",
+		dataIndex: "estimated_conversion",
+		key: "estimated_conversion",
 	},
 ];
 const dataSource = [
 	{
-		key: "1",
-		name: "Mike",
-		age: 32,
-		address: "10 Downing Street",
+		key: 1,
+		country: 'vietnamese',
+		impression: "Mike",
+		estimated_internation: 32,
+		estimated_conversion: "10 Downing Street",
 	},
 	{
-		key: "2",
-		name: "John",
-		age: 42,
-		address: "10 Downing Street",
+		key: 2,
+		country: 'vietnamese',
+		impression: "John",
+		estimated_internation: 42,
+		estimated_conversion: "10 Downing Street",
+	},
+	{
+		key: 3,
+		country: 'vietnamese',
+		impression: "Mike",
+		estimated_internation: 32,
+		estimated_conversion: "10 Downing Street",
+	},
+	{
+		key: 4,
+		country: 'vietnamese',
+		impression: "John",
+		estimated_internation: 42,
+		estimated_conversion: "10 Downing Street",
 	},
 ];
 

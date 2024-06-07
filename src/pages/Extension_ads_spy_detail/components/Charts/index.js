@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
 import 'echarts/theme/macarons'; // Import a theme if you want to use one
 
-const ChartsComponent = () => {
+const ChartsComponent = ({ classAppendChar="char" }) => {
     useEffect(() => {
-        const chartDom = document.getElementById('main');
+        const chartDom = document.getElementById("main");
         const myChart = echarts.init(chartDom);
 
         const option = {

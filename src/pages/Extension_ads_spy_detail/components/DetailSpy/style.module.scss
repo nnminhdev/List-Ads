@@ -9,16 +9,29 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			margin: 20px auto;
 		}
 	}
-    &__info {
-        border: 1px solid #eee;
-        border-radius: 10px;
-        .item {
-            text-align: center;
-        }
-        &__bottom {
-            padding: 20px 30px;
-        }
-    }
+	&__info {
+		border: 1px solid #eee;
+		border-radius: 10px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		.item {
+			text-align: center;
+			p:nth-child(1) {
+				color: blue;
+			}
+			p:nth-child(2) {
+				font-size: 13px;
+			}
+		}
+		&__bottom {
+			padding: 20px 40px;
+			.item__detail {
+				margin-top: 10px;
+				font-size: 14px;
+			}
+		}
+	}
 }

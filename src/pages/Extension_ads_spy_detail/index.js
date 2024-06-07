@@ -10,7 +10,7 @@ const ExtensionAdsDetail = () => {
 			<div className={style.title}>
 				<p>Ad Analysis</p>
 			</div>
-			<AdAnalysisComponent />
+			<AdAnalysisComponent dataDateLine={detail?.date_line} />
 			<div className={style.title}>
 				<p>Creative Analysis</p>
 			</div>

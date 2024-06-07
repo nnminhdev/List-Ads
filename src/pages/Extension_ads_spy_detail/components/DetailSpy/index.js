@@ -1,4 +1,5 @@
 import { Avatar, Button, Flex, Tooltip, Typography } from "antd";
+import { getCode, getName } from 'country-list';
 import style from "./style.module.scss";
 import { formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
 import { DownloadOutlined } from "@ant-design/icons";
@@ -14,13 +15,22 @@ const DetailSpyComponent = ({ dataDetail }) => {
 				}}
 			>
 				<Avatar shape="square" size={64} src={dataDetail?.logo_url} />
-				<Typography
-					style={{
-						fontSize: "20px",
-					}}
-				>
-					{dataDetail?.advertiser_name}
-				</Typography>
+				<div>
+					<Typography
+						style={{
+							fontSize: "20px",
+						}}
+					>
+						{dataDetail?.advertiser_name}
+					</Typography>
+					<Flex justify="start" align="center" gap={20}>
+						<Typography>{dataDetail?.top_domain}</Typography>
+						<Flex justify="start" gap={10} align="center">
+							<Typography>Category:</Typography>
+							<Typography>{dataDetail?.industry}</Typography>
+						</Flex>
+					</Flex>
+				</div>
 			</Flex>
 			<Flex justify="space-between" gap={30}>
 				<div
@@ -68,68 +78,67 @@ const DetailSpyComponent = ({ dataDetail }) => {
 						>
 							<div className={style.item}>
 								<p>4.2K</p>
-								<p>Impressions</p>
+								<p>{dataDetail?.impression}</p>
+							</div>
+							<div className={style.item}>
+								<p>{dataDetail?.days_count}</p>
+								<p>Duration</p>
 							</div>
 							<div className={style.item}>
 								<p>4.2K</p>
-								<p>Impressions</p>
-							</div>
-							<div className={style.item}>
-								<p>4.2K</p>
-								<p>Impressions</p>
+								<p>{dataDetail?.heat}</p>
 							</div>
 						</Flex>
 						<div className={style.detail__info__bottom}>
 							<Flex justify="start" align="center" gap={20}>
 								<p>Duration:</p>
-								<p>
-									`${dataDetail?.first_seen}-${dataDetail?.last_seen}`
-								</p>
+								<p>{`${dataDetail?.first_seen}-${dataDetail?.last_seen}`}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>NetWork:</p>
-								<p>11111</p>
+								<p>{dataDetail?.platform}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>OS:</p>
-								<p>11111</p>
+								<p>{dataDetail?.os}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Related Ads:</p>
-								<p>11111</p>
+								<p>{dataDetail?.relate_ads}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Country/Region :</p>
-								<p>11111</p>
+								<p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p>
+								<p>{dataDetail?.region}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Language :</p>
-								<p>11111</p>
+								<p>{dataDetail?.language}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Size :</p>
-								<p>11111</p>
+								<p>{`${dataDetail?.ads_format}/${dataDetail?.ad_width} * ${dataDetail?.ad_height}`}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Type :</p>
-								<p>11111</p>
+								<p>{dataDetail?.type}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Page ID :</p>
-								<p>11111</p>
+								<p>{dataDetail?.page_id}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Page Name :</p>
-								<p>11111</p>
+								<p>{dataDetail?.page_name}</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							{/* <Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Original Post :</p>
 								<p>11111</p>
 							</Flex>
-							<Flex justify="start" align="center" gap={20}>
+							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Engagement :</p>
 								<p>11111</p>
-							</Flex>
+							</Flex> */}
 						</div>
 					</div>
 					<div>

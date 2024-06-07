@@ -12,14 +12,14 @@ const CreativeAnalysisComponent = () => {
 						width: "50%",
 					}}
 				>
-					<ChartsComponent />
+					<ChartsComponent classAppendChar={"char-left"} />
 				</div>
 				<div
 					style={{
 						width: "50%",
 					}}
 				>
-					<ChartsComponent />
+					<ChartsComponent classAppendChar={"char-right"} />
 				</div>
 			</Flex>
 		</div>
