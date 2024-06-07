@@ -1,6 +1,6 @@
 import { Button, Flex, Table, Tooltip, Typography } from "antd";
 import style from "./style.module.scss";
-import { columns, dataSource } from "../../constant";
+import { callApiGetEcomDetail, callApiGetRelatedAds, columnRelated, columns, dataSource } from "../../constant";
 import { CalendarTwoTone } from "@ant-design/icons";
 const AdAnalysisComponent = ({ dataDateLine }) => {
 	console.log(dataDateLine);
@@ -41,15 +41,15 @@ const AdAnalysisComponent = ({ dataDateLine }) => {
 						<CalendarTwoTone />
 						<Typography>Country distribution</Typography>
 					</Flex>
-					<Table dataSource={dataSource} columns={columns} />
+					<Table dataSource={callApiGetEcomDetail?.data?.similar_country} columns={columns} />
 				</div>
 			</Flex>
 			<div className={style.box__bottom}>
-			<Flex className={style.box__top} justify="start" gap={10} align="center">
-						<CalendarTwoTone />
-						<Typography>Related text</Typography>
-					</Flex>
-				<Table dataSource={dataSource} columns={columns} />
+				<Flex className={style.box__top} justify="start" gap={10} align="center">
+					<CalendarTwoTone />
+					<Typography>Related text</Typography>
+				</Flex>
+				<Table dataSource={callApiGetRelatedAds?.data} columns={columnRelated} />
 			</div>
 		</div>
 	);
