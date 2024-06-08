@@ -21,6 +21,9 @@
 			text-align: center;
 			p:nth-child(1) {
 				color: blue;
+				font-size: 18px;
+				font-weight: 500;
+				margin-bottom: 10px;
 			}
 			p:nth-child(2) {
 				font-size: 13px;
@@ -31,6 +34,9 @@
 			.item__detail {
 				margin-top: 10px;
 				font-size: 14px;
+				p:nth-child(1) {
+					font-weight: bold;
+				}
 			}
 		}
 	}

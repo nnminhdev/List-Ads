@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import * as echarts from "echarts";
 import "echarts/theme/macarons"; // Import a theme if you want to use one
 
-const ChartsComponent = ({ classAppendChar = "char" }) => {
+const ChartsComponent = ({ classAppendChar = "char", dataChar }) => {
 	useEffect(() => {
 		const chartDom = document.getElementById(classAppendChar);
 		const myChart = echarts.init(chartDom);
@@ -12,41 +12,43 @@ const ChartsComponent = ({ classAppendChar = "char" }) => {
 				trigger: "item",
 			},
 			legend: {
-				top: "5%",
+				bottom: "0",
 				left: "center",
 			},
 			series: [
 				{
-					name: "Access From",
+					name: "data",
 					type: "pie",
-					radius: ["40%", "70%"],
-					avoidLabelOverlap: false,
+					radius: ["40%", "55%"],
+					avoidLabelOverlap: true,
 					itemStyle: {
 						borderRadius: 10,
 						borderColor: "#fff",
 						borderWidth: 2,
+						fontFamily: "Inter"
 					},
-					label: {
-						show: false,
-						position: "center",
-					},
+					// label: {
+					// 	show: false,
+					// 	position: "center",
+					// },
 					emphasis: {
 						label: {
 							show: true,
-							fontSize: 40,
+							fontSize: 18,
 							fontWeight: "bold",
 						},
 					},
 					labelLine: {
-						show: false,
+						show: true,
 					},
-					data: [
-						{ value: 1048, name: "Search Engine" },
-						{ value: 735, name: "Direct" },
-						{ value: 580, name: "Email" },
-						{ value: 484, name: "Union Ads" },
-						{ value: 300, name: "Video Ads" },
-					],
+					// data: [
+					// 	{ value: 1048, name: "Search Engine" },
+					// 	{ value: 735, name: "Direct" },
+					// 	{ value: 580, name: "Email" },
+					// 	{ value: 484, name: "Union Ads" },
+					// 	{ value: 300, name: "Video Ads" },
+					// ],
+					data: dataChar,
 				},
 			],
 		};
@@ -59,7 +61,7 @@ const ChartsComponent = ({ classAppendChar = "char" }) => {
 		};
 	}, []);
 
-	return <div id={classAppendChar} style={{ width: "100%", height: "400px" }}></div>;
+	return <div id={classAppendChar} style={{ width: "80%", height: "400px" }}></div>;
 };
 
 export default ChartsComponent;

@@ -12,41 +12,49 @@ export const TABLE_COLUMNS = [
 		title: "Price",
 		dataIndex: "price",
 		key: "price",
+		align: 'center'
 	},
 	{
 		title: "Monthly Sales",
 		dataIndex: "monthly_sales",
 		key: "monthly_sales",
+		align: 'center'
 	},
 	{
 		title: "Monthly Revenue",
 		dataIndex: "monthly_revenue",
 		key: "monthly_revenue",
+		align: 'center'
 	},
 	{
 		title: "Store Info",
 		dataIndex: "products_count",
 		key: "products_count",
+		align: 'center'
 	},
 	{
 		title: "Product Creation Date",
 		dataIndex: "created_at",
 		key: "created_at",
+		align: 'center'
 	},
 	{
 		title: "Store Creation Date",
 		dataIndex: "store_created_at",
 		key: "store_created_at",
+		align: 'center'
 	},
 	{
 		title: "Category",
 		dataIndex: "category",
 		key: "category",
+		align: 'center'
 	},
 	{
 		title: "Product Type",
 		dataIndex: "product_type",
 		key: "product_type",
+		align: 'center'
 	},
 	{
 		title: "",

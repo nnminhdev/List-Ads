@@ -1,8 +1,10 @@
-import { Avatar, Button, Flex, Tooltip, Typography } from "antd";
-import { getCode, getName } from 'country-list';
+import { Avatar, Button, Carousel, Flex, Tooltip, Typography } from "antd";
+import { getCode, getName } from "country-list";
 import style from "./style.module.scss";
-import { formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
+import { convertDateFormat, formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
 import { DownloadOutlined } from "@ant-design/icons";
+import { checkPlatForm } from "../../../../utilities/functions/platform";
+import { formatNumberToK } from "../../../../utilities/functions/number";
 const DetailSpyComponent = ({ dataDetail }) => {
 	return (
 		<div className={style.detail__wrapper}>
@@ -46,21 +48,49 @@ const DetailSpyComponent = ({ dataDetail }) => {
 						</Tooltip>
 					</div>
 					<div className={style.preview}>
-						<img
-							src={dataDetail?.preview_img_url}
-							alt="url detail"
-							style={{
-								width: "400px",
-								height: "auto",
-								objectFit: "cover",
-							}}
-						/>
+						{dataDetail?.resource_urls?.length === 1 ? (
+							<img
+								src={dataDetail?.preview_img_url}
+								alt="url detail"
+								style={{
+									width: "400px",
+									height: "auto",
+									objectFit: "cover",
+								}}
+							/>
+						) : (
+							<Carousel
+								arrows
+								infinite={false}
+								style={{
+									width: "400px",
+								}}
+								arrowSize={32}
+							>
+								{dataDetail?.resource_urls?.map((item, index) => {
+									return (
+										<div key={index}>
+											<img
+												src={item?.image_url}
+												alt="url detail"
+												style={{
+													width: "400px",
+													height: "auto",
+													objectFit: "cover",
+												}}
+											/>
+										</div>
+									);
+								})}
+							</Carousel>
+						)}
 					</div>
 					<Flex justify="space-between" align="center">
 						<Typography>{dataDetail?.title}</Typography>
 						<Button>Landing Page</Button>
 					</Flex>
 				</div>
+
 				<div
 					style={{
 						width: "40%",
@@ -72,64 +102,114 @@ const DetailSpyComponent = ({ dataDetail }) => {
 							justify="space-between"
 							align="center"
 							style={{
-								padding: "20px 50px",
+								padding: "20px 100px",
 								borderBottom: "1px solid #eee",
 							}}
 						>
 							<div className={style.item}>
-								<p>4.2K</p>
-								<p>{dataDetail?.impression}</p>
+								<p>{formatNumberToK(dataDetail?.impression)}</p>
+								<p>Impression</p>
 							</div>
 							<div className={style.item}>
-								<p>{dataDetail?.days_count}</p>
+								<p>{formatNumberToK(dataDetail?.days_count)}</p>
 								<p>Duration</p>
 							</div>
 							<div className={style.item}>
-								<p>4.2K</p>
-								<p>{dataDetail?.heat}</p>
+								<p>{formatNumberToK(dataDetail?.heat)}</p>
+								<p>Popularity</p>
 							</div>
 						</Flex>
 						<div className={style.detail__info__bottom}>
 							<Flex justify="start" align="center" gap={20}>
-								<p>Duration:</p>
-								<p>{`${dataDetail?.first_seen}-${dataDetail?.last_seen}`}</p>
+								<p
+									style={{
+										fontWeight: "bold",
+									}}
+								>
+									Duration:
+								</p>
+								<p
+									style={{
+										fontSize: "14px",
+									}}
+								>{`${convertDateFormat(dataDetail?.first_seen)} ~ ${convertDateFormat(
+									dataDetail?.last_seen
+								)}`}</p>
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>NetWork:</p>
-								<p>{dataDetail?.platform}</p>
+								{dataDetail?.platform && (
+									<>
+										<p>NetWork:</p>
+										<p>{checkPlatForm(dataDetail?.platform)}</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>OS:</p>
-								<p>{dataDetail?.os}</p>
+								{dataDetail?.os && (
+									<>
+										<p>OS:</p>
+										<p>{dataDetail?.os}</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Related Ads:</p>
-								<p>{dataDetail?.relate_ads}</p>
+								{dataDetail?.relate_ads && (
+									<>
+										<p>Related Ads:</p>
+										<p>{dataDetail?.relate_ads}</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Country/Region :</p>
-								<p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p>
-								<p>{dataDetail?.region}</p>
+								{dataDetail?.countries?.length > 0 && (
+									<>
+										<p>Country/Region :</p>
+										<p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p>
+										<p>{dataDetail?.region}</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Language :</p>
-								<p>{dataDetail?.language}</p>
+								{dataDetail?.language && (
+									<>
+										<p>Language :</p>
+										<p>{dataDetail?.language}</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Size :</p>
 								<p>{`${dataDetail?.ads_format}/${dataDetail?.ad_width} * ${dataDetail?.ad_height}`}</p>
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Type :</p>
-								<p>{dataDetail?.type}</p>
+								{dataDetail?.type && (
+									<>
+										<p>Type :</p>
+										<p>{dataDetail?.type}</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Page ID :</p>
-								<p>{dataDetail?.page_id}</p>
+								{dataDetail?.page_id && (
+									<>
+										<p>Page ID :</p>
+										<p
+											style={{
+												color: "blue",
+											}}
+										>
+											{dataDetail?.page_id}
+										</p>
+									</>
+								)}
 							</Flex>
 							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Page Name :</p>
-								<p>{dataDetail?.page_name}</p>
+								{dataDetail?.page_name && (
+									<>
+										<p>Page Name :</p>
+										<p>{dataDetail?.page_name}</p>
+									</>
+								)}
 							</Flex>
 							{/* <Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Original Post :</p>

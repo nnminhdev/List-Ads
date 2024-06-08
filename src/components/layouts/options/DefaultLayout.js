@@ -12,12 +12,13 @@ function DefaultLayout({ children, setIndexMenu }) {
 				token: {
 					colorPrimary: "#0C8CFA",
 					fontFamily: "Inter",
+					colorBgSpotlight: '#fff'
 				},
-				// components: {
-				// 	Select: {
-				// 		controlHeight: 40,
-				// 	},
-				// },
+				components: {
+					Carousel: {
+						arrowSize: 25,
+					},
+				},
 			}}
 		>
 			<div>

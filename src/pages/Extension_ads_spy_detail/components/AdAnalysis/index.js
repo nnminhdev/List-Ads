@@ -26,11 +26,63 @@ const AdAnalysisComponent = ({ dataDateLine }) => {
 							<p>2024-06-07</p>
 						</Flex>
 					</Flex>
-					<Flex justify="start" wrap gap={10}>
+					<Flex justify="start" wrap gap={4}>
 						{Object.keys(dataDateLine)?.map((item, index) => {
+							console.log("hehehe", dataDateLine[`${item}`]);
 							return (
-								<Tooltip title={item}>
-									<Button type="primary"></Button>
+								<Tooltip
+									className=""
+									title={
+										<div
+											style={{
+												backgroundColor: "#fff",
+											}}
+										>
+											<Typography
+												style={{
+													fontWeight: "bold",
+													paddingBottom: "5px",
+													borderBottom: "1px solid #eee",
+													fontSize: "12px",
+												}}
+											>
+												Ad campaign in 100 days
+											</Typography>
+											<Flex
+												justify="start"
+												align="center"
+												gap={10}
+												style={{
+													paddingTop: "5px",
+												}}
+											>
+												<Typography
+													style={{
+														fontSize: "11px",
+													}}
+												>
+													{item}
+												</Typography>
+												<Typography
+													style={{
+														fontSize: "11px",
+													}}
+												>
+													{dataDateLine[`${item}`] === 1 ? "Discovered" : "Undiscovered"}
+												</Typography>
+											</Flex>
+										</div>
+									}
+									key={index}
+								>
+									<Button
+										style={{
+											backgroundColor: dataDateLine[`${item}`] !== 1 && "#eee",
+											border: "none",
+											width: "4.5%",
+										}}
+										type={dataDateLine[`${item}`] === 1 ? "primary" : ""}
+									></Button>
 								</Tooltip>
 							);
 						})}
@@ -45,7 +97,15 @@ const AdAnalysisComponent = ({ dataDateLine }) => {
 				</div>
 			</Flex>
 			<div className={style.box__bottom}>
-				<Flex className={style.box__top} justify="start" gap={10} align="center">
+				<Flex
+					className={style.box__top}
+					justify="start"
+					gap={10}
+					align="center"
+					style={{
+						padding: "15px",
+					}}
+				>
 					<CalendarTwoTone />
 					<Typography>Related text</Typography>
 				</Flex>

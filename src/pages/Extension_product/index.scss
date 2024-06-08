@@ -17,6 +17,24 @@ tbody.ant-table-tbody * {
 .ant-table-body::-webkit-scrollbar-thumb:hover {
 	background: #555; /* color of the scrollbar handle on hover */
 }
+
+
+.product-database-table::-webkit-scrollbar {
+	width: 10px; /* width of the scrollbar */
+	height: 5px;
+	border-radius: 5px;
+}
+
+/* Handle */
+.product-database-table::-webkit-scrollbar-thumb {
+	background: #a13939; /* color of the scrollbar handle */
+	border-radius: 5px; /* roundness of the scrollbar handle */
+}
+
+/* Handle on hover */
+.product-database-table::-webkit-scrollbar-thumb:hover {
+	background: #555; /* color of the scrollbar handle on hover */
+}
 .product-database-table {
 	.column-product--wrapper {
 		display: flex;
