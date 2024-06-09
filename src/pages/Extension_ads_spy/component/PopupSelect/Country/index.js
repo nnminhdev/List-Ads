@@ -24,8 +24,8 @@ const Country = () => {
 	};
 	const handleSelectTopic = (e) => {
 		console.log(e.target.value);
-		setTopicSelect(e.target.value)
-	}
+		setTopicSelect(e.target.value);
+	};
 	return (
 		<div className={style.country__wrap}>
 			<div className={style.country__menu}>
@@ -51,7 +51,7 @@ const Country = () => {
 						<div
 							style={{
 								width: "100%",
-								marginTop: '10px'
+								marginTop: "10px",
 							}}
 						>
 							<Flex justify="start" gap={5} align="center">
@@ -67,7 +67,7 @@ const Country = () => {
 												width: "150px",
 											}}
 										>
-											{selectMulti && <Checkbox checked={topicSelect === item.topic}  />}
+											{selectMulti && <Checkbox checked={topicSelect === item.topic} />}
 											<Flex justify="start" gap={5} align="center">
 												<img
 													src={element?.image_country}

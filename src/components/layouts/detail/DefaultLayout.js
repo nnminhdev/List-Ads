@@ -1,11 +1,11 @@
 import { ConfigProvider, Layout } from "antd";
 import styles from "./styles/style.module.scss";
-import HeaderComponent from "./components/Header";
-import FooterComponent from "./components/Footer";
+import HeaderComponent from "../options/components/Header";
+import FooterComponent from "../options/components/Footer";
 
 const { Content } = Layout;
 
-function DefaultLayout({ children, setIndexMenu }) {
+function DefaultLayoutDetail({ children, setIndexMenu }) {
 	return (
 		<ConfigProvider
 			theme={{
@@ -32,4 +32,4 @@ function DefaultLayout({ children, setIndexMenu }) {
 		</ConfigProvider>
 	);
 }
-export default DefaultLayout;
+export default DefaultLayoutDetail;

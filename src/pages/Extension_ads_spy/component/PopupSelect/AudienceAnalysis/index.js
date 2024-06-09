@@ -3,9 +3,33 @@ import { options, optionsAge } from "../constant";
 
 import style from "./style.module.scss";
 import "./index.scss";
+import { useState } from "react";
 
-const AudienceAnalysis = () => {
-	const handleChangeSelectCheckBox = () => {};
+const AudienceAnalysis = ({ funcCallApiSearch }) => {
+	const [listValueSex, setValueSex] = useState([]);
+	const [listValueAge, setValueAge] = useState([]);
+	const handleCheckAudienceSex = (e) => {
+		if (e.target.checked) {
+			setValueSex((prev) => [...prev, e.target.value]);
+		} else {
+			const newArray = listValueSex.filter((item) => item !== e.target.value);
+			setValueSex([...newArray]);
+		}
+	};
+	const handleCheckAudienceAge = (e) => {
+		if (e.target.checked) {
+			setValueAge((prev) => [...prev, e.target.value]);
+		} else {
+			const newArray = listValueAge.filter((item) => item !== e.target.value);
+			setValueAge([...newArray]);
+		}
+	};
+	const handleSubmitAudience = () => {
+		funcCallApiSearch({
+			audience_sex: listValueSex.join(','),
+			audience_age: listValueAge.join(','),
+		});
+	};
 	return (
 		<div className={style.audience__wrap}>
 			<div className={style.audience__top}>
@@ -34,7 +58,7 @@ const AudienceAnalysis = () => {
 										}}
 										gap={5}
 									>
-										<Checkbox />
+										<Checkbox value={item?.value} onChange={(e) => handleCheckAudienceSex(e)} />
 										<span>{item.label}</span>
 									</Flex>
 								);
@@ -61,11 +85,9 @@ const AudienceAnalysis = () => {
 										style={{
 											width: "150px",
 										}}
-
 										gap={5}
-
 									>
-										<Checkbox />
+										<Checkbox value={item?.value} onChange={(e) => handleCheckAudienceAge(e)} />
 										<span>{item.label}</span>
 									</Flex>
 								);
@@ -75,7 +97,7 @@ const AudienceAnalysis = () => {
 				</div>
 				<div className={style.audience__group__button}>
 					<Flex gap="small" wrap justify="center">
-						<Button type="primary">OK</Button>
+						<Button type="primary" onClick={handleSubmitAudience}>OK</Button>
 						<Button>Cancel</Button>
 					</Flex>
 				</div>

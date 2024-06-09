@@ -2,7 +2,7 @@ import { Button, Flex, Table, Tooltip, Typography } from "antd";
 import style from "./style.module.scss";
 import { callApiGetEcomDetail, callApiGetRelatedAds, columnRelated, columns, dataSource } from "../../constant";
 import { CalendarTwoTone } from "@ant-design/icons";
-const AdAnalysisComponent = ({ dataDateLine }) => {
+const AdAnalysisComponent = ({ dataDateLine, dataCountryDistribution }) => {
 	console.log(dataDateLine);
 	return (
 		<div className={style.analysis}>
@@ -93,7 +93,12 @@ const AdAnalysisComponent = ({ dataDateLine }) => {
 						<CalendarTwoTone />
 						<Typography>Country distribution</Typography>
 					</Flex>
-					<Table dataSource={callApiGetEcomDetail?.data?.similar_country} columns={columns} />
+					<Table
+						dataSource={
+							dataCountryDistribution?.similar_country || callApiGetEcomDetail?.data?.similar_country
+						}
+						columns={columns}
+					/>
 				</div>
 			</Flex>
 			<div className={style.box__bottom}>

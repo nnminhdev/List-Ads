@@ -24,4 +24,12 @@ function convertDateFormat(dateString) {
 
 	return `${year}-${month}-${day}`;
 }
-export { formatDateFromTimestamp, convertDateFormat };
+
+function getTimestampDaysAgo(numberDays = 90) {
+	const now = new Date();
+
+	const thirtyDaysAgo = now.getTime() - Number(numberDays) * 24 * 60 * 60 * 1000;
+
+	return thirtyDaysAgo;
+}
+export { formatDateFromTimestamp, convertDateFormat, getTimestampDaysAgo };

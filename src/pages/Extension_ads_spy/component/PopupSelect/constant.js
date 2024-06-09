@@ -124,95 +124,95 @@ const optionsAge = [
 const ListLanguages = [
 	{
 		label: "Chinese (Simplified)",
-		value: 1,
+		value: "zh-CN",
 	},
 	{
 		label: "English",
-		value: 1,
+		value: "en",
 	},
 	{
 		label: "Japanese",
-		value: 1,
+		value: "ja",
 	},
 	{
 		label: "Korea",
-		value: 1,
+		value: "ko",
 	},
 	{
 		label: "Arabic",
-		value: 1,
+		value: "ar",
 	},
 	{
 		label: "Chinese (Traditional)",
-		value: 1,
+		value: "zh-TW",
 	},
 	{
 		label: "Thai",
-		value: 1,
+		value: "th",
 	},
 	{
 		label: "German",
-		value: 1,
+		value: "de",
 	},
 	{
 		label: "Spanish",
-		value: 1,
+		value: "es",
 	},
 	{
 		label: "French",
-		value: 1,
+		value: "fr",
 	},
 	{
 		label: "Hindi",
-		value: 1,
+		value: "hi",
 	},
 	{
 		label: "Italian",
-		value: 1,
+		value: "it",
 	},
 	{
 		label: "Malay",
-		value: 1,
+		value: "ms",
 	},
 	{
 		label: "Dutch",
-		value: 1,
+		value: "nl",
 	},
 	{
 		label: "Portuguese",
-		value: 1,
+		value: "pt",
 	},
 	{
 		label: "Russian",
-		value: 1,
+		value: "ru",
 	},
 	{
 		label: "Vietnamese",
-		value: 1,
+		value: "vi",
 	},
 	{
 		label: "Indonesian",
-		value: 1,
+		value: "id",
 	},
 	{
 		label: "Hebrew",
-		value: 1,
+		value: "he",
 	},
 	{
 		label: "Filipino",
-		value: 1,
+		value: "tl",
 	},
 	{
 		label: "Norwegian",
-		value: 1,
+		value: "no",
 	},
 	{
 		label: "Turkish",
-		value: 1,
+		value: "tr",
 	},
 	{
 		label: "Polish",
-		value: 1,
+		value: "pl",
 	},
 ];
 

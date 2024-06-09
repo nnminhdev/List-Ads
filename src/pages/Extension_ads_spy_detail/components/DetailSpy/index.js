@@ -1,5 +1,5 @@
 import { Avatar, Button, Carousel, Flex, Tooltip, Typography } from "antd";
-import { getCode, getName } from "country-list";
+// import { getCode, getName } from "country-list";
 import style from "./style.module.scss";
 import { convertDateFormat, formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
 import { DownloadOutlined } from "@ant-design/icons";
@@ -164,7 +164,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 								{dataDetail?.countries?.length > 0 && (
 									<>
 										<p>Country/Region :</p>
-										<p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p>
+										{/* <p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p> */}
 										<p>{dataDetail?.region}</p>
 									</>
 								)}

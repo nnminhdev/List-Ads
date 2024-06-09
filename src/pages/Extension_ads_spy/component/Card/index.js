@@ -12,6 +12,7 @@ import {
 import "./index.scss";
 import { useEffect, useState } from "react";
 import { formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
+import { extension } from "../../../../utilities/extension/chrome";
 const { Meta, Grid } = Card;
 const { Title, Text } = Typography;
 
@@ -33,7 +34,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 
 	const handleClickCard = () => {
 		window.open(
-			`http://localhost:3000/detail?id=${dataComponentCard.ad_key}&type=${dataComponentCard.tyoe}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`
+			`/pages/detail.html?detail&id=${dataComponentCard.ad_key}&type=${dataComponentCard.type}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`
 		);
 	};
 
@@ -47,17 +48,17 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 				width: "19%",
 			}}
 			bordered={true}
-			extra={
-				<Dropdown
-					overlay={menu}
-					trigger={["click"]}
-					style={{
-						marginTop: "20px",
-					}}
-				>
-					<Button type="text" icon={<EllipsisOutlined />} />
-				</Dropdown>
-			}
+			// extra={
+			// 	<Dropdown
+			// 		overlay={menu}
+			// 		trigger={["click"]}
+			// 		style={{
+			// 			marginTop: "20px",
+			// 		}}
+			// 	>
+			// 		<Button type="text" icon={<EllipsisOutlined />} />
+			// 	</Dropdown>
+			// }
 			onClick={() => handleClickCard()}
 		>
 			<div>
@@ -257,7 +258,13 @@ const ImageCardComponent = ({ dataComponentCard }) => {
 			<img
 				alt=" card detail"
 				title=" card"
-				src={dataComponentCard.preview_img_url}
+				src={
+					dataComponentCard?.preview_img_url
+						? dataComponentCard?.preview_img_url
+						: dataComponentCard?.resource_urls[0]
+						? dataComponentCard?.resource_urls[0]?.image_url
+						: ""
+				}
 				style={{
 					width: "100%",
 					height: "100%",

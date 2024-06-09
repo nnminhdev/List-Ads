@@ -10,7 +10,7 @@ import MarketingObjectives from "../PopupSelect/Marketing Objectives";
 import Language from "../PopupSelect/LanguageComponent";
 import EngagementComponent from "../PopupSelect/Engagement";
 
-const FilterComponent = () => {
+const FilterComponent = ({ funcCallApiSearch }) => {
 	return (
 		<div className={`shadow-common-light ${style.filter__container}`}>
 			<div className={`${style.filter__item}`}>
@@ -21,7 +21,14 @@ const FilterComponent = () => {
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10} align="center">
 							{listFilterNetworks.map((item, index) => {
-								return <NetWorkComponent platForm={item?.platForm} icon={item?.icon} />;
+								return (
+									<NetWorkComponent
+										platForm={item?.platForm}
+										icon={item?.icon}
+										value={item?.value}
+										funcCallApiSearch={funcCallApiSearch}
+									/>
+								);
 							})}
 						</Flex>
 					</div>
@@ -35,11 +42,20 @@ const FilterComponent = () => {
 					</div>
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
-							<SelectInput PopupComponent={Country} placeholderSelect={"Country/Region"} />
-							<SelectInput PopupComponent={Language} placeholderSelect={"Language"} />
+							<SelectInput
+								PopupComponent={Country}
+								placeholderSelect={"Country/Region"}
+								funcCallApiSearch={funcCallApiSearch}
+							/>
+							<SelectInput
+								PopupComponent={Language}
+								placeholderSelect={"Language"}
+								funcCallApiSearch={funcCallApiSearch}
+							/>
 							<SelectInput
 								PopupComponent={MarketingObjectives}
 								placeholderSelect={"Marketing Objectives"}
+								funcCallApiSearch={funcCallApiSearch}
 							/>
 						</Flex>
 					</div>
@@ -53,8 +69,16 @@ const FilterComponent = () => {
 					</div>
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
-							<SelectInput PopupComponent={AudienceAnalysis} placeholderSelect={"Audience Analysis"} />
-							<SelectInput PopupComponent={EngagementComponent} placeholderSelect={"Engagement"} />
+							<SelectInput
+								PopupComponent={AudienceAnalysis}
+								placeholderSelect={"Audience Analysis"}
+								funcCallApiSearch={funcCallApiSearch}
+							/>
+							<SelectInput
+								PopupComponent={EngagementComponent}
+								placeholderSelect={"Engagement"}
+								funcCallApiSearch={funcCallApiSearch}
+							/>
 						</Flex>
 					</div>
 				</Flex>
@@ -68,9 +92,9 @@ const FilterComponent = () => {
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
 							<div>
-								<Placement />
+								<Placement funcCallApiSearch={funcCallApiSearch} />
 							</div>
-							<DatePickerRange />
+							<DatePickerRange funcCallApiSearch={funcCallApiSearch} />
 						</Flex>
 					</div>
 				</Flex>
@@ -81,7 +105,18 @@ const FilterComponent = () => {
 
 export default FilterComponent;
 
-const NetWorkComponent = ({ icon, platForm }) => {
+const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
+	const handleClickFilterPlatform = (e) => {
+		console.log(e.target.textContent);
+		const valuePlatfrom = {
+			Instagram: 5,
+			Facebook: 1,
+			Twitter: 2,
+		};
+		funcCallApiSearch({
+			platform: valuePlatfrom[e.target.textContent] || 1,
+		});
+	};
 	return (
 		<Flex
 			justify="start"
@@ -89,7 +124,10 @@ const NetWorkComponent = ({ icon, platForm }) => {
 			align="center"
 			style={{
 				fontSize: "14px",
+				cursor: "pointer",
 			}}
+			value={value}
+			onClick={(e) => handleClickFilterPlatform(e)}
 		>
 			<img
 				style={{
@@ -99,11 +137,13 @@ const NetWorkComponent = ({ icon, platForm }) => {
 				}}
 				src={icon}
 				alt="icon-platform"
+				value={value}
 			/>
 			<span
 				style={{
 					marginLeft: "5px",
 				}}
+				value={value}
 			>
 				{platForm}
 			</span>

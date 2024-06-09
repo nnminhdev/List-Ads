@@ -1,0 +1,21 @@
+/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f0f0f0; /* Màu nền của track */
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #a0a0a0; /* Màu của thumb */
+	border-radius: 10px; /* Bo góc của thumb */
+	border: 3px solid #f0f0f0; /* Để tạo khoảng cách giữa thumb và track */
+}
+
+/* Custom scrollbar for Firefox */
+// * {
+// 	scrollbar-width: thin;
+// 	scrollbar-color: #a0a0a0 #f0f0f0;
+// }

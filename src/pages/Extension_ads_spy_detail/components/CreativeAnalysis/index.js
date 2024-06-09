@@ -3,7 +3,6 @@ import { callApiAnalysisInfo, callApiGetRelatedAds, columnRelatedAds, columns, d
 import ChartsComponent from "../Charts";
 import style from "./style.module.scss";
 import { useEffect, useState } from "react";
-import { Value } from "sass";
 const CreativeAnalysisComponent = () => {
 	const [dataChannel, setDataChannel] = useState(
 		callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {

@@ -1,6 +1,8 @@
 import { Select, Space } from "antd";
+import { useState } from "react";
 
-const SelectInput = ({ PopupComponent, placeholderSelect }) => {
+const SelectInput = ({ PopupComponent, placeholderSelect, funcCallApiSearch }) => {
+	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<Space wrap>
 			<Select
@@ -8,11 +10,13 @@ const SelectInput = ({ PopupComponent, placeholderSelect }) => {
 					width: 150,
 				}}
 				// onChange={handleChange}
-				dropdownRender={() => <PopupComponent />}
+				dropdownRender={() => <PopupComponent funcCallApiSearch={funcCallApiSearch} fncSetIsOpen={setIsOpen} />}
 				popupMatchSelectWidth={false}
 				// placeholder={placeholderSelect}
-                defaultValue={placeholderSelect}
-				// open={true}
+				defaultValue={placeholderSelect}
+				// open={isOpen}
+				// onFocus={() => setIsOpen(true)}
+				// onBlur={() => setIsOpen(false)}
 			/>
 		</Space>
 	);

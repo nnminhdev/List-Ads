@@ -16,7 +16,7 @@ const detail = {
 	call_to_action_type: "",
 	category: ["-1"],
 	categoryTag: [],
-	cdn_url: ["https://sp2cdn-idea-global.zingfront.com/sp_opera/fc7e4b7371c6a5ed02ec9efd74588e32.jpg"],
+	// cdn_url: ["https://sp2cdn-idea-global.zingfront.com/sp_opera/fc7e4b7371c6a5ed02ec9efd74588e32.jpg"],
 	comment_count: 264,
 	commentcount: 264,
 	conversion: 82,

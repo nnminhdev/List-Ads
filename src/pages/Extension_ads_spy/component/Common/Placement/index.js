@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { DatePicker, Radio, Select } from "antd";
 import "./index.scss";
-const Placement = () => {
+import { getTimestampDaysAgo } from "../../../../../utilities/functions/datetime";
+const Placement = ({ funcCallApiSearch }) => {
 	const [placement, SetPlacement] = useState("topLeft");
 
 	const placementChange = (e) => {
-		SetPlacement(e.target.value);
+		const listPlacement = [7, 30, 90];
+		if (listPlacement.includes(e.target.value)) {
+			SetPlacement(e.target.value);
+		}
+		console.log(e.target.value, getTimestampDaysAgo(e.target.value));
+		funcCallApiSearch({
+			seen_begin: getTimestampDaysAgo(e.target.value),
+			seen_end: new Date().getTime(),
+		});
 	};
 
 	return (
@@ -13,7 +22,9 @@ const Placement = () => {
 			<Radio.Group value={placement} onChange={placementChange}>
 				<Radio.Button value="7">7 days</Radio.Button>
 				<Radio.Button value="30">30 days</Radio.Button>
-				<Radio.Button value="90">90 days</Radio.Button>
+				<Radio.Button value="90" defaultChecked>
+					90 days
+				</Radio.Button>
 				{/* <Radio.Button value="bottomRight"> */}
 				<Select
 					placeholder="More"
@@ -25,6 +36,7 @@ const Placement = () => {
 						{ value: "730", label: "2 years" },
 					]}
 					dropdownClassName="custom-dropdown"
+					onChange={(e) => placementChange(e)}
 				/>
 				{/* </Radio.Button> */}
 			</Radio.Group>

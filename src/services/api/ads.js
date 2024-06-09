@@ -67,12 +67,41 @@ const headerPayload = {
 	redirect_filter_type: "",
 };
 
-const apiGetDataAds = async () => {
+const apiGetDataAds = async (dataPayLoad = {}) => {
 	try {
-		const response = await get("/ecom/get-ecom-ads", headerPayload);
+		const headerPayloadSend = {
+			...headerPayload,
+			...dataPayLoad,
+		};
+		const response = await get("/ecom/get-ecom-ads", headerPayloadSend);
 		return response?.data?.data;
 	} catch (err) {
 		console.error(err);
 	}
 };
-export { apiGetDataAds };
+
+const apiGetDataAdsDetail = async (dataPayLoad = {}) => {
+	try {
+		const headerPayloadSend = {
+			...dataPayLoad,
+		};
+		const response = await get("/ecom/get-ecom-detail", headerPayloadSend);
+		return response?.data?.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+const apiGetDataAdsAnalysis = async (dataPayLoad = {}) => {
+	try {
+		const headerPayloadSend = {
+			...dataPayLoad,
+		};
+		const response = await get("/ecom/get-ecom-more-detail", headerPayloadSend);
+		return response?.data?.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export { apiGetDataAds, apiGetDataAdsDetail, apiGetDataAdsAnalysis };
