@@ -70,44 +70,53 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 						justify="start"
 						gap={8}
 					>
-						<Flex justify="start" gap={2}>
-							<LikeTwoTone size={12} />
-							<p
-								style={{
-									paddingTop: "3px",
-								}}
-							>
-								{dataComponentCard?.like_count}
-							</p>
-						</Flex>
-						<Flex justify="start" gap={2}>
-							<MessageTwoTone size={12} />
-							<p
-								style={{
-									paddingTop: "3px",
-								}}
-							>
-								{dataComponentCard?.comment_count}
-							</p>
-						</Flex>
-						<Flex justify="start" gap={2}>
-							<MessageTwoTone size={12} />
-							<p
-								style={{
-									paddingTop: "3px",
-								}}
-							>
-								{dataComponentCard?.share_count}
-							</p>
-						</Flex>
+						{dataComponentCard?.like_count && (
+							<Flex justify="start" gap={2}>
+								<LikeTwoTone size={12} />
+								<p
+									style={{
+										paddingTop: "3px",
+									}}
+								>
+									{dataComponentCard?.like_count}
+								</p>
+							</Flex>
+						)}
+
+						{dataComponentCard?.comment_count && (
+							<Flex justify="start" gap={2}>
+								<MessageTwoTone size={12} />
+								<p
+									style={{
+										paddingTop: "3px",
+									}}
+								>
+									{dataComponentCard?.comment_count}
+								</p>
+							</Flex>
+						)}
+						{dataComponentCard?.share_count && (
+							<Flex justify="start" gap={2}>
+								<MessageTwoTone size={12} />
+								<p
+									style={{
+										paddingTop: "3px",
+									}}
+								>
+									{dataComponentCard?.share_count}
+								</p>
+							</Flex>
+						)}
 					</Flex>
-					<p
-						style={{
-							fontSize: "12px",
-						}}
-					>
-						{formatDateFromTimestamp(dataComponentCard?.created_at)}
-					</p>
+					{dataComponentCard?.created_at && (
+						<p
+							style={{
+								fontSize: "12px",
+							}}
+						>
+							{formatDateFromTimestamp(dataComponentCard?.created_at)}
+						</p>
+					)}
 				</Flex>
 				<Flex
 					justify="space-between"
@@ -119,12 +128,14 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 					<p
 						style={{
 							fontWeight: "bold",
+							width: "60%",
+							fontSize: "13px",
 						}}
 					>
 						{dataComponentCard.advertiser_name}
 					</p>
 					{/* <span>{dataComponentCard.industry}</span> */}
-					<Tag>{dataComponentCard.industry}</Tag>
+					<Tag>{dataComponentCard?.call_to_action_type || "Landing Page"}</Tag>
 				</Flex>
 				<Flex
 					justify="space-between"
@@ -133,94 +144,103 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 						marginTop: "10px",
 					}}
 				>
-					<div
-						style={{
-							textAlign: "center",
-						}}
-					>
-						<p
+					{dataComponentCard?.heat && (
+						<div
 							style={{
-								fontWeight: "500",
-								fontSize: "12px",
+								textAlign: "center",
 							}}
 						>
-							{"Popularity"}
-						</p>
-						<p
+							<p
+								style={{
+									fontWeight: "500",
+									fontSize: "12px",
+								}}
+							>
+								{"Popularity"}
+							</p>
+							<p
+								style={{
+									fontSize: "12px",
+									fontWeight: "normal",
+								}}
+							>
+								{dataComponentCard?.heat}
+							</p>
+						</div>
+					)}
+					{dataComponentCard.impression && (
+						<div
 							style={{
-								fontSize: "12px",
-								fontWeight: "normal",
+								textAlign: "center",
 							}}
 						>
-							{dataComponentCard?.heat}
-						</p>
-					</div>
-					<div
-						style={{
-							textAlign: "center",
-						}}
-					>
-						<p
+							<p
+								style={{
+									fontWeight: "500",
+									fontSize: "12px",
+								}}
+							>
+								impression
+							</p>
+							<p
+								style={{
+									fontSize: "12px",
+									fontWeight: "normal",
+								}}
+							>
+								{dataComponentCard.impression}
+							</p>
+						</div>
+					)}
+
+					{dataComponentCard.video_duration && (
+						<div
 							style={{
-								fontWeight: "500",
-								fontSize: "12px",
+								textAlign: "center",
 							}}
 						>
-							impression
-						</p>
-						<p
+							<p
+								style={{
+									fontWeight: "500",
+									fontSize: "12px",
+								}}
+							>
+								Duration
+							</p>
+							<p
+								style={{
+									fontSize: "12px",
+									fontWeight: "normal",
+								}}
+							>
+								{dataComponentCard.video_duration}
+							</p>
+						</div>
+					)}
+					{dataComponentCard.last_seen && (
+						<div
 							style={{
-								fontSize: "12px",
-								fontWeight: "normal",
+								textAlign: "center",
 							}}
 						>
-							{dataComponentCard.impression}
-						</p>
-					</div>
-					<div
-						style={{
-							textAlign: "center",
-						}}
-					>
-						<p
-							style={{
-								fontWeight: "500",
-								fontSize: "12px",
-							}}
-						>
-							Duration
-						</p>
-						<p
-							style={{
-								fontSize: "12px",
-								fontWeight: "normal",
-							}}
-						>
-							{dataComponentCard.video_duration}
-						</p>
-					</div>
-					<div
-						style={{
-							textAlign: "center",
-						}}
-					>
-						<p
-							style={{
-								fontWeight: "500",
-								fontSize: "12px",
-							}}
-						>
-							Last Seen
-						</p>
-						<p
-							style={{
-								fontSize: "12px",
-								fontWeight: "normal",
-							}}
-						>
-							{dataComponentCard.last_seen}
-						</p>
-					</div>
+							<p
+								style={{
+									fontWeight: "500",
+									fontSize: "12px",
+								}}
+							>
+								Last Seen
+							</p>
+							<p
+								style={{
+									fontSize: "12px",
+									fontWeight: "normal",
+								}}
+							>
+								{dataComponentCard.last_seen}
+							</p>
+						</div>
+					)}
 				</Flex>
 			</div>
 		</Card>

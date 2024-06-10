@@ -104,4 +104,16 @@ const apiGetDataAdsAnalysis = async (dataPayLoad = {}) => {
 	}
 };
 
-export { apiGetDataAds, apiGetDataAdsDetail, apiGetDataAdsAnalysis };
+const apiGetDataAdsAnalysisInfo = async (dataPayLoad = {}) => {
+	try {
+		const headerPayloadSend = {
+			...dataPayLoad,
+		};
+		const response = await get("/material-analysis/get-analysis-info", headerPayloadSend);
+		return response?.data?.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export { apiGetDataAds, apiGetDataAdsDetail, apiGetDataAdsAnalysis, apiGetDataAdsAnalysisInfo };

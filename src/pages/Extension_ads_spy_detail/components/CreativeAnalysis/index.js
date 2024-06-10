@@ -3,7 +3,7 @@ import { callApiAnalysisInfo, callApiGetRelatedAds, columnRelatedAds, columns, d
 import ChartsComponent from "../Charts";
 import style from "./style.module.scss";
 import { useEffect, useState } from "react";
-const CreativeAnalysisComponent = () => {
+const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo }) => {
 	const [dataChannel, setDataChannel] = useState(
 		callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {
 			return {
@@ -22,26 +22,28 @@ const CreativeAnalysisComponent = () => {
 	);
 
 	useEffect(() => {
-		const dataChannelChar = callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {
-			return {
-				name: item.channel === 1 ? "Facebook" : item.channel,
-				value: item.channel_percent,
-			};
-		});
-		const dataGeoChar = callApiAnalysisInfo?.data?.geo_data?.map((item, index) => {
-			return {
-				name: item?.geo,
-				value: item.geo_percent,
-			};
-		});
+		const dataChannelChar =
+			callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {
+				return {
+					name: item.channel === 1 ? "Facebook" : item.channel,
+					value: item.channel_percent,
+				};
+			});
+		const dataGeoChar =
+			callApiAnalysisInfo?.data?.geo_data?.map((item, index) => {
+				return {
+					name: item?.geo,
+					value: item.geo_percent,
+				};
+			});
 		if (dataChannelChar.length > 0) setDataChannel(dataChannelChar);
 		if (dataGeoChar.length > 0) setGeoData(dataGeoChar);
 	}, []);
-	console.log(dataChannel, dataGeo);
+
 	return (
 		<div className={style.creative}>
 			<div className={style.table}>
-				<Table dataSource={callApiGetRelatedAds?.data} columns={columnRelatedAds} />
+				<Table dataSource={dataAdsAnalysisInfo || callApiGetRelatedAds?.data} columns={columnRelatedAds} />
 			</div>
 
 			<Flex justify="space-between" gap={20}>
