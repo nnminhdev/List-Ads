@@ -222,27 +222,27 @@ const MarketingObjectivesConstant = [
 		list_data: [
 			{
 				label: "Buy Now",
-				value: 1,
+				value: "BUY_NOW",
 			},
 			{
 				label: "Order Now",
-				value: 2,
+				value: "ORDER_NOW",
 			},
 			{
 				label: "Shop Now",
-				value: 3,
+				value: "SHOP_NOW",
 			},
 			{
 				label: "Start Order",
-				value: 4,
+				value: "START_ORDER",
 			},
 			{
 				label: "Add To Cart",
-				value: 5,
+				value: "ADD_TO_CART",
 			},
 			{
 				label: "Sell Now",
-				value: 6,
+				value: "SELL_NOW",
 			},
 		],
 	},
@@ -251,55 +251,55 @@ const MarketingObjectivesConstant = [
 		list_data: [
 			{
 				label: "Contact Us",
-				value: 1,
+				value: "CONTACT_US",
 			},
 			{
 				label: "Learn More",
-				value: 2,
+				value: "LEARN_MORE",
 			},
 			{
 				label: "Get Offer",
-				value: 3,
+				value: "GET_OFFER",
 			},
 			{
 				label: "Get Showtimes",
-				value: 4,
+				value: "GET_SHOWTIMES",
 			},
 			{
 				label: "Request Time",
-				value: 5,
+				value: "REQUEST_TIME",
 			},
 			{
 				label: "See Menu",
-				value: 6,
+				value: "SEE_MENU",
 			},
 			{
 				label: "SubScribe",
-				value: 7,
+				value: "SUBSCRIBE",
 			},
 			{
 				label: "Apply Now",
-				value: 8,
+				value: "APPLY_NOW",
 			},
 			{
 				label: "Book Travel",
-				value: 9,
+				value: "BOOK_TRAVEL",
 			},
 			{
 				label: "Buy Now",
-				value: 10,
+				value: "BUY_NOW",
 			},
 			{
 				label: "Buy Tickets",
-				value: 11,
+				value: "BUY_TICKETS",
 			},
 			{
 				label: "Get Offer View",
-				value: 12,
+				value: "GET_OFFER_VIEW",
 			},
 			{
 				label: "Sign Up",
-				value: 13,
+				value: "SIGN_UP",
 			},
 		],
 	},
@@ -308,23 +308,23 @@ const MarketingObjectivesConstant = [
 		list_data: [
 			{
 				label: "Get Queue",
-				value: 1,
+				value: "GET_QUEUE",
 			},
 			{
 				label: "Send Message",
-				value: 2,
+				value: "SEND_MESSAGE",
 			},
 			{
 				label: "Send WhatsApp Message",
-				value: 3,
+				value: "SEND_WHATSAPP_MESSAGE",
 			},
 			{
 				label: "WhatsApp Message",
-				value: 4,
+				value: "WHATSAPP_MESSAGE",
 			},
 			{
 				label: "Message Page",
-				value: 5,
+				value: "MESSAGE_PAGE",
 			},
 		],
 	},
@@ -333,23 +333,19 @@ const MarketingObjectivesConstant = [
 		list_data: [
 			{
 				label: "Watch Video",
-				value: 1,
+				value: "WATCH_VIDEO",
 			},
 			{
 				label: "Watch More",
-				value: 2,
+				value: "WATCH_MORE",
 			},
 			{
 				label: "Shop Now",
-				value: 3,
+				value: "SHOP_NOW",
 			},
 			{
 				label: "Listen Music",
-				value: 4,
-			},
-			{
-				label: "Listen Now",
-				value: 5,
+				value: "LISTEN_MUSIC",
 			},
 		],
 	},
@@ -358,27 +354,27 @@ const MarketingObjectivesConstant = [
 		list_data: [
 			{
 				label: "Like Page",
-				value: 1,
+				value: "LIKE_PAGE",
 			},
 			{
 				label: "Get Quote",
-				value: 2,
+				value: "GET_QUOTE",
 			},
 			{
 				label: "Call Now",
-				value: 3,
+				value: "CALL_NOW",
 			},
 			{
 				label: "Get Offer View",
-				value: 4,
+				value: "GET_OFFER_VIEW",
 			},
 			{
 				label: "Message Page",
-				value: 5,
+				value: "MESSAGE_PAGE",
 			},
 			{
 				label: "View Instagram",
-				value: 6,
+				value: "VIEW_INSTAGRAM",
 			},
 		],
 	},
@@ -387,51 +383,51 @@ const MarketingObjectivesConstant = [
 		list_data: [
 			{
 				label: "Email Now",
-				value: 1,
+				value: "EMAIL_NOW",
 			},
 			{
 				label: "Get Tickets",
-				value: 2,
+				value: "GET_TICKETS",
 			},
 			{
 				label: "Get Directions",
-				value: 3,
+				value: "GET_DIRECTIONS",
 			},
 			{
 				label: "Open Link",
-				value: 4,
+				value: "OPEN_LINK",
 			},
 			{
 				label: "Save",
-				value: 5,
+				value: "SAVE",
 			},
 			{
 				label: "Search",
-				value: 6,
+				value: "SEARCH",
 			},
 			{
 				label: "Try It",
-				value: 7,
+				value: "TRY_IT",
 			},
 			{
 				label: "Donate",
-				value: 8,
+				value: "DONATE",
 			},
 			{
 				label: "Donate Now",
-				value: 9,
+				value: "DONATE_NOW",
 			},
 			{
 				label: "Go Live",
-				value: 10,
+				value: "GO_LIVE",
 			},
 			{
 				label: "Link Card",
-				value: 11,
+				value: "LINK_CARD",
 			},
 			{
 				label: "Event RSVP",
-				value: 12,
+				value: "EVENT_RSVP",
 			},
 		],
 	},

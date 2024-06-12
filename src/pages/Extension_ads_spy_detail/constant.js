@@ -1,3 +1,6 @@
+import { Flex, Tooltip } from "antd";
+import { convertDateFormat } from "../../utilities/functions/datetime";
+
 const detail = {
 	ad_height: "600",
 	ad_key: "3c341ee74f3a8e6b3ce4b3a05201dcc7",
@@ -525,26 +528,29 @@ const columnRelated = [
 		dataIndex: "title",
 		key: "title",
 		align: "center",
+		ellipsis: true,
 	},
 	{
 		title: "Ads Text",
-		dataIndex: "advertiser_name",
-		key: "advertiser_name",
+		dataIndex: "body",
+		key: "body",
 		align: "center",
+		ellipsis: true,
 	},
 	{
 		title: "Related description",
 		dataIndex: "message",
 		key: "message",
 		align: "center",
+		ellipsis: true,
 	},
 ];
 
 const columnRelatedAds = [
 	{
 		title: "#",
-		dataIndex: "title",
-		key: "title",
+		dataIndex: "id",
+		key: "id",
 		align: "center",
 	},
 	{
@@ -552,18 +558,41 @@ const columnRelatedAds = [
 		dataIndex: "advertiser_name",
 		key: "advertiser_name",
 		align: "center",
+		ellipsis: true,
+		render: (text) => {
+			return (
+				<Tooltip title={text}>
+					<span>{text}</span>
+				</Tooltip>
+			);
+		},
 	},
 	{
 		title: "Text",
-		dataIndex: "text",
-		key: "text",
+		dataIndex: "title",
+		key: "title",
 		align: "center",
+		ellipsis: true,
+		render: (text) => {
+			return (
+				<Tooltip title={text}>
+					<span>{text}</span>
+				</Tooltip>
+			);
+		},
 	},
 	{
 		title: "OS",
 		dataIndex: "os",
 		key: "os",
 		align: "center",
+		render: (text) => {
+			return (
+                <Tooltip title={text === 3 ? 'PC' : 'Mobile'}>
+                    <span>{text}</span>
+                </Tooltip>
+            );
+		}
 	},
 	{
 		title: "Networks",
@@ -579,9 +608,29 @@ const columnRelatedAds = [
 	},
 	{
 		title: "Duration",
-		dataIndex: "22222",
-		key: "days_count",
+		dataIndex: "first_seen",
+		key: "first_seen",
 		align: "center",
+		ellipsis: true,
+		render: (text, record) => {
+			return (
+				<Tooltip
+					title={
+						<Flex justify="start" gap={5}>
+							<p>{convertDateFormat(record?.first_seen)}</p>
+							<span> </span>
+							<p>{convertDateFormat(record?.last_seen)}</p>
+						</Flex>
+					}
+				>
+					<Flex justify="start" gap={5}>
+						<p>{convertDateFormat(record?.first_seen)}</p>
+						<span> </span>
+						<p>{convertDateFormat(record?.last_seen)}</p>
+					</Flex>
+				</Tooltip>
+			);
+		},
 	},
 	{
 		title: "Impression",
@@ -591,9 +640,26 @@ const columnRelatedAds = [
 	},
 	{
 		title: "Landing Page",
-		dataIndex: "title",
-		key: "title",
+		dataIndex: "store_url",
+		key: "store_url",
 		align: "center",
+		ellipsis: true,
+		render: (text, record) => {
+			return (
+				<Tooltip title={text}>
+					<a
+						href={text}
+						style={{
+							textDecoration: "none",
+						}}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{text}
+					</a>
+				</Tooltip>
+			);
+		},
 	},
 ];
 

@@ -107,14 +107,13 @@ export default FilterComponent;
 
 const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 	const handleClickFilterPlatform = (e) => {
-		console.log(e.target.textContent);
-		const valuePlatfrom = {
+		const valuePlatform = {
 			Instagram: 5,
 			Facebook: 1,
 			Twitter: 2,
 		};
 		funcCallApiSearch({
-			platform: valuePlatfrom[e.target.textContent] || 1,
+			platform: valuePlatform[e.target.textContent] || 1,
 		});
 	};
 	return (
@@ -144,6 +143,7 @@ const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 					marginLeft: "5px",
 				}}
 				value={value}
+				className="hover-item"
 			>
 				{platForm}
 			</span>

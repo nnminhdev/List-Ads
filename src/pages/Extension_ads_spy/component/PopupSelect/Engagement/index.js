@@ -1,5 +1,6 @@
 import { Button, Flex, Input, Space } from "antd";
 import style from "./style.module.scss";
+import { useState } from "react";
 const list_engagement = [
 	{
 		title: "Like",
@@ -12,7 +13,24 @@ const list_engagement = [
 	},
 ];
 
-const EngagementComponent = () => {
+const EngagementComponent = ({ funcCallApiSearch }) => {
+	const [likeBegin, setLikeBegin] = useState("");
+	const [likeEnd, setLikeEnd] = useState("");
+	const [commentBegin, setCommentBegin] = useState("");
+	const [commentEnd, setCommentEnd] = useState("");
+	const [shareBegin, setShareBegin] = useState("");
+	const [shareEnd, setShareEnd] = useState("");
+	const handleFilterEngagement = () => {
+		funcCallApiSearch({
+			like_begin: 100,
+			like_end: 2000,
+			comment_begin: 2000,
+			comment_end: 2000,
+			share_begin: 2000,
+			share_end: 2000,
+		});
+	};
+	const handleChangeValue = (e, index) => {};
 	return (
 		<div className={style.engagement}>
 			<div className={`${style.engagement__top}`}>
@@ -41,7 +59,11 @@ const EngagementComponent = () => {
 								<p className={style.item}>101~1000</p>
 								<p className={style.item}> {"> 1000"}</p>
 								<Space.Compact block>
-									<Input style={{ width: 100, textAlign: "center" }} placeholder="Minimum" />
+									<Input
+										style={{ width: 100, textAlign: "center" }}
+										placeholder="Minimum"
+										onChange={(e, index) => handleChangeValue(e, index)}
+									/>
 									<Input
 										className="site-input-split"
 										style={{
@@ -84,7 +106,9 @@ const EngagementComponent = () => {
 						}}
 					>
 						<Button>Cancel</Button>
-						<Button type="primary">OK</Button>
+						<Button type="primary" onClick={handleFilterEngagement}>
+							OK
+						</Button>
 					</Flex>
 				</Flex>
 			</div>

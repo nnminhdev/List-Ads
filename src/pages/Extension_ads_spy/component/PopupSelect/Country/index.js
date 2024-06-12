@@ -1,13 +1,14 @@
-import { Button, Checkbox, Flex, Input } from "antd";
+import { Button, Checkbox, Flex, Input, Tooltip, Typography } from "antd";
 import { listCountry } from "../constant";
 import { useState } from "react";
 import style from "./style.module.scss";
 import { handleSearchSelectCountry } from "../helper";
 
-const Country = () => {
+const Country = ({ funcCallApiSearch }) => {
 	const [selectMulti, setSelectMulti] = useState(false);
 	const [searchSelect, setSearchSelect] = useState("");
 	const [listDataCountry, setListDataCountry] = useState(listCountry);
+	const [listDataCountrySelect, setListDataCountrySelect] = useState([]);
 	const [topicSelect, setTopicSelect] = useState("");
 	const handleSelectMultiSelect = () => {
 		setSelectMulti((prev) => !prev);
@@ -23,9 +24,34 @@ const Country = () => {
 		}
 	};
 	const handleSelectTopic = (e) => {
-		console.log(e.target.value);
 		setTopicSelect(e.target.value);
 	};
+
+	const handleClickFilterItem = (valueSearch) => {
+		funcCallApiSearch({
+			geo: valueSearch,
+		});
+	};
+
+	const handleSelectFilterListItems = (e) => {
+		if (e.target.checked) {
+			setListDataCountrySelect((prev) => [...prev, e.target.value]);
+		} else {
+			const newArray = listDataCountrySelect.filter((item) => item !== e.target.value);
+			setListDataCountrySelect([...newArray]);
+		}
+	};
+
+	const handleClickFilterItemList = () => {
+		funcCallApiSearch({
+			geo: listDataCountrySelect.join(","),
+		});
+	};
+
+	const handleSelectAllFilterItemList = () => {
+		funcCallApiSearch();
+	};
+
 	return (
 		<div className={style.country__wrap}>
 			<div className={style.country__menu}>
@@ -39,8 +65,8 @@ const Country = () => {
 					</div>
 					<div>
 						<Flex justify="start" gap={10}>
-							<Button onClick={handleSelectMultiSelect}>MultiSelect</Button>
-							<Button>All</Button>
+							{/* <Button onClick={handleSelectMultiSelect}>MultiSelect</Button> */}
+							<Button onClick={handleSelectAllFilterItemList}>All</Button>
 						</Flex>
 					</div>
 				</Flex>
@@ -67,7 +93,11 @@ const Country = () => {
 												width: "150px",
 											}}
 										>
-											{selectMulti && <Checkbox checked={topicSelect === item.topic} />}
+											{/* {selectMulti && <Checkbox checked={topicSelect === item.topic} />} */}
+											<Checkbox
+												onChange={(e) => handleSelectFilterListItems(e)}
+												value={element?.value}
+											/>
 											<Flex justify="start" gap={5} align="center">
 												<img
 													src={element?.image_country}
@@ -75,14 +105,36 @@ const Country = () => {
 													height={"auto"}
 													alt="icon country"
 												/>
-												<p
-													style={{
-														width: "80%",
-													}}
-													key={index}
-												>
-													{element.name}
-												</p>
+												{element.name.length > 11 ? (
+													<Tooltip title={element.name}>
+														<Typography.Paragraph
+															ellipsis={true}
+															style={{
+																width: "70%",
+																marginBottom: "0px",
+																cursor: "pointer",
+																color: listDataCountrySelect.includes(item?.value) ? "#1890ff" : "#000000",
+															}}
+															className={`hover-item`}
+															onClick={() => handleClickFilterItem(element?.value)}
+														>
+															{element.name}
+														</Typography.Paragraph>
+													</Tooltip>
+												) : (
+													<p
+													
+														style={{
+															cursor: "pointer",
+															color: listDataCountrySelect.includes(item?.value) ? "#1890ff" : "#000000",
+														}}
+														key={index}
+														className={`hover-item`}
+														onClick={() => handleClickFilterItem(element?.value)}
+													>
+														{element.name}
+													</p>
+												)}
 											</Flex>
 										</Flex>
 									);
@@ -91,6 +143,14 @@ const Country = () => {
 						</div>
 					);
 				})}
+			</div>
+			<div>
+				<Flex justify="center" gap={10} style={{ marginTop: "20px" }}>
+					<Button type="primary" onClick={handleClickFilterItemList}>
+						OK
+					</Button>
+					<Button>Cancel</Button>
+				</Flex>
 			</div>
 		</div>
 	);

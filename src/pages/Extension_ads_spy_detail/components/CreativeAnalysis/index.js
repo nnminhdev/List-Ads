@@ -3,47 +3,39 @@ import { callApiAnalysisInfo, callApiGetRelatedAds, columnRelatedAds, columns, d
 import ChartsComponent from "../Charts";
 import style from "./style.module.scss";
 import { useEffect, useState } from "react";
-const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo }) => {
-	const [dataChannel, setDataChannel] = useState(
-		callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {
+const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo, dataRelatedAds, dataRelatedAdvertisers }) => {
+	const [dataChannel, setDataChannel] = useState([]);
+	const [dataGeo, setGeoData] = useState([]);
+	const [dataTableAnalysis, setDataTableAnalysis] = useState();
+
+	useEffect(() => {
+		console.log("render.........");
+		const dataChannelChar = dataAdsAnalysisInfo?.channel_data?.map((item, index) => {
 			return {
 				name: item.channel === 1 ? "Facebook" : item.channel,
 				value: item.channel_percent,
 			};
-		})
-	);
-	const [dataGeo, setGeoData] = useState(
-		callApiAnalysisInfo?.data?.geo_data?.map((item, index) => {
+		});
+		const dataGeoChar = dataAdsAnalysisInfo?.geo_data?.map((item, index) => {
 			return {
 				name: item?.geo,
 				value: item.geo_percent,
 			};
-		})
-	);
+		});
+		console.log("dataChannelChar ======>", dataChannelChar);
+		console.log("dataGeoChar ======>", dataGeoChar);
+		if (dataChannelChar?.length > 0) setDataChannel(dataChannelChar);
+		if (dataGeoChar?.length > 0) setGeoData(dataGeoChar);
+	}, [dataAdsAnalysisInfo]);
 
 	useEffect(() => {
-		const dataChannelChar =
-			callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {
-				return {
-					name: item.channel === 1 ? "Facebook" : item.channel,
-					value: item.channel_percent,
-				};
-			});
-		const dataGeoChar =
-			callApiAnalysisInfo?.data?.geo_data?.map((item, index) => {
-				return {
-					name: item?.geo,
-					value: item.geo_percent,
-				};
-			});
-		if (dataChannelChar.length > 0) setDataChannel(dataChannelChar);
-		if (dataGeoChar.length > 0) setGeoData(dataGeoChar);
-	}, []);
+		setDataTableAnalysis(dataRelatedAds);
+	}, [dataRelatedAds]);
 
 	return (
 		<div className={style.creative}>
 			<div className={style.table}>
-				<Table dataSource={dataAdsAnalysisInfo || callApiGetRelatedAds?.data} columns={columnRelatedAds} />
+				<Table dataSource={dataTableAnalysis} columns={columnRelatedAds} rowKey="id" />
 			</div>
 
 			<Flex justify="space-between" gap={20}>
@@ -70,7 +62,9 @@ const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo }) => {
 							marginBottom: "20px",
 						}}
 					>
-						<ChartsComponent classAppendChar={"char-left"} dataChar={dataChannel} />
+						{dataChannel?.length > 0 && (
+							<ChartsComponent classAppendChar={"char-left"} dataChar={dataChannel} />
+						)}
 					</Flex>
 				</div>
 				<div
@@ -96,7 +90,7 @@ const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo }) => {
 							marginBottom: "20px",
 						}}
 					>
-						<ChartsComponent classAppendChar={"char-right"} dataChar={dataGeo} />
+						{dataGeo?.length > 0 && <ChartsComponent classAppendChar={"char-right"} dataChar={dataGeo} />}
 					</Flex>
 				</div>
 			</Flex>

@@ -1,6 +1,6 @@
 {
-	"short_name": "List Ads",
-	"name": "ListAds",
+	"short_name": "spypro",
+	"name": "spypro",
 	"description": "List Ads extension",
 	"icons": {
 		"16": "icons/16x16.png",
@@ -23,7 +23,7 @@
 	"manifest_version": 3,
 	"version": "1.0.0.0",
 	"host_permissions": ["https://*/*", "http://*/*"],
-	"permissions": ["storage", "tabs", "declarativeNetRequest"],
+	"permissions": ["storage", "tabs", "declarativeNetRequest", "downloads"],
 	"declarative_net_request": {
 		"rule_resources": [
 			{

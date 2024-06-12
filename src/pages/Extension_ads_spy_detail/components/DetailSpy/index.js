@@ -1,11 +1,31 @@
+/* global chrome */
 import { Avatar, Button, Carousel, Flex, Tooltip, Typography } from "antd";
-// import { getCode, getName } from "country-list";
+import { getCode, getName } from "country-list";
 import style from "./style.module.scss";
 import { convertDateFormat, formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
 import { DownloadOutlined } from "@ant-design/icons";
 import { checkPlatForm } from "../../../../utilities/functions/platform";
 import { formatNumberToK } from "../../../../utilities/functions/number";
+
+const { Text } = Typography;
 const DetailSpyComponent = ({ dataDetail }) => {
+	const handleClickLandingPage = () => {
+		window.open(dataDetail?.store_url, "_blank");
+	};
+
+	const handleDownloadAsset = () => {
+		console.log(dataDetail?.resource_urls[0]?.video_url);
+		chrome.downloads.download({
+			url:
+				dataDetail?.resource_urls[0]?.type === 1
+					? dataDetail?.resource_urls[0]?.image_url
+					: dataDetail?.resource_urls[0]?.video_url,
+			filename:
+				dataDetail?.resource_urls[0]?.type === 1
+					? `image.png`
+					: `video.mp4`,
+		});
+	};
 	return (
 		<div className={style.detail__wrapper}>
 			<Flex
@@ -42,22 +62,37 @@ const DetailSpyComponent = ({ dataDetail }) => {
 				>
 					<div>
 						<Tooltip title={dataDetail?.message}>
-							<Typography style={{ width: "100%", display: "block" }} ellipsis>
+							<Text style={{ width: "100%", display: "block" }} ellipsis>
 								{dataDetail?.message}
-							</Typography>
+							</Text>
 						</Tooltip>
 					</div>
 					<div className={style.preview}>
 						{dataDetail?.resource_urls?.length === 1 ? (
-							<img
-								src={dataDetail?.preview_img_url}
-								alt="url detail"
-								style={{
-									width: "400px",
-									height: "auto",
-									objectFit: "cover",
-								}}
-							/>
+							<div>
+								{dataDetail?.resource_urls[0]?.type === 1 ? (
+									<img
+										src={dataDetail?.resource_urls[0]?.image_url}
+										alt="url detail"
+										style={{
+											width: "400px",
+											height: "auto",
+											objectFit: "cover",
+										}}
+									/>
+								) : (
+									<video
+										src={dataDetail?.resource_urls[0]?.video_url}
+										alt="url detail"
+										style={{
+											width: "400px",
+											height: "auto",
+											objectFit: "cover",
+										}}
+										controls
+									/>
+								)}
+							</div>
 						) : (
 							<Carousel
 								arrows
@@ -70,15 +105,28 @@ const DetailSpyComponent = ({ dataDetail }) => {
 								{dataDetail?.resource_urls?.map((item, index) => {
 									return (
 										<div key={index}>
-											<img
-												src={item?.image_url}
-												alt="url detail"
-												style={{
-													width: "400px",
-													height: "auto",
-													objectFit: "cover",
-												}}
-											/>
+											{item?.type === 1 ? (
+												<img
+													src={item?.image_url}
+													alt="url detail"
+													style={{
+														width: "400px",
+														height: "auto",
+														objectFit: "cover",
+													}}
+												/>
+											) : (
+												<video
+													src={item?.image_url}
+													alt="url detail"
+													style={{
+														width: "400px",
+														height: "auto",
+														objectFit: "cover",
+													}}
+													controls
+												/>
+											)}
 										</div>
 									);
 								})}
@@ -86,8 +134,13 @@ const DetailSpyComponent = ({ dataDetail }) => {
 						)}
 					</div>
 					<Flex justify="space-between" align="center">
-						<Typography>{dataDetail?.title}</Typography>
-						<Button>Landing Page</Button>
+						<Text
+							style={{ transition: "color 0.3s", cursor: "pointer", "&:hover": { color: "blue" } }}
+							ellipsis
+						>
+							{dataDetail?.title}
+						</Text>
+						<Button onClick={handleClickLandingPage}>Landing Page</Button>
 					</Flex>
 				</div>
 
@@ -164,7 +217,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 								{dataDetail?.countries?.length > 0 && (
 									<>
 										<p>Country/Region :</p>
-										{/* <p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p> */}
+										<p>{getName(dataDetail?.countries[0]) || dataDetail?.countries[0]}</p>
 										<p>{dataDetail?.region}</p>
 									</>
 								)}
@@ -211,18 +264,21 @@ const DetailSpyComponent = ({ dataDetail }) => {
 									</>
 								)}
 							</Flex>
+							{dataDetail?.source_url && (
+								<Flex justify="start" align="center" gap={20} className={style.item__detail}>
+									<p>Original Post :</p>
+									<p>{dataDetail?.source_url}</p>
+								</Flex>
+							)}
+
 							{/* <Flex justify="start" align="center" gap={20} className={style.item__detail}>
-								<p>Original Post :</p>
-								<p>11111</p>
-							</Flex>
-							<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 								<p>Engagement :</p>
 								<p>11111</p>
 							</Flex> */}
 						</div>
 					</div>
 					<div>
-						<Button type="primary" icon={<DownloadOutlined />} size={32}>
+						<Button type="primary" icon={<DownloadOutlined />} size={32} onClick={handleDownloadAsset}>
 							Download
 						</Button>
 					</div>

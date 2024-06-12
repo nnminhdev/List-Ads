@@ -26,8 +26,8 @@ const AudienceAnalysis = ({ funcCallApiSearch }) => {
 	};
 	const handleSubmitAudience = () => {
 		funcCallApiSearch({
-			audience_sex: listValueSex.join(','),
-			audience_age: listValueAge.join(','),
+			audience_sex: listValueSex.join(","),
+			audience_age: listValueAge.join(","),
 		});
 	};
 	return (
@@ -59,7 +59,14 @@ const AudienceAnalysis = ({ funcCallApiSearch }) => {
 										gap={5}
 									>
 										<Checkbox value={item?.value} onChange={(e) => handleCheckAudienceSex(e)} />
-										<span>{item.label}</span>
+										<span
+											style={{
+												color: listValueSex.includes(item?.value) ? "#1890ff" : "#000000",
+											}}
+											className="hover-item"
+										>
+											{item.label}
+										</span>
 									</Flex>
 								);
 							})}
@@ -88,7 +95,13 @@ const AudienceAnalysis = ({ funcCallApiSearch }) => {
 										gap={5}
 									>
 										<Checkbox value={item?.value} onChange={(e) => handleCheckAudienceAge(e)} />
-										<span>{item.label}</span>
+										<span
+											style={{
+												color: listValueAge.includes(item?.value) ? "#1890ff" : "#000000",
+											}}
+										>
+											{item.label}
+										</span>
 									</Flex>
 								);
 							})}
@@ -97,7 +110,9 @@ const AudienceAnalysis = ({ funcCallApiSearch }) => {
 				</div>
 				<div className={style.audience__group__button}>
 					<Flex gap="small" wrap justify="center">
-						<Button type="primary" onClick={handleSubmitAudience}>OK</Button>
+						<Button type="primary" onClick={handleSubmitAudience}>
+							OK
+						</Button>
 						<Button>Cancel</Button>
 					</Flex>
 				</div>

@@ -10,10 +10,16 @@ const Placement = ({ funcCallApiSearch }) => {
 		if (listPlacement.includes(e.target.value)) {
 			SetPlacement(e.target.value);
 		}
-		console.log(e.target.value, getTimestampDaysAgo(e.target.value));
 		funcCallApiSearch({
 			seen_begin: getTimestampDaysAgo(e.target.value),
-			seen_end: new Date().getTime(),
+			seen_end: Math.floor(new Date().getTime() / 1000),
+		});
+	};
+
+	const handleSelectDays = (value, option) => {
+		funcCallApiSearch({
+			seen_begin: getTimestampDaysAgo(value),
+			seen_end: Math.floor(new Date().getTime() / 1000),
 		});
 	};
 
@@ -36,7 +42,7 @@ const Placement = ({ funcCallApiSearch }) => {
 						{ value: "730", label: "2 years" },
 					]}
 					dropdownClassName="custom-dropdown"
-					onChange={(e) => placementChange(e)}
+					onSelect={handleSelectDays}
 				/>
 				{/* </Radio.Button> */}
 			</Radio.Group>

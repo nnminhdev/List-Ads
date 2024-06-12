@@ -32,7 +32,7 @@ const HeaderComponent = ({ setIndexMenu }) => {
 			className={style.nav}
 		>
 			<div className="logo" style={{ fontSize: "20px", fontWeight: "bold" }}>
-				<a href="/">
+				<a href="/pages/option.html">
 					<img src={logoSpypro} alt="logo" width={"110px"} height={"auto"} />
 				</a>
 			</div>

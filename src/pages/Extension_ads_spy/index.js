@@ -6,11 +6,13 @@ import FilterComponent from "./component/Filter";
 import databases from "../../databases/list_ads.json";
 import { useEffect, useState } from "react";
 import { apiGetDataAds } from "../../services/api/ads";
+import { getTimestampDaysAgo } from "../../utilities/functions/datetime";
+
+const { Search } = Input;
 
 const AdsSpyComponent = () => {
 	const [isSearch, setSearch] = useState(false);
-	const [numberItem, setNumberItem] = useState(10);
-	const [listAds, setListAds] = useState([]);
+	const [listAds, setListAds] = useState({});
 
 	const handleSearch = async (value, _e, info) => {
 		await getDataApiAds({
@@ -21,19 +23,26 @@ const AdsSpyComponent = () => {
 			setSearch(false);
 		}, 1000);
 	};
-	const { Search } = Input;
-	const handleChangePagination = (page, pageSize) => {
-		setNumberItem(page * pageSize);
+	const handleChangePagination = async (page, pageSize) => {
+		await getDataApiAds({
+			page,
+			size: pageSize,
+		});
 	};
 	const getDataApiAds = async (dataPayload) => {
-		setListAds([]);
+		setListAds({});
 		const responseDataApi = await apiGetDataAds(dataPayload);
-		if (responseDataApi?.length > 0) setListAds(responseDataApi);
+		if (responseDataApi) setListAds(responseDataApi);
 	};
 	useEffect(() => {
-		getDataApiAds();
+		document.title = "Spy Ads";
 	}, []);
-
+	useEffect(() => {
+		getDataApiAds({
+			seen_begin: getTimestampDaysAgo(),
+			seen_end: Math.floor(new Date().getTime() / 1000),
+		});
+	}, []);
 	return (
 		<div>
 			<>
@@ -55,8 +64,8 @@ const AdsSpyComponent = () => {
 				<FilterComponent funcCallApiSearch={getDataApiAds} />
 				<div className={style.content__list}>
 					<Flex justify="start" wrap gap={20}>
-						{listAds.length > 0 ? (
-							listAds?.slice(0, numberItem).map((item, index) => {
+						{listAds?.data?.length > 0 ? (
+							listAds?.data?.map((item, index) => {
 								return <CardAdsComponent dataComponentCard={item} />;
 							})
 						) : (
@@ -74,7 +83,7 @@ const AdsSpyComponent = () => {
 					</Flex>
 				</div>
 				<div className={style.content__pagination}>
-					<Pagination defaultCurrent={1} total={listAds?.length} onChange={handleChangePagination} />
+					<Pagination defaultCurrent={1} total={listAds?.total} onChange={handleChangePagination} />
 				</div>
 			</>
 		</div>

@@ -2,8 +2,8 @@ import { Button, Flex, Table, Tooltip, Typography } from "antd";
 import style from "./style.module.scss";
 import { callApiGetEcomDetail, callApiGetRelatedAds, columnRelated, columns, dataSource } from "../../constant";
 import { CalendarTwoTone } from "@ant-design/icons";
-const AdAnalysisComponent = ({ dataDateLine, dataCountryDistribution }) => {
-	console.log(dataDateLine);
+import { useEffect, useState } from "react";
+const AdAnalysisComponent = ({ dataDateLine, dataCountryDistribution, dataAdsDetailMoreDetail }) => {
 	return (
 		<div className={style.analysis}>
 			<Flex justify="space-between" gap={20}>
@@ -28,7 +28,6 @@ const AdAnalysisComponent = ({ dataDateLine, dataCountryDistribution }) => {
 					</Flex>
 					<Flex justify="start" wrap gap={4}>
 						{Object.keys(dataDateLine)?.map((item, index) => {
-							console.log("hehehe", dataDateLine[`${item}`]);
 							return (
 								<Tooltip
 									className=""
@@ -114,7 +113,9 @@ const AdAnalysisComponent = ({ dataDateLine, dataCountryDistribution }) => {
 					<CalendarTwoTone />
 					<Typography>Related text</Typography>
 				</Flex>
-				<Table dataSource={callApiGetRelatedAds?.data} columns={columnRelated} />
+				{dataAdsDetailMoreDetail?.similar_message?.length > 0 && (
+					<Table dataSource={dataAdsDetailMoreDetail?.similar_message} columns={columnRelated} />
+				)}
 			</div>
 		</div>
 	);

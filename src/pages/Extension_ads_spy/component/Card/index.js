@@ -12,7 +12,7 @@ import {
 import "./index.scss";
 import { useEffect, useState } from "react";
 import { formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
-import { extension } from "../../../../utilities/extension/chrome";
+import iconCardShopDefault from "../../../../assets/cards/avtar_shop.png";
 const { Meta, Grid } = Card;
 const { Title, Text } = Typography;
 
@@ -32,10 +32,11 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 		}, 1000);
 	});
 
-	const handleClickCard = () => {
-		window.open(
-			`/pages/detail.html?detail&id=${dataComponentCard.ad_key}&type=${dataComponentCard.type}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`
-		);
+	const handleClickCard = (dataComponentCard) => {
+		const urlRedirect = dataComponentCard?.domain
+			? `https://${dataComponentCard.domain}`
+			: `/pages/detail.html?detail&id=${dataComponentCard.ad_key}&type=${dataComponentCard.type}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`;
+		window.open(urlRedirect, "_blank");
 	};
 
 	return (
@@ -59,18 +60,20 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 			// 		<Button type="text" icon={<EllipsisOutlined />} />
 			// 	</Dropdown>
 			// }
-			onClick={() => handleClickCard()}
+			onClick={() => handleClickCard(dataComponentCard)}
 		>
 			<div>
-				<Flex justify="space-between" align="center">
-					<Flex
-						style={{
-							fontSize: "12px",
-						}}
-						justify="start"
-						gap={8}
-					>
-						{dataComponentCard?.like_count && (
+				{dataComponentCard?.domain ? (
+					<Typography>{dataComponentCard?.domain}</Typography>
+				) : (
+					<Flex justify="space-between" align="center">
+						<Flex
+							style={{
+								fontSize: "12px",
+							}}
+							justify="start"
+							gap={8}
+						>
 							<Flex justify="start" gap={2}>
 								<LikeTwoTone size={12} />
 								<p
@@ -81,9 +84,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 									{dataComponentCard?.like_count}
 								</p>
 							</Flex>
-						)}
 
-						{dataComponentCard?.comment_count && (
 							<Flex justify="start" gap={2}>
 								<MessageTwoTone size={12} />
 								<p
@@ -94,8 +95,6 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 									{dataComponentCard?.comment_count}
 								</p>
 							</Flex>
-						)}
-						{dataComponentCard?.share_count && (
 							<Flex justify="start" gap={2}>
 								<MessageTwoTone size={12} />
 								<p
@@ -106,24 +105,25 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 									{dataComponentCard?.share_count}
 								</p>
 							</Flex>
+						</Flex>
+						{dataComponentCard?.created_at && (
+							<p
+								style={{
+									fontSize: "12px",
+								}}
+							>
+								{formatDateFromTimestamp(dataComponentCard?.created_at)}
+							</p>
 						)}
 					</Flex>
-					{dataComponentCard?.created_at && (
-						<p
-							style={{
-								fontSize: "12px",
-							}}
-						>
-							{formatDateFromTimestamp(dataComponentCard?.created_at)}
-						</p>
-					)}
-				</Flex>
+				)}
 				<Flex
 					justify="space-between"
 					style={{
 						width: "100%",
 						marginTop: "10px",
 					}}
+					align="center"
 				>
 					<p
 						style={{
@@ -131,20 +131,21 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 							width: "60%",
 							fontSize: "13px",
 						}}
+						className={`text-ellipsis`}
 					>
-						{dataComponentCard.advertiser_name}
+						{dataComponentCard.advertiser_name || dataComponentCard?.title}
 					</p>
 					{/* <span>{dataComponentCard.industry}</span> */}
 					<Tag>{dataComponentCard?.call_to_action_type || "Landing Page"}</Tag>
 				</Flex>
-				<Flex
-					justify="space-between"
-					align="center"
-					style={{
-						marginTop: "10px",
-					}}
-				>
-					{dataComponentCard?.heat && (
+				{!dataComponentCard?.domain && (
+					<Flex
+						justify="space-between"
+						align="center"
+						style={{
+							marginTop: "10px",
+						}}
+					>
 						<div
 							style={{
 								textAlign: "center",
@@ -167,8 +168,6 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 								{dataComponentCard?.heat}
 							</p>
 						</div>
-					)}
-					{dataComponentCard.impression && (
 						<div
 							style={{
 								textAlign: "center",
@@ -191,9 +190,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 								{dataComponentCard.impression}
 							</p>
 						</div>
-					)}
 
-					{dataComponentCard.video_duration && (
 						<div
 							style={{
 								textAlign: "center",
@@ -216,8 +213,6 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 								{dataComponentCard.video_duration}
 							</p>
 						</div>
-					)}
-					{dataComponentCard.last_seen && (
 						<div
 							style={{
 								textAlign: "center",
@@ -240,8 +235,8 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 								{dataComponentCard.last_seen}
 							</p>
 						</div>
-					)}
-				</Flex>
+					</Flex>
+				)}
 			</div>
 		</Card>
 	);
@@ -253,14 +248,30 @@ const TopCardComponent = ({ dataComponentCard }) => {
 	return (
 		<div>
 			<Flex align="center" gap={5}>
-				<Avatar src={dataComponentCard.logo_url} size={40} />
+				<Avatar src={dataComponentCard.logo_url || iconCardShopDefault} size={40} shape="circle" />
 				<div>
-					<p>{dataComponentCard.page_name}</p>
+					<p
+						className="single-line-ellipsis"
+						style={{
+							fontSize: "14px",
+						}}
+					>
+						{dataComponentCard?.page_name || dataComponentCard?.advertiser_name}
+					</p>
 					<Flex></Flex>
 				</div>
 			</Flex>
 			<Tooltip title={dataComponentCard.message} color={"#fff"}>
-				<p className="single-line-text">{dataComponentCard.message}</p>
+				<p
+					className="single-line-ellipsis"
+					style={{
+						fontSize: "14px",
+						fontWeight: "500",
+						marginTop: "5px",
+					}}
+				>
+					{dataComponentCard.message}
+				</p>
 			</Tooltip>
 		</div>
 	);

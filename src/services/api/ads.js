@@ -74,7 +74,7 @@ const apiGetDataAds = async (dataPayLoad = {}) => {
 			...dataPayLoad,
 		};
 		const response = await get("/ecom/get-ecom-ads", headerPayloadSend);
-		return response?.data?.data;
+		return response?.data;
 	} catch (err) {
 		console.error(err);
 	}
@@ -116,4 +116,35 @@ const apiGetDataAdsAnalysisInfo = async (dataPayLoad = {}) => {
 	}
 };
 
-export { apiGetDataAds, apiGetDataAdsDetail, apiGetDataAdsAnalysis, apiGetDataAdsAnalysisInfo };
+const apiGetRelatedAds = async (dataPayload = {}) => {
+	try {
+		const headerPayloadSend = {
+			...dataPayload,
+		};
+		const response = await get("/material-analysis/get-related-ads", headerPayloadSend);
+		return response?.data?.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+const apiGetMaterialAnalysis = async (dataPayload = {}) => {
+	try {
+		const headerPayloadSend = {
+			...dataPayload,
+		};
+		const response = await get("/material-analysis/get-related-advertisers", headerPayloadSend);
+		return response?.data?.data;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export {
+	apiGetDataAds,
+	apiGetDataAdsDetail,
+	apiGetDataAdsAnalysis,
+	apiGetDataAdsAnalysisInfo,
+	apiGetRelatedAds,
+	apiGetMaterialAnalysis,
+};

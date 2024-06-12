@@ -14,7 +14,7 @@ const SelectInput = ({ PopupComponent, placeholderSelect, funcCallApiSearch }) =
 				popupMatchSelectWidth={false}
 				// placeholder={placeholderSelect}
 				defaultValue={placeholderSelect}
-				// open={isOpen}
+				// open={true}
 				// onFocus={() => setIsOpen(true)}
 				// onBlur={() => setIsOpen(false)}
 			/>

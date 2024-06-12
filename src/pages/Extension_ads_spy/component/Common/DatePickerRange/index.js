@@ -9,13 +9,22 @@ const { RangePicker } = DatePicker;
 const dateFormat = "YYYY/MM/DD";
 const weekFormat = "MM/DD";
 
-const DatePickerRange = () => (
-	<Space direction="vertical" size={12}>
-		<RangePicker
-			defaultValue={[dayjs("2015/01/01", dateFormat), dayjs("2015/01/01", dateFormat)]}
-			format={dateFormat}
-		/>
-	</Space>
-);
+const DatePickerRange = ({ funcCallApiSearch }) => {
+	const handleChangeDatePicker = (date, dateString) => {
+		funcCallApiSearch({
+			seen_begin: Math.floor(new Date(dateString[0]) / 1000),
+			seen_end: Math.floor(new Date(dateString[1]) / 1000),
+		});
+	};
+	return (
+		<Space direction="vertical" size={12}>
+			<RangePicker
+				defaultValue={[dayjs("2015/01/01", dateFormat), dayjs("2015/01/01", dateFormat)]}
+				format={dateFormat}
+				onChange={handleChangeDatePicker}
+			/>
+		</Space>
+	);
+};
 
 export default DatePickerRange;

@@ -5,26 +5,35 @@ import CreativeAnalysisComponent from "./components/CreativeAnalysis";
 import DetailSpyComponent from "./components/DetailSpy";
 import { detail } from "./constant";
 import style from "./styles/style.module.scss";
-import { apiGetDataAdsAnalysis, apiGetDataAdsAnalysisInfo, apiGetDataAdsDetail } from "../../services/api/ads";
+import {
+	apiGetDataAdsAnalysis,
+	apiGetDataAdsAnalysisInfo,
+	apiGetDataAdsDetail,
+	apiGetMaterialAnalysis,
+	apiGetRelatedAds,
+} from "../../services/api/ads";
 import DefaultLayoutDetail from "../../components/layouts/detail/DefaultLayout";
 const ExtensionAdsDetail = () => {
 	const [dataAdsDetail, setDataAdsDetail] = useState(detail);
 	const [dataAdsDetailMoreDetail, setDataAdsDetailMoreDetail] = useState();
 	const [dataAdsAnalysisInfo, setDataAdsDetailAnalysisInfo] = useState();
+	const [dataRelatedAdvertisers, setDataRelatedAdvertisers] = useState();
+	const [dataRelatedAds, setDataRelatedAds] = useState();
+	const [materialId, setMaterialId] = useState(null);
 
 	const urlParams = new URLSearchParams(window.location.search);
-	console.log("detail ===========>", urlParams, urlParams.get("id"));
 
 	useEffect(() => {
-		console.log("call api detail");
 		const handleFetchApiGetDetailAds = async () => {
 			const responseFromApiGetDetailAds = await apiGetDataAdsDetail({
 				ad_key: urlParams.get("id"),
 				industry: urlParams.get("app_type"),
 				created_at: urlParams.get("created_at"),
 			});
-			console.log("responseFromApiGetDetailAds", responseFromApiGetDetailAds);
-			if (responseFromApiGetDetailAds) setDataAdsDetail(responseFromApiGetDetailAds);
+			if (responseFromApiGetDetailAds) {
+				setDataAdsDetail(responseFromApiGetDetailAds);
+				setMaterialId(responseFromApiGetDetailAds?.material_id);
+			}
 		};
 
 		const handleFetchApiGetDetailAdsMore = async () => {
@@ -32,37 +41,52 @@ const ExtensionAdsDetail = () => {
 				creative_key: urlParams.get("id"),
 				industry: urlParams.get("app_type"),
 			});
-			console.log("responseFromApiGetDetailAdsMore", responseFromApiGetDetailAdsMore);
 			if (responseFromApiGetDetailAdsMore) setDataAdsDetailMoreDetail(responseFromApiGetDetailAdsMore);
-		};
-
-		const handleFetchApiGetDetailAdsAnalysisInfo = async () => {
-			const responseFromApiGetDetailAdsAnalysisInfo = await apiGetDataAdsAnalysisInfo({
-				creative_key: urlParams.get("id"),
-				industry: urlParams.get("app_type"),
-			});
-			console.log("responseFromApiGetDetailAdsAnalysisInfo", responseFromApiGetDetailAdsAnalysisInfo);
-			if (responseFromApiGetDetailAdsAnalysisInfo)
-				setDataAdsDetailAnalysisInfo(responseFromApiGetDetailAdsAnalysisInfo);
 		};
 
 		handleFetchApiGetDetailAds();
 		handleFetchApiGetDetailAdsMore();
-		handleFetchApiGetDetailAdsAnalysisInfo();
 	}, []);
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const handleFetchApiGetDetailAdsAnalysisInfo = async () => {
 			const responseFromApiGetDetailAdsAnalysisInfo = await apiGetDataAdsAnalysisInfo({
-				material_id: urlParams.get("id"),
+				material_id: materialId,
 				app_type: urlParams.get("app_type"),
 				created_at: urlParams.get("created_at"),
 			});
-			console.log("responseFromApiGetDetailAdsAnalysisInfo", responseFromApiGetDetailAdsAnalysisInfo);
-			if (responseFromApiGetDetailAdsAnalysisInfo)
+			if (responseFromApiGetDetailAdsAnalysisInfo) {
 				setDataAdsDetailAnalysisInfo(responseFromApiGetDetailAdsAnalysisInfo);
+			}
 		};
-		handleFetchApiGetDetailAdsAnalysisInfo();
-	}, []);
+
+		const handleFetchApiGetRelatedAds = async () => {
+			const responseFromApiGetRelatedAds = await apiGetRelatedAds({
+				material_id: materialId,
+				page: urlParams.get("page") || 1,
+				ad_key: urlParams.get("id"),
+				created_at: urlParams.get("created_at"),
+				app_type: urlParams.get("type"),
+			});
+			if (responseFromApiGetRelatedAds) setDataRelatedAds(responseFromApiGetRelatedAds);
+		};
+
+		const handleFetchApiGetRelatedAdvertisers = async () => {
+			const responseFromApiGetRelatedAdvertisers = await apiGetMaterialAnalysis({
+				material_id: materialId,
+				page: urlParams.get("page") || 1,
+				ad_key: urlParams.get("id"),
+				created_at: urlParams.get("created_at"),
+				app_type: urlParams.get("type"),
+			});
+			if (responseFromApiGetRelatedAdvertisers) setDataRelatedAdvertisers(responseFromApiGetRelatedAdvertisers);
+		};
+
+		if (materialId) {
+			handleFetchApiGetDetailAdsAnalysisInfo();
+			handleFetchApiGetRelatedAds();
+			handleFetchApiGetRelatedAdvertisers();
+		}
+	}, [materialId]);
 	return (
 		<DefaultLayoutDetail>
 			<div className={`${style.detail__wrap}`}>
@@ -73,11 +97,16 @@ const ExtensionAdsDetail = () => {
 				<AdAnalysisComponent
 					dataDateLine={detail?.date_line}
 					dataCountryDistribution={dataAdsDetailMoreDetail}
+					dataAdsDetailMoreDetail={dataAdsDetailMoreDetail}
+
 				/>
 				<div className={style.title}>
 					<p>Creative Analysis</p>
 				</div>
-				<CreativeAnalysisComponent dataAdsAnalysisInfo={dataAdsAnalysisInfo} />
+				<CreativeAnalysisComponent
+					dataAdsAnalysisInfo={dataAdsAnalysisInfo}
+					dataRelatedAds={dataRelatedAds}
+				/>
 			</div>
 		</DefaultLayoutDetail>
 	);
