@@ -1,6 +1,6 @@
 /* index.css */
 .custom-card {
-	width: calc(100/5);
+	width: calc(100 / 5);
 	border-radius: 8px;
 	overflow: hidden;
 	transition: transform 0.3s, box-shadow 0.3s;
@@ -61,7 +61,7 @@
 	font-weight: 400;
 	font-size: 13px;
 	margin-top: 5px;
-	color: '#3333';
+	color: "#3333";
 }
 .custom-card .ant-card-head {
 	padding: 10px;
@@ -69,7 +69,7 @@
 .custom-card .ant-card-body {
 	padding: 10px;
 }
-.custom-card  .ant-card-extra {
+.custom-card .ant-card-extra {
 	margin-bottom: 33px;
 }
 .custom-card .ant-tag {
@@ -78,4 +78,16 @@
 
 .ant-tooltip-inner {
 	color: #000000 !important;
+}
+
+.image-card {
+	width: 100%;
+	height: 300px;
+	background-color: #000000;
+}
+
+@media (max-width: 1600px) {
+	.image-card {
+		height: 200px;
+	}
 }

@@ -63,7 +63,7 @@ const AdsSpyComponent = () => {
 				</div>
 				<FilterComponent funcCallApiSearch={getDataApiAds} />
 				<div className={style.content__list}>
-					<Flex justify="start" wrap gap={20}>
+					<Flex justify="start" wrap gap={15}>
 						{listAds?.data?.length > 0 ? (
 							listAds?.data?.map((item, index) => {
 								return <CardAdsComponent dataComponentCard={item} />;

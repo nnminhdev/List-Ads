@@ -19,3 +19,16 @@
 // 	scrollbar-width: thin;
 // 	scrollbar-color: #a0a0a0 #f0f0f0;
 // }
+.content {
+	&__container {
+		min-height: 100vh;
+		padding: 20px 100px;
+	}
+	@media (max-width: 1600px) {
+		&__container {
+			min-height: 100vh;
+			padding: 20px 50px;
+		}
+	}
+}
+

@@ -249,7 +249,11 @@ const TopCardComponent = ({ dataComponentCard }) => {
 		<div>
 			<Flex align="center" gap={5}>
 				<Avatar src={dataComponentCard.logo_url || iconCardShopDefault} size={40} shape="circle" />
-				<div>
+				<div
+					style={{
+						width: "80%",
+					}}
+				>
 					<p
 						className="single-line-ellipsis"
 						style={{
@@ -281,10 +285,9 @@ const ImageCardComponent = ({ dataComponentCard }) => {
 	return (
 		<div
 			style={{
-				width: "100%",
-				height: "300px",
 				backgroundColor: "black",
 			}}
+			className={"image-card"}
 		>
 			<img
 				alt=" card detail"

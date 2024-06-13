@@ -1,12 +1,25 @@
 .engagement {
-    &__top {
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-    }
-    &__bottom {
-        padding: 10px;
-    }
-    .item {
-        width: 100px;
-    }
+	&__top {
+		padding: 10px;
+		border-bottom: 1px solid #eee;
+	}
+	&__bottom {
+		padding: 10px;
+	}
+	.item {
+		width: 100px;
+        cursor: pointer;
+        text-align: center;
+	}
+}
+.filter__active {
+	background-color: #0c8cfa;
+	border-radius: 8px;
+	color: #fff;
+	width: 100px;
+	height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
 }

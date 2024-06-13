@@ -27,7 +27,6 @@ const HeaderComponent = ({ setIndexMenu }) => {
 				display: "flex",
 				justifyContent: "space-between",
 				background: "#fff",
-				padding: "0 100px",
 			}}
 			className={style.nav}
 		>

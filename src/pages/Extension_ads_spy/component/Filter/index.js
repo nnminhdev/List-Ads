@@ -42,7 +42,7 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 					</div>
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
-							<SelectInput
+							{/* <SelectInput
 								PopupComponent={Country}
 								placeholderSelect={"Country/Region"}
 								funcCallApiSearch={funcCallApiSearch}
@@ -56,7 +56,7 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 								PopupComponent={MarketingObjectives}
 								placeholderSelect={"Marketing Objectives"}
 								funcCallApiSearch={funcCallApiSearch}
-							/>
+							/> */}
 						</Flex>
 					</div>
 				</Flex>
@@ -69,11 +69,11 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 					</div>
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10}>
-							<SelectInput
+							{/* <SelectInput
 								PopupComponent={AudienceAnalysis}
 								placeholderSelect={"Audience Analysis"}
 								funcCallApiSearch={funcCallApiSearch}
-							/>
+							/> */}
 							<SelectInput
 								PopupComponent={EngagementComponent}
 								placeholderSelect={"Engagement"}
@@ -111,7 +111,11 @@ const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 			Instagram: 5,
 			Facebook: 1,
 			Twitter: 2,
+			TikTok: 4,
 		};
+		if (valuePlatform[e.target.textContent] === 4) {
+			window.open(process.env.REACT_APP_LINK_TOP_ADS, "_blank");
+		}
 		funcCallApiSearch({
 			platform: valuePlatform[e.target.textContent] || 1,
 		});

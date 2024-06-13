@@ -1,6 +1,7 @@
 import FacebookIcon from "../../../assets/platform/facebook-icon.svg";
 import InstagramIcon from "../../../assets/platform/instagram-icon.svg";
 import TwitterIcon from "../../../assets/platform/x-icon.svg";
+import TikTokIcon from "../../../assets/icons/tiktok_search.svg";
 
 const listFilterNetworks = [
 	{
@@ -17,6 +18,11 @@ const listFilterNetworks = [
 		platForm: "Twitter",
 		icon: TwitterIcon,
 		value: 2,
+	},
+	{
+		platForm: "TikTok",
+		icon: TikTokIcon,
+		value: 1,
 	},
 ];
 

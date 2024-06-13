@@ -7,13 +7,18 @@
 	border-color: #ffffff;
 	top: 0;
 	box-shadow: 0 10px 10px -6px rgba(170, 170, 170, 0.5);
+	padding: 0 100px;
+	@media (max-width: 1600px) {
+		min-height: 60px;
+		padding: 0 50px;
+	}
 }
 .menu {
-    width: 30%;
-    list-style-type: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: .87em;
-    word-spacing: 2px;
+	width: 30%;
+	list-style-type: none;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.87em;
+	word-spacing: 2px;
 }

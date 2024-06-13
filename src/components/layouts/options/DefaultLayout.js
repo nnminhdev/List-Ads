@@ -24,7 +24,7 @@ function DefaultLayout({ children, setIndexMenu }) {
 		>
 			<div>
 				<HeaderComponent setIndexMenu={setIndexMenu} />
-				<Content style={{ minHeight: "100vh", padding: "20px 100px" }}>
+				<Content className={`${styles.content__container}`}>
 					<div>{children}</div>
 				</Content>
 				<FooterComponent />
