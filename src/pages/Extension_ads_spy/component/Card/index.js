@@ -35,7 +35,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 	const handleClickCard = (dataComponentCard) => {
 		const urlRedirect = dataComponentCard?.domain
 			? `https://${dataComponentCard.domain}`
-			: `/pages/detail.html?detail&id=${dataComponentCard.ad_key}&type=${dataComponentCard.type}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`;
+			: `/pages/option.html?detail=1&id=${dataComponentCard.ad_key}&type=${dataComponentCard.type}&created_at=${dataComponentCard.created_at}&app_type=${dataComponentCard.app_type}`;
 		window.open(urlRedirect, "_blank");
 	};
 

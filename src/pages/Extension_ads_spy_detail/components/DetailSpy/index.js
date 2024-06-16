@@ -1,11 +1,12 @@
 /* global chrome */
-import { Avatar, Button, Carousel, Flex, Tooltip, Typography } from "antd";
+import { Avatar, Button, Carousel, Flex, Skeleton, Tooltip, Typography } from "antd";
 import { getCode, getName } from "country-list";
 import style from "./style.module.scss";
 import { convertDateFormat, formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
 import { DownloadOutlined } from "@ant-design/icons";
 import { checkPlatForm } from "../../../../utilities/functions/platform";
 import { formatNumberToK } from "../../../../utilities/functions/number";
+import iconCardShopDefault from "../../../../assets/cards/avtar_shop.png";
 
 const { Text } = Typography;
 const DetailSpyComponent = ({ dataDetail }) => {
@@ -20,10 +21,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 				dataDetail?.resource_urls[0]?.type === 1
 					? dataDetail?.resource_urls[0]?.image_url
 					: dataDetail?.resource_urls[0]?.video_url,
-			filename:
-				dataDetail?.resource_urls[0]?.type === 1
-					? `image.png`
-					: `video.mp4`,
+			filename: dataDetail?.resource_urls[0]?.type === 1 ? `image.png` : `video.mp4`,
 		});
 	};
 	return (
@@ -36,7 +34,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 					marginBottom: "20px",
 				}}
 			>
-				<Avatar shape="square" size={64} src={dataDetail?.logo_url} />
+				<Avatar shape="square" size={64} src={dataDetail?.logo_url || iconCardShopDefault} />
 				<div>
 					<Typography
 						style={{
@@ -68,69 +66,80 @@ const DetailSpyComponent = ({ dataDetail }) => {
 						</Tooltip>
 					</div>
 					<div className={style.preview}>
-						{dataDetail?.resource_urls?.length === 1 ? (
-							<div>
-								{dataDetail?.resource_urls[0]?.type === 1 ? (
-									<img
-										src={dataDetail?.resource_urls[0]?.image_url}
-										alt="url detail"
-										style={{
-											width: "400px",
-											height: "auto",
-											objectFit: "cover",
-										}}
-									/>
-								) : (
-									<video
-										src={dataDetail?.resource_urls[0]?.video_url}
-										alt="url detail"
-										style={{
-											width: "400px",
-											height: "auto",
-											objectFit: "cover",
-										}}
-										controls
-									/>
-								)}
-							</div>
+						{dataDetail?.resource_urls ? (
+							dataDetail?.resource_urls?.length === 1 ? (
+								<div>
+									{dataDetail?.resource_urls[0]?.type === 1 ? (
+										<img
+											src={dataDetail?.resource_urls[0]?.image_url}
+											alt="url detail"
+											style={{
+												width: "400px",
+												height: "auto",
+												objectFit: "cover",
+												maxHeight: "400px",
+											}}
+										/>
+									) : (
+										<video
+											src={dataDetail?.resource_urls[0]?.video_url}
+											alt="url detail"
+											style={{
+												width: "400px",
+												height: "auto",
+												objectFit: "cover",
+											}}
+											controls
+										/>
+									)}
+								</div>
+							) : (
+								<Carousel
+									arrows
+									infinite={false}
+									style={{
+										width: "400px",
+									}}
+									arrowSize={32}
+								>
+									{dataDetail?.resource_urls?.map((item, index) => {
+										return (
+											<div key={index}>
+												{item?.type === 1 ? (
+													<img
+														src={item?.image_url}
+														alt="url detail"
+														style={{
+															width: "400px",
+															height: "auto",
+															objectFit: "cover",
+														}}
+													/>
+												) : (
+													<video
+														src={item?.image_url}
+														alt="url detail"
+														style={{
+															width: "400px",
+															height: "auto",
+															objectFit: "cover",
+														}}
+														controls
+													/>
+												)}
+											</div>
+										);
+									})}
+								</Carousel>
+							)
 						) : (
-							<Carousel
-								arrows
-								infinite={false}
+							<Skeleton.Image
+								active={true}
 								style={{
-									width: "400px",
+									width: "200px",
+									height: "200px",
 								}}
-								arrowSize={32}
-							>
-								{dataDetail?.resource_urls?.map((item, index) => {
-									return (
-										<div key={index}>
-											{item?.type === 1 ? (
-												<img
-													src={item?.image_url}
-													alt="url detail"
-													style={{
-														width: "400px",
-														height: "auto",
-														objectFit: "cover",
-													}}
-												/>
-											) : (
-												<video
-													src={item?.image_url}
-													alt="url detail"
-													style={{
-														width: "400px",
-														height: "auto",
-														objectFit: "cover",
-													}}
-													controls
-												/>
-											)}
-										</div>
-									);
-								})}
-							</Carousel>
+							/>
 						)}
 					</div>
 					<Flex justify="space-between" align="center">
@@ -267,7 +276,9 @@ const DetailSpyComponent = ({ dataDetail }) => {
 							{dataDetail?.source_url && (
 								<Flex justify="start" align="center" gap={20} className={style.item__detail}>
 									<p>Original Post :</p>
-									<p>{dataDetail?.source_url}</p>
+									<a href={dataDetail?.source_url} style={{ textDecoration: "none" }} target="_blank">
+										{dataDetail?.source_url}
+									</a>
 								</Flex>
 							)}
 

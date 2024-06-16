@@ -35,7 +35,12 @@ const ExtensionProduct = () => {
 					}}
 				>
 					<Flex justify="space-between" align="center">
-						<Title level={3}>Product Database</Title>
+						<Title
+							level={3}
+							className="custom-font"
+						>
+							Product Database
+						</Title>
 					</Flex>
 					<TableProduct />
 				</Content>

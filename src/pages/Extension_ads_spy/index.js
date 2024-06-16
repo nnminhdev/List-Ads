@@ -1,4 +1,4 @@
-import { Flex, Pagination, Input, Space, Spin } from "antd";
+import { Flex, Pagination, Input, Space, Spin, Button } from "antd";
 
 import style from "./styles/index.module.scss";
 import CardAdsComponent from "./component/Card";
@@ -7,6 +7,7 @@ import databases from "../../databases/list_ads.json";
 import { useEffect, useState } from "react";
 import { apiGetDataAds } from "../../services/api/ads";
 import { getTimestampDaysAgo } from "../../utilities/functions/datetime";
+import UpgradeComponent from "./component/Upgrade";
 
 const { Search } = Input;
 
@@ -43,14 +44,19 @@ const AdsSpyComponent = () => {
 			seen_end: Math.floor(new Date().getTime() / 1000),
 		});
 	}, []);
+
+
+
 	return (
 		<div>
 			<>
-				<div
+				<Flex
 					style={{
-						width: "550px",
+						width: "100%",
 						marginBottom: "20px",
 					}}
+					justify="space-between"
+					align="center"
 				>
 					<Search
 						placeholder="input search text ..."
@@ -59,8 +65,12 @@ const AdsSpyComponent = () => {
 						size="large"
 						onSearch={handleSearch}
 						loading={isSearch}
+						style={{
+							width: "550px",
+						}}
 					/>
-				</div>
+					<Button onClick={() => window.location.reload()}>Reset</Button>
+				</Flex>
 				<FilterComponent funcCallApiSearch={getDataApiAds} />
 				<div className={style.content__list}>
 					<Flex justify="start" wrap gap={15}>

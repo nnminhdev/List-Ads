@@ -1,0 +1,23 @@
+.upgrade {
+    width: 320px;
+    height: 180px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+
+    border: 1px solid #0c8cff;
+
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    animation: upgradeSlide 1s infinite;
+}
+
+@keyframes upgradeSlide {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-5px);
+    }
+}

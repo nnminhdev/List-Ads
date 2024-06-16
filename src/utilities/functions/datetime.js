@@ -25,10 +25,25 @@ function convertDateFormat(dateString) {
 	return `${year}-${month}-${day}`;
 }
 
-function getTimestampDaysAgo(numberDays = 90) {
+function getTimestampDaysAgo(numberDays = 7) {
 	const now = new Date();
 
 	return Math.floor(now.getTime() / 1000) - Number(numberDays) * 24 * 60 * 60;
-
 }
-export { formatDateFromTimestamp, convertDateFormat, getTimestampDaysAgo };
+
+function getCurrentDate() {
+	// Get current date
+	let currentDate = new Date();
+
+	// Get date components
+	let year = currentDate.getFullYear(); // Year
+	let month = currentDate.getMonth() + 1; // Month (0-11), add 1 to convert to 1-12
+	let day = currentDate.getDate(); // Day of the month
+
+	// Format the date string as "YYYY/MM/DD"
+	let formattedDate = `${year}/${month.toString().padStart(2, "0")}/${day.toString().padStart(2, "0")}`;
+
+	return formattedDate;
+}
+
+export { formatDateFromTimestamp, convertDateFormat, getTimestampDaysAgo, getCurrentDate };

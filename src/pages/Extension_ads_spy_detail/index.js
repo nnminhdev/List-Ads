@@ -13,6 +13,8 @@ import {
 	apiGetRelatedAds,
 } from "../../services/api/ads";
 import DefaultLayoutDetail from "../../components/layouts/detail/DefaultLayout";
+import { Button, Flex } from "antd";
+import { LeftCircleTwoTone } from "@ant-design/icons";
 const ExtensionAdsDetail = () => {
 	const [dataAdsDetail, setDataAdsDetail] = useState(detail);
 	const [dataAdsDetailMoreDetail, setDataAdsDetailMoreDetail] = useState();
@@ -88,27 +90,33 @@ const ExtensionAdsDetail = () => {
 		}
 	}, [materialId]);
 	return (
-		<DefaultLayoutDetail>
-			<div className={`${style.detail__wrap}`}>
-				<DetailSpyComponent dataDetail={dataAdsDetail} />
-				<div className={style.title}>
-					<p>Ad Analysis</p>
-				</div>
-				<AdAnalysisComponent
-					dataDateLine={detail?.date_line}
-					dataCountryDistribution={dataAdsDetailMoreDetail}
-					dataAdsDetailMoreDetail={dataAdsDetailMoreDetail}
-
-				/>
-				<div className={style.title}>
-					<p>Creative Analysis</p>
-				</div>
-				<CreativeAnalysisComponent
-					dataAdsAnalysisInfo={dataAdsAnalysisInfo}
-					dataRelatedAds={dataRelatedAds}
-				/>
+		// <DefaultLayoutDetail>
+		<div className={`${style.detail__wrap}`}>
+			<Flex
+				justify="end"
+				gap={5}
+				style={{
+					marginBottom: "20px",
+				}}
+			>
+				<LeftCircleTwoTone />
+				<a href="/pages/option.html">Back To Home</a>
+			</Flex>
+			<DetailSpyComponent dataDetail={dataAdsDetail} />
+			<div className={style.title}>
+				<p>Ad Analysis</p>
 			</div>
-		</DefaultLayoutDetail>
+			<AdAnalysisComponent
+				dataDateLine={detail?.date_line}
+				dataCountryDistribution={dataAdsDetailMoreDetail}
+				dataAdsDetailMoreDetail={dataAdsDetailMoreDetail}
+			/>
+			<div className={style.title}>
+				<p>Creative Analysis</p>
+			</div>
+			<CreativeAnalysisComponent dataAdsAnalysisInfo={dataAdsAnalysisInfo} dataRelatedAds={dataRelatedAds} />
+		</div>
+		// </DefaultLayoutDetail>
 	);
 };
 

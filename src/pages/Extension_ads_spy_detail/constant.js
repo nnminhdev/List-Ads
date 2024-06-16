@@ -171,28 +171,7 @@ const detail = {
 	redirect_urls: [],
 	region: "global",
 	relate_ads: 1,
-	resource_urls: [
-		{
-			type: 1,
-			image_url: "https://sp2cdn-idea-global.zingfront.com/sp_opera/49c61b59c69b672e8aa39311073893a2.jpg",
-		},
-		{
-			type: 1,
-			image_url: "https://sp2cdn-idea-global.zingfront.com/sp_opera/817878c108a9790aa651351da4d96090.jpg",
-		},
-		{
-			type: 1,
-			image_url: "https://sp2cdn-idea-global.zingfront.com/sp_opera/840f7c6c1776fd5fa711c1ee5e464878.jpg",
-		},
-		{
-			type: 1,
-			image_url: "https://sp2cdn-idea-global.zingfront.com/sp_opera/98fb93dfbe16e835ad20e2d1be4a6d1f.jpg",
-		},
-		{
-			type: 1,
-			image_url: "https://sp2cdn-idea-global.zingfront.com/sp_opera/dbf08c609264cfaf5969e3bce1810f63.jpg",
-		},
-	],
+	resource_urls: false,
 	resume_advertising_flag: 0,
 	review_content: [],
 	reviewed_flag: 0,

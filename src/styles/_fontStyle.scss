@@ -1,39 +1,79 @@
 @font-face {
-    font-family: 'Inter';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Medium.ttf');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+	font-family: "Inter";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Medium.ttf");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Inter';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-SemiBold.ttf');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+	font-family: "Inter";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-SemiBold.ttf");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Inter';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Bold.ttf');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+	font-family: "Inter";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Bold.ttf");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Inter';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Light.ttf');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+	font-family: "Inter";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Light.ttf");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Inter';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+	font-family: "Inter";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Inter/Inter-Regular.ttf");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Poppins/Poppins-Medium.ttf");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Poppins/Poppins-SemiBold.ttf");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Poppins/Poppins-Bold.ttf");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Poppins/Poppins-Light.ttf");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("chrome-extension://__MSG_@@extension_id__/fonts/Poppins/Poppins-Regular.ttf");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }

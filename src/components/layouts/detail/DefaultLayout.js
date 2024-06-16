@@ -12,8 +12,8 @@ function DefaultLayoutDetail({ children, setIndexMenu }) {
 				token: {
 					colorPrimary: "#0C8CFA",
 					fontFamily: "Inter",
-					colorBgSpotlight: '#fff',
-					colorLinkHover: '#0C8CFA'
+					colorBgSpotlight: "#fff",
+					colorLinkHover: "#0C8CFA",
 				},
 				components: {
 					Carousel: {

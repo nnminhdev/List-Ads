@@ -66,6 +66,7 @@ import uaSvg from "../../../../assets/country/ua.svg";
 import veSvg from "../../../../assets/country/ve.svg";
 import vnSvg from "../../../../assets/country/vn.svg";
 import zaSvg from "../../../../assets/country/za.svg";
+import huSvg from "../../../../assets/country/hu.svg";
 
 const options = [
 	{
@@ -440,132 +441,52 @@ const listCountry = [
 			{
 				name: "United States",
 				image_country: usSvg,
-				value: "us",
+				value: "USA",
 			},
 			{
 				name: "Malaysia",
-				image_country: maSvg,
-				value: "ma",
+				image_country: mySvg,
+				value: "MYS",
 			},
 			{
 				name: "Indonesia",
 				image_country: inSvg,
-				value: "in",
+				value: "IDN",
 			},
 			{
 				name: "Philippines",
 				image_country: phSvg,
-				value: "ph",
+				value: "PHL",
 			},
 			{
 				name: "Thailand",
 				image_country: thSvg,
-				value: "th",
+				value: "THA",
 			},
 			{
 				name: "Brazil",
-				image_country: usSvg,
-				value: "us",
+				image_country: brSvg,
+				value: "BRA",
 			},
 			{
 				name: "Vietnam",
 				image_country: vnSvg,
-				value: "vn",
+				value: "VNM",
 			},
 			{
 				name: "Spain",
-				image_country: snSvg,
-				value: "sn",
+				image_country: esSvg,
+				value: "ESP",
 			},
 			{
 				name: "Mexico",
 				image_country: mxSvg,
-				value: "mx",
+				value: "MEX",
 			},
 			{
 				name: "India",
 				image_country: inSvg,
-				value: "in",
-			},
-		],
-	},
-	{
-		topic: "HA/MO/TW",
-		list_country: [
-			{
-				name: "Macau",
-				image_country: maSvg,
-				value: "ma",
-			},
-			{
-				name: "Taiwan",
-				image_country: trSvg,
-				value: "tw",
-			},
-			{
-				name: "Hong Kong",
-				image_country: kwSvg,
-				value: "hk",
-			},
-		],
-	},
-	{
-		topic: "Japanese Korea",
-		list_country: [
-			{
-				name: "Japan",
-				image_country: jpSvg,
-				value: "jp",
-			},
-			{
-				name: "korea",
-				image_country: keSvg,
-				value: "ke",
-			},
-		],
-	},
-	{
-		topic: "Southeast Asia",
-		list_country: [
-			{
-				name: "Thailand",
-				image_country: thSvg,
-				value: "th",
-			},
-			{
-				name: "Indonesia",
-				image_country: idSvg,
-				value: "id",
-			},
-			{
-				name: "Singapore",
-				image_country: snSvg,
-				value: "sn",
-			},
-			{
-				name: "Malaysia",
-				image_country: maSvg,
-				value: "ma",
-			},
-			{
-				name: "Vietnam",
-				image_country: vnSvg,
-				value: "vn",
-			},
-			{
-				name: "Philippines",
-				image_country: phSvg,
-				value: "ph",
-			},
-			{
-				name: "Cambodia",
-				image_country: caSvg,
-				value: "ca",
-			},
-			{
-				name: "Myanmar",
-				image_country: maSvg,
-				value: "ma",
+				value: "IND",
 			},
 		],
 	},
@@ -575,17 +496,97 @@ const listCountry = [
 			{
 				name: "India",
 				image_country: inSvg,
-				value: "in",
+				value: "IND",
 			},
 			{
 				name: "Pakistan",
-				image_country: paSvg,
-				value: "pa",
+				image_country: pkSvg,
+				value: "PAK",
 			},
 			{
 				name: "Bangladesh",
 				image_country: bdSvg,
-				value: "sn",
+				value: "BGD",
+			},
+		],
+	},
+	{
+		topic: "HA/MO/TW",
+		list_country: [
+			{
+				name: "Macau",
+				image_country: cnSvg,
+				value: "MAC",
+			},
+			{
+				name: "Taiwan",
+				image_country: cnSvg,
+				value: "TWN",
+			},
+			{
+				name: "Hong Kong",
+				image_country: cnSvg,
+				value: "HKG",
+			},
+		],
+	},
+	{
+		topic: "Japanese Korea",
+		list_country: [
+			{
+				name: "Japan",
+				image_country: jpSvg,
+				value: "JPN",
+			},
+			{
+				name: "korea",
+				image_country: krSvg,
+				value: "KOR",
+			},
+		],
+	},
+	{
+		topic: "Southeast Asia",
+		list_country: [
+			{
+				name: "Thailand",
+				image_country: thSvg,
+				value: "THA",
+			},
+			{
+				name: "Indonesia",
+				image_country: idSvg,
+				value: "IDN",
+			},
+			{
+				name: "Singapore",
+				image_country: sgSvg,
+				value: "SGP",
+			},
+			{
+				name: "Malaysia",
+				image_country: mySvg,
+				value: "MYS",
+			},
+			{
+				name: "Vietnam",
+				image_country: vnSvg,
+				value: "VNM",
+			},
+			{
+				name: "Philippines",
+				image_country: phSvg,
+				value: "PHL",
+			},
+			{
+				name: "Cambodia",
+				image_country: khSvg,
+				value: "KHM",
+			},
+			{
+				name: "Myanmar",
+				image_country: mmSvg,
+				value: "MMR",
 			},
 		],
 	},
@@ -595,57 +596,326 @@ const listCountry = [
 			{
 				name: "Bahrian",
 				image_country: bhSvg,
-				value: "bh",
+				value: "BHR",
 			},
 			{
 				name: "Qatar",
 				image_country: qaSvg,
-				value: "qa",
+				value: "QAT",
 			},
 			{
 				name: "Saudi Arabia",
 				image_country: saSvg,
-				value: "sa",
+				value: "SAU",
 			},
 			{
 				name: "United Arab Emirates",
-				image_country: uaSvg,
-				value: "ua",
+				image_country: aeSvg,
+				value: "ARE",
 			},
 			{
 				name: "Azerbaijani",
 				image_country: azSvg,
-				value: "az",
+				value: "AZE",
 			},
 			{
 				name: "Lebanon",
 				image_country: lbSvg,
-				value: "lb",
+				value: "LBN",
 			},
 			{
 				name: "Kuwait",
 				image_country: kwSvg,
-				value: "kw",
+				value: "KWT",
 			},
 			{
 				name: "Israel",
 				image_country: ilSvg,
-				value: "il",
+				value: "ISR",
 			},
 			{
 				name: "Oman",
 				image_country: omSvg,
-				value: "om",
+				value: "OMN",
 			},
 			{
 				name: "Iraq",
-				image_country: ieSvg,
-				value: "ie",
+				image_country: iqSvg,
+				value: "IRQ",
 			},
 			{
 				name: "Morocco",
-				image_country: qaSvg,
-				value: "qa",
+				image_country: maSvg,
+				value: "MAR",
+			},
+		],
+	},
+
+	{
+		topic: "Russian-speaking World",
+		list_country: [
+			{
+				name: "Russia",
+				image_country: ruSvg,
+				value: "RUS",
+			},
+			{
+				name: "Ukraine",
+				image_country: uaSvg,
+				value: "RUS",
+			},
+		],
+	},
+
+	{
+		topic: "South America",
+		list_country: [
+			{
+				name: "Brazil",
+				image_country: brSvg,
+				value: "BRA",
+			},
+			{
+				name: "Chile",
+				image_country: clSvg,
+				value: "CHL",
+			},
+			{
+				name: "Argentina",
+				image_country: arSvg,
+				value: "ARG",
+			},
+			{
+				name: "Colombia",
+				image_country: coSvg,
+				value: "COL",
+			},
+			{
+				name: "Peru",
+				image_country: peSvg,
+				value: "PER",
+			},
+			{
+				name: "Venezuel",
+				image_country: veSvg,
+				value: "VEN",
+			},
+			{
+				name: "paraguay",
+				image_country: pySvg,
+				value: "PRY",
+			},
+		],
+	},
+
+	{
+		topic: "North America",
+		list_country: [
+			{
+				name: "United States",
+				image_country: usSvg,
+				value: "USA",
+			},
+			{
+				name: "Canada",
+				image_country: caSvg,
+				value: "CAN",
+			},
+			{
+				name: "Mexico",
+				image_country: mxSvg,
+				value: "MEX",
+			},
+			{
+				name: "Panama",
+				image_country: paSvg,
+				value: "PAN",
+			},
+		],
+	},
+
+	{
+		topic: "Europe",
+		list_country: [
+			{
+				name: "Türkiye",
+				image_country: trSvg,
+				value: "TUR",
+			},
+			{
+				name: "France",
+				image_country: frSvg,
+				value: "FRA",
+			},
+			{
+				name: "Germany",
+				image_country: deSvg,
+				value: "DEU",
+			},
+			{
+				name: "United Kingdom",
+				image_country: gbSvg,
+				value: "ENG",
+			},
+
+			{
+				name: "Italy",
+				image_country: itSvg,
+				value: "ITA",
+			},
+			{
+				name: "Spain",
+				image_country: esSvg,
+				value: "ESP",
+			},
+
+			//
+			{
+				name: "Netherlands",
+				image_country: nlSvg,
+				value: "NLD",
+			},
+			{
+				name: "Norway",
+				image_country: noSvg,
+				value: "NOR",
+			},
+			{
+				name: "Portugal",
+				image_country: ptSvg,
+				value: "POL",
+			},
+			{
+				name: "Poland",
+				image_country: ptSvg,
+				value: "PRT",
+			},
+
+			{
+				name: "Belgium",
+				image_country: beSvg,
+				value: "BEL",
+			},
+			{
+				name: "Switzerland",
+				image_country: chSvg,
+				value: "CHE",
+			},
+
+			//
+			{
+				name: "Austria",
+				image_country: atSvg,
+				value: "AUT",
+			},
+			{
+				name: "Romania",
+				image_country: roSvg,
+				value: "ROM",
+			},
+			{
+				name: "Sweden",
+				image_country: seSvg,
+				value: "SWE",
+			},
+			{
+				name: "Greece",
+				image_country: grSvg,
+				value: "GRC",
+			},
+
+			{
+				name: "Denmark",
+				image_country: dkSvg,
+				value: "DNK",
+			},
+			{
+				name: "Luxembourg",
+				image_country: luSvg,
+				value: "LUX",
+			},
+			{
+				name: "Ireland",
+				image_country: ieSvg,
+				value: "IRL",
+			},
+
+			{
+				name: "Finland",
+				image_country: fiSvg,
+				value: "FIN",
+			},
+			{
+				name: "Hungary",
+				image_country: huSvg,
+				value: "HUN",
+			},
+		],
+	},
+
+	{
+		topic: "Oceania",
+		list_country: [
+			{
+				name: "Australia",
+				image_country: auSvg,
+				value: "AUS",
+			},
+			{
+				name: "New Zealand",
+				image_country: nzSvg,
+				value: "NZL",
+			},
+		],
+	},
+
+	{
+		topic: "africa",
+		list_country: [
+			{
+				name: "Egypt",
+				image_country: egSvg,
+				value: "EGY",
+			},
+			{
+				name: "Kenya",
+				image_country: keSvg,
+				value: "KEN",
+			},
+			{
+				name: "Nigeria",
+				image_country: ngSvg,
+				value: "NGA",
+			},
+			{
+				name: "Angola",
+				image_country: aoSvg,
+				value: "AGO",
+			},
+			{
+				name: "South Africa",
+				image_country: zaSvg,
+				value: "ZAF",
+			},
+			{
+				name: "Algeria",
+				image_country: dzSvg,
+				value: "DZA",
+			},
+			{
+				name: "Libyan Arab Jm",
+				image_country: lySvg,
+				value: "LBY",
+			},
+			{
+				name: "Senegal",
+				image_country: snSvg,
+				value: "SEN",
+			},
+			{
+				name: "Cote d'lvoire",
+				image_country: clSvg,
+				value: "CIV",
 			},
 		],
 	},

@@ -129,27 +129,27 @@ const EngagementComponent = ({ funcCallApiSearch }) => {
 
 	const listConditionCheck = {
 		Like: {
-			start: setLikeBegin,
-			end: setLikeEnd,
+			renderStart: setLikeBegin,
+			renderEnd: setLikeEnd,
 		},
 		Comment: {
-			start: setCommentBegin,
-			end: setCommentEnd,
+			renderStart: setCommentBegin,
+			renderEnd: setCommentEnd,
 		},
 		Share: {
-			start: setShareBegin,
-			end: setShareEnd,
+			renderStart: setShareBegin,
+			renderEnd: setShareEnd,
 		},
 	};
 
 	const handleFilterEngagement = (e) => {
 		funcCallApiSearch({
-			like_begin: likeBegin,
-			like_end: likeEnd,
-			comment_begin: commentBegin,
-			comment_end: commentEnd,
-			share_begin: shareBegin,
-			share_end: shareEnd,
+			like_begin: likeBegin || rangeStartValueLike,
+			like_end: likeEnd || rangeEndValueLike,
+			comment_begin: commentBegin || rangeStartValueComment,
+			comment_end: commentEnd || rangeEndValueComment,
+			share_begin: shareBegin || rangeStartValueShare,
+			share_end: shareEnd || rangeEndValueShare,
 		});
 	};
 	const handleChangeValueWhenClick = (e) => {
@@ -157,6 +157,12 @@ const EngagementComponent = ({ funcCallApiSearch }) => {
 		const start = e.target.getAttribute("data-start");
 		const end = e.target.getAttribute("data-end");
 		const indexElement = e.target.getAttribute("data-index");
+
+		console.log({
+			type,
+			start,
+			end,
+		});
 
 		const newListFilterEngagement = listDataFilterEngagement.map((item) => {
 			if (item?.title === type) {
@@ -174,15 +180,20 @@ const EngagementComponent = ({ funcCallApiSearch }) => {
 		setListDataFilterEngagement(newListFilterEngagement);
 
 		if (listConditionCheck[type]) {
-			listConditionCheck[type].start(Number(start));
-			listConditionCheck[type].end(Number(end));
+			listConditionCheck[type].renderStart(Number(start));
+			listConditionCheck[type].renderEnd(Number(end));
+		}
+		if (!start && !end) {
+			listValue[type].renderStart(Number(start));
+			listValue[type].renderEnd(Number(end));
 		}
 	};
 	const handleChangeValue = (e, typeValue) => {
 		const typeInput = e.target.getAttribute("data-type");
 		const valueInput = e.target.value;
 
-		listValue[typeInput][typeValue](valueInput);
+		listValue[typeInput][typeValue](valueInput); //set value input follow type
+		listConditionCheck[typeInput][typeValue]("");
 
 		const newListFilterEngagement = listDataFilterEngagement.map((item) => {
 			if (item?.title === typeInput) {
@@ -305,13 +316,13 @@ const EngagementComponent = ({ funcCallApiSearch }) => {
 			</div>
 			<div>
 				<Flex justify="start" className={style.engagement__top} align="center">
-					<p
+					{/* <p
 						style={{
 							width: "5%",
 						}}
 					>
 						Reset
-					</p>
+					</p> */}
 					<Flex
 						justify="center"
 						gap={20}
