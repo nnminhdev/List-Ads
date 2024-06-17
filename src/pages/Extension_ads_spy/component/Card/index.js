@@ -13,6 +13,7 @@ import "./index.scss";
 import { useEffect, useState } from "react";
 import { formatDateFromTimestamp } from "../../../../utilities/functions/datetime";
 import iconCardShopDefault from "../../../../assets/cards/avtar_shop.png";
+import iconShare from "../../../../assets/icons/share.svg";
 const { Meta, Grid } = Card;
 const { Title, Text } = Typography;
 
@@ -96,7 +97,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 								</p>
 							</Flex>
 							<Flex justify="start" gap={2}>
-								<MessageTwoTone size={12} />
+								<img alt="icon share" src={iconShare} width={12} size={12} />
 								<p
 									style={{
 										paddingTop: "3px",

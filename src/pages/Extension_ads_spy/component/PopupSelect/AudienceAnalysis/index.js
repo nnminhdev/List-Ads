@@ -5,7 +5,7 @@ import style from "./style.module.scss";
 import "./index.scss";
 import { useState } from "react";
 
-const AudienceAnalysis = ({ funcCallApiSearch }) => {
+const AudienceAnalysis = ({ funcCallApiSearch, handleBlur }) => {
 	const [listValueSex, setValueSex] = useState([]);
 	const [listValueAge, setValueAge] = useState([]);
 	const handleCheckAudienceSex = (e) => {
@@ -25,6 +25,7 @@ const AudienceAnalysis = ({ funcCallApiSearch }) => {
 		}
 	};
 	const handleSubmitAudience = () => {
+		handleBlur();
 		funcCallApiSearch({
 			audience_sex: listValueSex.join(","),
 			audience_age: listValueAge.join(","),

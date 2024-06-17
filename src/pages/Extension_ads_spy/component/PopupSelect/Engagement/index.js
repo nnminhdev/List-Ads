@@ -91,7 +91,7 @@ const list_engagement = [
 	},
 ];
 
-const EngagementComponent = ({ funcCallApiSearch }) => {
+const EngagementComponent = ({ funcCallApiSearch, handleBlur }) => {
 	const [likeBegin, setLikeBegin] = useState("");
 	const [likeEnd, setLikeEnd] = useState("");
 	const [commentBegin, setCommentBegin] = useState("");
@@ -143,6 +143,7 @@ const EngagementComponent = ({ funcCallApiSearch }) => {
 	};
 
 	const handleFilterEngagement = (e) => {
+		handleBlur();
 		funcCallApiSearch({
 			like_begin: likeBegin || rangeStartValueLike,
 			like_end: likeEnd || rangeEndValueLike,

@@ -2,7 +2,7 @@ import { Button, Checkbox, Flex, Tooltip, Typography } from "antd";
 import style from "./style.module.scss";
 import { MarketingObjectivesConstant } from "../constant";
 import { useState } from "react";
-const MarketingObjectives = ({ funcCallApiSearch }) => {
+const MarketingObjectives = ({ funcCallApiSearch, handleBlur }) => {
 	const [isCTA, setCTA] = useState([]);
 
 	const handleChangeSelect = (e) => {
@@ -14,6 +14,7 @@ const MarketingObjectives = ({ funcCallApiSearch }) => {
 		}
 	};
 	const handleFilterCTA = () => {
+		handleBlur();
 		funcCallApiSearch({
 			cta_type: isCTA.join(","),
 		});
@@ -21,7 +22,7 @@ const MarketingObjectives = ({ funcCallApiSearch }) => {
 
 	const handleClickCancel = (e) => {
 		// e.target.blur();
-	}
+	};
 	return (
 		<div className={style.marketing__wrap}>
 			<div className={style.marketing__top}>

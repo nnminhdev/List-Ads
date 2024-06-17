@@ -4,7 +4,7 @@ import { useState } from "react";
 import style from "./style.module.scss";
 import { handleSearchSelectCountry } from "../helper";
 
-const Country = ({ funcCallApiSearch }) => {
+const Country = ({ funcCallApiSearch, handleBlur }) => {
 	const [selectMulti, setSelectMulti] = useState(false);
 	const [searchSelect, setSearchSelect] = useState("");
 	const [listDataCountry, setListDataCountry] = useState(listCountry);
@@ -28,6 +28,7 @@ const Country = ({ funcCallApiSearch }) => {
 	};
 
 	const handleClickFilterItem = (valueSearch) => {
+		handleBlur();
 		funcCallApiSearch({
 			geo: valueSearch,
 		});

@@ -13,8 +13,6 @@ const UpgradeComponent = ({ setShowPopupUpgrades, display }) => {
 		const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${quote}&hashtag=${hashtag}`;
 
 		window.open(listDataPopup?.link || facebookShareUrl, "_blank");
-	
-
 	};
 	useEffect(() => {
 		const handleFetchDataPopup = async () => {
@@ -60,7 +58,7 @@ const UpgradeComponent = ({ setShowPopupUpgrades, display }) => {
 					{listDataPopup?.title || "Upgrade To Premium For Free"}
 				</Text>
 				<br />
-				<parent
+				<p
 					style={{
 						fontWeight: "400",
 						marginTop: "10px",
@@ -68,7 +66,7 @@ const UpgradeComponent = ({ setShowPopupUpgrades, display }) => {
 				>
 					{listDataPopup?.body ||
 						"Share the Extension with public post mode to upgrade to Premium and receive unlimited search andmany other appealing features."}
-				</parent>
+				</p>
 				<Button
 					type="primary"
 					style={{

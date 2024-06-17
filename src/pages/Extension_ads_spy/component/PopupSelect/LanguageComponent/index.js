@@ -3,7 +3,7 @@ import { ListLanguages } from "../constant";
 
 import style from "./style.module.scss";
 import { useState } from "react";
-const Language = ({ funcCallApiSearch, fncSetIsOpen }) => {
+const Language = ({ funcCallApiSearch, handleBlur }) => {
 	const [showCheckBox, setShowCheckBox] = useState(false);
 	const [listLanguage, setLanguages] = useState([]);
 	const handleClickMultiSelect = () => {
@@ -18,12 +18,14 @@ const Language = ({ funcCallApiSearch, fncSetIsOpen }) => {
 		}
 	};
 	const handleFilterLanguage = () => {
+		handleBlur();
 		funcCallApiSearch({
 			language: listLanguage.join(","),
 		});
 	};
 	const handleFilterAllLanguage = () => {
 		const AllLanguages = ListLanguages.map((item) => item?.value);
+		handleBlur();
 		funcCallApiSearch({
 			language: AllLanguages.join(","),
 		});
