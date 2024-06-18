@@ -13,7 +13,7 @@ const { Search } = Input;
 
 const AdsSpyComponent = () => {
 	const [isSearch, setSearch] = useState(false);
-	const [listAds, setListAds] = useState({});
+	const [listDataAds, setListAds] = useState({});
 
 	const handleSearch = async (value, _e, info) => {
 		await getDataApiAds({
@@ -45,8 +45,6 @@ const AdsSpyComponent = () => {
 		});
 	}, []);
 
-
-
 	return (
 		<div>
 			<>
@@ -74,10 +72,12 @@ const AdsSpyComponent = () => {
 				<FilterComponent funcCallApiSearch={getDataApiAds} />
 				<div className={style.content__list}>
 					<Flex justify="start" wrap gap={15}>
-						{listAds?.data?.length > 0 ? (
-							listAds?.data?.map((item, index) => {
-								return <CardAdsComponent dataComponentCard={item} />;
-							})
+						{listDataAds?.data?.length > 0 ? (
+							listDataAds?.data
+								?.filter((elm) => !elm.domain)
+								.map((item, index) => {
+									return <CardAdsComponent dataComponentCard={item} />;
+								})
 						) : (
 							<Flex
 								style={{
@@ -93,7 +93,12 @@ const AdsSpyComponent = () => {
 					</Flex>
 				</div>
 				<div className={style.content__pagination}>
-					<Pagination defaultCurrent={1} total={listAds?.total} onChange={handleChangePagination} />
+					<Pagination
+						defaultCurrent={1}
+						total={listDataAds?.total}
+						onChange={handleChangePagination}
+						defaultPageSize={60}
+					/>
 				</div>
 			</>
 		</div>

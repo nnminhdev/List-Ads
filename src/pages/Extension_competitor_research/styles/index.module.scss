@@ -9,7 +9,7 @@
 	border-radius: 5px;
 
 	&.active {
-		background: #ff4c00;
+		background: #0c8cff;
 		color: white;
 	}
 	&:hover:not(.active) {
@@ -20,7 +20,7 @@
 .inputEdit {
 	border-radius: 0;
 	width: auto;
-	border-bottom: 2px dashed #ff4c00;
+	border-bottom: 2px dashed #0c8cff;
 }
 
 .inputNumber {

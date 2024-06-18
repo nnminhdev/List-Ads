@@ -18,7 +18,6 @@ tbody.ant-table-tbody * {
 	background: #555; /* color of the scrollbar handle on hover */
 }
 
-
 .product-database-table::-webkit-scrollbar {
 	width: 10px; /* width of the scrollbar */
 	height: 5px;
@@ -42,7 +41,7 @@ tbody.ant-table-tbody * {
 		gap: 20px;
 		.anticon.anticon-right {
 			svg {
-				fill: #ff4c00;
+				fill: #0c8cff;
 			}
 			flex: 1;
 		}
@@ -108,7 +107,7 @@ tbody.ant-table-tbody * {
 		span.column-price--range {
 			font-size: 15px;
 			font-weight: 500;
-			color: #ff4c00;
+			color: #0c8cff;
 		}
 	}
 
@@ -153,7 +152,7 @@ tbody.ant-table-tbody * {
 	padding: 10px 20px;
 	border-radius: 5px;
 	.value {
-		color: #ff4c00;
+		color: #0c8cff;
 		font-weight: 700;
 	}
 }
@@ -172,8 +171,8 @@ tbody.ant-table-tbody * {
 	align-content: center;
 	.anticon {
 		svg {
-			fill: #ff4c00;
-			stroke: #ff4c00;
+			fill: #0c8cff;
+			stroke: #0c8cff;
 		}
 	}
 }
@@ -182,7 +181,7 @@ tbody.ant-table-tbody * {
 }
 .modal-breakdown {
 	span.ant-input-number-prefix {
-		color: #ff4c00;
+		color: #0c8cff;
 	}
 	.ant-input-number-outlined {
 		padding: 5px 10px;
@@ -192,23 +191,23 @@ tbody.ant-table-tbody * {
 		input.ant-input-number-input {
 			font-size: 17px;
 			font-weight: 500;
-			color: #ff4c00;
+			color: #0c8cff;
 		}
 	}
 	div.number-result-wrapper {
 		flex: 1;
 		.number-result-disabled {
-			background: #ff4d0011;
-			color: #ff4c00;
-			border: 1px solid #ff4d0049;
+			background: #0c8cff11;
+			color: #0c8cff;
+			border: 1px solid #0c8cff;
 			padding: 7px 14px;
 			border-radius: 5px;
 			font-weight: 600;
 			font-size: 17px;
 		}
 		.number-result-disabled:hover {
-			background: #ff4d0028;
-			border: 1px solid #ff4d0049;
+			background: #0c8cff49;
+			border: 1px solid #0c8cff49;
 		}
 	}
 	h2.ant-typography.profit-value {
@@ -228,6 +227,6 @@ li.ant-pagination-total-text b {
 }
 
 .custom-font {
-	font-family: 'Poppins' !important;
+	font-family: "Poppins" !important;
 	font-weight: 500 !important;
 }

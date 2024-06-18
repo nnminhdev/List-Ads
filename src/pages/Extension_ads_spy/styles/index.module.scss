@@ -1,11 +1,11 @@
 .content {
-    &__pagination {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    &__list {
-        margin: 40px 0px;
-        min-height: 70vh;
-    }
+	&__pagination {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	&__list {
+		margin: 40px 0px 100px 0px;
+		min-height: 70vh;
+	}
 }

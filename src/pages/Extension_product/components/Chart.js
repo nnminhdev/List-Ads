@@ -66,7 +66,7 @@ export default React.memo(function Chart({ id = null, productId, variantId }) {
 			<XAxis dataKey="date" />
 			<YAxis />
 			<Tooltip content={CustomTooltip} />
-			<Area type="monotone" dataKey="value" stroke="#ff4c00" fill="#ff4c0011" />
+			<Area type="monotone" dataKey="value" stroke="#0c8cff" fill="#0c8cff11" />
 		</AreaChart>
 	) : (
 		<Spin />

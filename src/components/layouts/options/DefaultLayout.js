@@ -27,7 +27,7 @@ function DefaultLayout({ children, setIndexMenu }) {
 				<Content className={`${styles.content__container}`}>
 					<div>{children}</div>
 				</Content>
-				<FooterComponent />
+				{/* <FooterComponent /> */}
 			</div>
 		</ConfigProvider>
 	);
