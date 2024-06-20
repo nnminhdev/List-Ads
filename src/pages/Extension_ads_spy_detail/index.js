@@ -90,7 +90,6 @@ const ExtensionAdsDetail = () => {
 		}
 	}, [materialId]);
 	return (
-		// <DefaultLayoutDetail>
 		<div className={`${style.detail__wrap}`}>
 			<Flex
 				justify="end"
@@ -116,7 +115,6 @@ const ExtensionAdsDetail = () => {
 			</div>
 			<CreativeAnalysisComponent dataAdsAnalysisInfo={dataAdsAnalysisInfo} dataRelatedAds={dataRelatedAds} />
 		</div>
-		// </DefaultLayoutDetail>
 	);
 };
 

@@ -15,7 +15,7 @@ const root = document.getElementById(`Oq465NRHaOKegSCssrnhCql2WEIDuYU0`);
 if (root) {
 	const dataComponent = root.dataset.component;
 	const renderPage = (component) => {
-		return ReactDOM.createRoot(root).render(<React.StrictMode>{component}</React.StrictMode>);
+		return ReactDOM.createRoot(root).render(<React.StrictMode>{component}</React.StrictMode>);  
 		// return ReactDOM.createRoot(root).render(<React.StrictMode>{<ExtensionOption />}</React.StrictMode>);
 	};
 	// renderPage();
