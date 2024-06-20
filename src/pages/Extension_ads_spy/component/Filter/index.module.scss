@@ -1,6 +1,7 @@
 .filter {
 	&__container {
 		padding: 10px;
+		border-radius: 10px;
 	}
 	&__item {
 		border-top: 1px solid #eee;
@@ -8,6 +9,8 @@
 		align-items: center;
 		&__title {
 			width: 150px;
+			font-size: 14px;
+			font-weight: 500;
 		}
 		&__right {
 			width: 95%;

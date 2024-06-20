@@ -1,13 +1,11 @@
 import { Select, Space } from "antd";
 import { useRef, useState } from "react";
-
+import "./index.scss";
 const SelectInput = ({ PopupComponent, placeholderSelect, funcCallApiSearch }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const selectRef = useRef(null);
 	const handleBlur = () => {
-		console.log("handleBlur ==========>");
 		if (selectRef.current) {
-			console.log("handleBlur ==========> 2222222");
 			selectRef.current.blur();
 			setIsOpen(false);
 		}
@@ -15,9 +13,13 @@ const SelectInput = ({ PopupComponent, placeholderSelect, funcCallApiSearch }) =
 	return (
 		<Space wrap>
 			<Select
+				className="select-input"
 				ref={selectRef}
 				style={{
 					width: 150,
+					span: {
+						fontSize: "13px",
+					},
 				}}
 				// onChange={handleChange}
 				dropdownRender={() => (

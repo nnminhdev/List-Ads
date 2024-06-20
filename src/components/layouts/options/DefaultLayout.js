@@ -19,6 +19,9 @@ function DefaultLayout({ children, setIndexMenu }) {
 					Carousel: {
 						arrowSize: 25,
 					},
+					Input: {
+						inputFontSize: 13
+					}
 				},
 			}}
 		>

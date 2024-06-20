@@ -2,6 +2,7 @@ import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { getCurrentDate } from "../../../../../utilities/functions/datetime";
+import './index.scss';
 
 dayjs.extend(customParseFormat);
 
@@ -20,6 +21,9 @@ const DatePickerRange = ({ funcCallApiSearch }) => {
 	return (
 		<Space direction="vertical" size={12}>
 			<RangePicker
+				style={{ 
+					fontSize: "13px",
+				}}
 				defaultValue={[dayjs(getCurrentDate(), dateFormat), dayjs(getCurrentDate(), dateFormat)]}
 				format={dateFormat}
 				onChange={handleChangeDatePicker}

@@ -46,9 +46,9 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 			cover={<ImageCardComponent dataComponentCard={dataComponentCard} />}
 			loading={isLoading}
 			title={<TopCardComponent dataComponentCard={dataComponentCard} />}
-			style={{
-				width: "19%",
-			}}
+			// style={{
+			// 	width: "19%",
+			// }}
 			bordered={true}
 			// extra={
 			// 	<Dropdown
@@ -137,7 +137,7 @@ const CardAdsComponent = ({ dataComponentCard }) => {
 						{dataComponentCard.advertiser_name || dataComponentCard?.title}
 					</p>
 					{/* <span>{dataComponentCard.industry}</span> */}
-					<Tag>{dataComponentCard?.call_to_action_type || "Landing Page"}</Tag>
+					<Tag>{dataComponentCard?.call_to_action_type || "Ads Details"}</Tag>
 				</Flex>
 				{!dataComponentCard?.domain && (
 					<Flex

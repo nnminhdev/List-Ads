@@ -158,7 +158,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 						width: "40%",
 					}}
 				>
-					<Button type="primary">Ad Details</Button>
+					{/* <Button type="primary">Ad Details</Button> */}
 					<div className={style.detail__info}>
 						<Flex
 							justify="space-between"

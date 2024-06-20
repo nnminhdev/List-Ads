@@ -23,7 +23,7 @@ fetch("https://www.facebook.com/api/graphql/", {
 	body: paramsString,
 	method: "POST",
 	mode: "cors",
-	credentials: "omit",
+	// credentials: "omit",
 })
 	.then((response) => response.json())
 	.then((response) => console.log("heheh", response));

@@ -25,7 +25,13 @@ const Placement = ({ funcCallApiSearch }) => {
 
 	return (
 		<>
-			<Radio.Group value={placement} onChange={placementChange}>
+			<Radio.Group
+				value={placement}
+				onChange={placementChange}
+				style={{
+					fontSize: "13px",
+				}}
+			>
 				<Radio.Button value="7">7 days</Radio.Button>
 				<Radio.Button value="30">30 days</Radio.Button>
 				<Radio.Button value="90" defaultChecked>

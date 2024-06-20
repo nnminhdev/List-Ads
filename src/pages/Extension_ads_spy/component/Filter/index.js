@@ -13,7 +13,12 @@ import EngagementComponent from "../PopupSelect/Engagement";
 const FilterComponent = ({ funcCallApiSearch }) => {
 	return (
 		<div className={`shadow-common-light ${style.filter__container}`}>
-			<div className={`${style.filter__item}`}>
+			<div
+				className={`${style.filter__item}`}
+				style={{
+					borderTop: "none",
+				}}
+			>
 				<Flex justify="space-between" style={{ width: "100%" }} align="center">
 					<div className={style.filter__item__title}>
 						<span>NetWorks:</span>
@@ -90,7 +95,7 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 						<span>Time:</span>
 					</div>
 					<div className={style.filter__item__right}>
-						<Flex justify="start" gap={10}>
+						<Flex justify="start" gap={10} align="center">
 							<div>
 								<Placement funcCallApiSearch={funcCallApiSearch} />
 							</div>
@@ -126,7 +131,7 @@ const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 			gap={2}
 			align="center"
 			style={{
-				fontSize: "14px",
+				fontSize: "13px",
 				cursor: "pointer",
 			}}
 			value={value}
