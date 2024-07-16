@@ -18,7 +18,6 @@ const AdsSpyComponent = () => {
 	const getPath = window.location.pathname;
 
 	const handleSearch = (value, _e, info) => {
-		console.log(info?.source, value);
 		setSearch(true);
 		setTimeout(() => {
 			setSearch(false);
@@ -66,8 +65,8 @@ const AdsSpyComponent = () => {
 					<FilterComponent />
 					<div className={style.content__list}>
 						<Flex justify="start" wrap gap={20}>
-							{databases.data.slice(0, numberItem).map((item, index) => {
-								return <CardAdsComponent dataComponentCard={item} />;
+							{listAds.slice(0, numberItem).map((item, index) => {
+								return <CardAdsComponent key={index} dataComponentCard={item} />;
 							})}
 						</Flex>
 					</div>

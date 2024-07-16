@@ -273,7 +273,7 @@ const callApiGetEcomDetail = {
 	code: 100000,
 	message: "Success",
 	data: {
-		cta_url: "https://xiaomionline.cl/xiaomi-vacuum-cleaner-g10-plus-eu",
+		// cta_url: "https://xiaomionline.cl/xiaomi-vacuum-cleaner-g10-plus-eu",
 		country: ["Chile"],
 		similar_country: [
 			{

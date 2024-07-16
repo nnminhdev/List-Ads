@@ -3,7 +3,6 @@ import { callApiAnalysisInfo, callApiGetRelatedAds, columnRelatedAds, columns, d
 import ChartsComponent from "../Charts";
 import style from "./style.module.scss";
 import { useEffect, useState } from "react";
-import { Value } from "sass";
 const CreativeAnalysisComponent = () => {
 	const [dataChannel, setDataChannel] = useState(
 		callApiAnalysisInfo?.data?.channel_data?.map((item, index) => {
@@ -69,7 +68,7 @@ const CreativeAnalysisComponent = () => {
 							marginBottom: "20px",
 						}}
 					>
-						<ChartsComponent classAppendChar={"char-left"} dataChar={dataChannel} />
+						{/* <ChartsComponent classAppendChar={"char-left"} dataChar={dataChannel} /> */}
 					</Flex>
 				</div>
 				<div
@@ -95,7 +94,7 @@ const CreativeAnalysisComponent = () => {
 							marginBottom: "20px",
 						}}
 					>
-						<ChartsComponent classAppendChar={"char-right"} dataChar={dataGeo} />
+						{/* <ChartsComponent classAppendChar={"char-right"} dataChar={dataGeo} /> */}
 					</Flex>
 				</div>
 			</Flex>

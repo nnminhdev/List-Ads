@@ -1,4 +1,4 @@
-import { get } from "./baseApi";
+import {  post } from "./baseApi";
 
 const headerPayload = {
 	favorite_app_flag: 0,
@@ -69,7 +69,7 @@ const headerPayload = {
 
 const apiGetDataAds = async () => {
 	try {
-		const response = await get("/ecom/get-ecom-ads", headerPayload);
+		const response = await post("/spy-ad/ads", headerPayload);
 		return response?.data?.data;
 	} catch (err) {
 		console.error(err);

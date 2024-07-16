@@ -11,6 +11,8 @@ import ExtensionUninstall from "./pages/Extension_uninstall";
 import ExtensionProduct from "./pages/Extension_product";
 
 import ExtensionCompetitorResearch from "./pages/Extension_competitor_research";
+import ExtensionAdsDetail from "./pages/Extension_ads_spy_detail";
+import AdsSpyComponent from "./pages/Extension_ads_spy";
 
 // console.log = () => {}
 const root = document.getElementById(`Oq465NRHaOKegSCssrnhCql2WEIDuYU0`);
@@ -18,7 +20,7 @@ if (root) {
 	const dataComponent = root.dataset.component;
 	const renderPage = (component) => {
 		// 	return ReactDOM.createRoot(root).render(<React.StrictMode>{component}</React.StrictMode>);
-		return ReactDOM.createRoot(root).render(<React.StrictMode>{<ExtensionOption />}</React.StrictMode>);
+		return ReactDOM.createRoot(root).render(<React.StrictMode>{<AdsSpyComponent />}</React.StrictMode>);
 	};
 	renderPage();
 	// switch (dataComponent) {

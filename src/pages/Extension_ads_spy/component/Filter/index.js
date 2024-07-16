@@ -21,7 +21,7 @@ const FilterComponent = () => {
 					<div className={style.filter__item__right}>
 						<Flex justify="start" gap={10} align="center">
 							{listFilterNetworks.map((item, index) => {
-								return <NetWorkComponent platForm={item?.platForm} icon={item?.icon} />;
+								return <NetWorkComponent platForm={item?.platForm} icon={item?.icon} key={index}/>;
 							})}
 						</Flex>
 					</div>

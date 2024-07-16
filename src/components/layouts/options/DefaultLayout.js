@@ -5,14 +5,14 @@ import FooterComponent from "./components/Footer";
 
 const { Content } = Layout;
 
-function DefaultLayout({ children, setIndexMenu }) {
+const DefaultLayout = ({ children, setIndexMenu }) => {
 	return (
 		<ConfigProvider
 			theme={{
 				token: {
 					colorPrimary: "#0C8CFA",
 					fontFamily: "Inter",
-					colorBgSpotlight: '#fff'
+					colorBgSpotlight: "#fff",
 				},
 				components: {
 					Carousel: {
@@ -30,5 +30,5 @@ function DefaultLayout({ children, setIndexMenu }) {
 			</div>
 		</ConfigProvider>
 	);
-}
+};
 export default DefaultLayout;
