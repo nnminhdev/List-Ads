@@ -9,49 +9,55 @@ import ExtensionNewTab from "./pages/Extension_newtab";
 import ExtensionInstallSuccess from "./pages/Extension_install_success";
 import ExtensionUninstall from "./pages/Extension_uninstall";
 import ExtensionAdsDetail from "./pages/Extension_ads_spy_detail";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 // console.log = () => {}
 const root = document.getElementById(`Oq465NRHaOKegSCssrnhCql2WEIDuYU0`);
 if (root) {
 	const dataComponent = root.dataset.component;
 	const renderPage = (component) => {
-		return ReactDOM.createRoot(root).render(<React.StrictMode>{component}</React.StrictMode>);  
-		// return ReactDOM.createRoot(root).render(<React.StrictMode>{<ExtensionOption />}</React.StrictMode>);
+		// return ReactDOM.createRoot(root).render(<React.StrictMode>{component}</React.StrictMode>);
+		return ReactDOM.createRoot(root).render(
+			<React.StrictMode>
+				<Provider store={store}>{<ExtensionOption />}</Provider>
+			</React.StrictMode>
+		);
 	};
-	// renderPage();
-	switch (dataComponent) {
-		case "popup":
-			renderPage(<ExtensionPopup />);
-			break;
-		case "option":
-			renderPage(<ExtensionOption />);
-			break;
+	renderPage();
+	// switch (dataComponent) {
+	// 	case "popup":
+	// 		renderPage(<ExtensionPopup />);
+	// 		break;
+	// 	case "option":
+	// 		renderPage(<ExtensionOption />);
+	// 		break;
 
-		case "detail":
-			renderPage(<ExtensionAdsDetail />);
-			break;
+	// 	case "detail":
+	// 		renderPage(<ExtensionAdsDetail />);
+	// 		break;
 
-		case "new_tab":
-			renderPage(<ExtensionNewTab />);
-			break;
+	// 	case "new_tab":
+	// 		renderPage(<ExtensionNewTab />);
+	// 		break;
 
-		case "install_success":
-			renderPage(<ExtensionInstallSuccess />);
-			break;
-		case "uninstall":
-			renderPage(<ExtensionUninstall />);
-			break;
-		// case "product":
-		// 	renderPage(<ExtensionProduct />);
-		// 	break;
-		// case "research":
-		// 	renderPage(<ExtensionCompetitorResearch />);
-		// 	break;
+	// 	case "install_success":
+	// 		renderPage(<ExtensionInstallSuccess />);
+	// 		break;
+	// 	case "uninstall":
+	// 		renderPage(<ExtensionUninstall />);
+	// 		break;
+	// 	// case "product":
+	// 	// 	renderPage(<ExtensionProduct />);
+	// 	// 	break;
+	// 	// case "research":
+	// 	// 	renderPage(<ExtensionCompetitorResearch />);
+	// 	// 	break;
 
-		default:
-			//todo
-			break;
-	}
+	// 	default:
+	// 		//todo
+	// 		break;
+	// }
 } else {
 	// const extensionBox = document.createElement("div");
 	// extensionBox.id = `${chrome.runtime.id}`;

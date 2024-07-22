@@ -32,6 +32,7 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 										icon={item?.icon}
 										value={item?.value}
 										funcCallApiSearch={funcCallApiSearch}
+										key={index}
 									/>
 								);
 							})}
@@ -113,6 +114,7 @@ export default FilterComponent;
 const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 	const handleClickFilterPlatform = (e) => {
 		const valuePlatform = {
+			'All Networks': '5,1,2,4',
 			Instagram: 5,
 			Facebook: 1,
 			Twitter: 2,

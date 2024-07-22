@@ -8,12 +8,19 @@ import { useEffect, useState } from "react";
 import { apiGetDataAds } from "../../services/api/ads";
 import { getTimestampDaysAgo } from "../../utilities/functions/datetime";
 import UpgradeComponent from "./component/Upgrade";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchListAds } from "../../store/Filter/FilterReducer";
 
 const { Search } = Input;
 
 const AdsSpyComponent = () => {
 	const [isSearch, setSearch] = useState(false);
 	const [listDataAds, setListAds] = useState({});
+
+	const getListAdsFromStore = useSelector(state => state.filterSlice.data);
+	const dispatch = useDispatch();
+
+	console.log('getListAdsFromStore ===========>', getListAdsFromStore)
 
 	const handleSearch = async (value, _e, info) => {
 		await getDataApiAds({
@@ -32,8 +39,9 @@ const AdsSpyComponent = () => {
 	};
 	const getDataApiAds = async (dataPayload) => {
 		setListAds({});
-		const responseDataApi = await apiGetDataAds(dataPayload);
-		if (responseDataApi) setListAds(responseDataApi);
+		dispatch(fetchListAds(dataPayload));
+		// const responseDataApi = await apiGetDataAds(dataPayload);
+		// if (responseDataApi) setListAds(responseDataApi);
 	};
 	useEffect(() => {
 		document.title = "Spy Ads";
@@ -46,6 +54,10 @@ const AdsSpyComponent = () => {
 			seen_end: 1718902799,
 		});
 	}, []);
+
+	useEffect(() => {
+		if (getListAdsFromStore) setListAds(getListAdsFromStore);
+	}, [getListAdsFromStore])
 
 	return (
 		<div>
@@ -78,7 +90,7 @@ const AdsSpyComponent = () => {
 							listDataAds?.data
 								?.filter((elm) => !elm.domain)
 								.map((item, index) => {
-									return <CardAdsComponent dataComponentCard={item} />;
+									return <CardAdsComponent dataComponentCard={item} key={index} />;
 								})
 						) : (
 							<Flex
