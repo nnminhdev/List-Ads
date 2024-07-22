@@ -48,10 +48,8 @@ const AdsSpyComponent = () => {
 	}, []);
 	useEffect(() => {
 		getDataApiAds({
-			// seen_begin: getTimestampDaysAgo(),
-			// seen_end: Math.floor(new Date().getTime() / 1000),
-			seen_begin: 1711126800,
-			seen_end: 1718902799,
+			seen_begin: getTimestampDaysAgo(),
+			seen_end: Math.floor(new Date().getTime() / 1000),
 		});
 	}, []);
 
