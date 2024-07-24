@@ -18,7 +18,7 @@ const apiGetDataAdsDetail = async (dataPayLoad = {}) => {
 		const headerPayloadSend = {
 			...dataPayLoad,
 		};
-		const response = await get("/ecom/get-ecom-detail", headerPayloadSend);
+		const response = await get("/spy-ad/ad-detail", headerPayloadSend);
 		return response?.data?.data;
 	} catch (err) {
 		console.log(err);
@@ -30,7 +30,7 @@ const apiGetDataAdsAnalysis = async (dataPayLoad = {}) => {
 		const headerPayloadSend = {
 			...dataPayLoad,
 		};
-		const response = await get("/ecom/get-ecom-more-detail", headerPayloadSend);
+		const response = await get("/spy-ad/ecom/get-ecom-more-detail", headerPayloadSend);
 		return response?.data?.data;
 	} catch (err) {
 		console.log(err);
@@ -42,7 +42,7 @@ const apiGetDataAdsAnalysisInfo = async (dataPayLoad = {}) => {
 		const headerPayloadSend = {
 			...dataPayLoad,
 		};
-		const response = await get("/material-analysis/get-analysis-info", headerPayloadSend);
+		const response = await get("/spy-ad/material-analysis/get-analysis-info", headerPayloadSend);
 		return response?.data?.data;
 	} catch (err) {
 		console.log(err);
@@ -54,7 +54,7 @@ const apiGetRelatedAds = async (dataPayload = {}) => {
 		const headerPayloadSend = {
 			...dataPayload,
 		};
-		const response = await get("/material-analysis/get-related-ads", headerPayloadSend);
+		const response = await get("/spy-ad/material-analysis/get-related-ads", headerPayloadSend);
 		return response?.data?.data;
 	} catch (err) {
 		console.log(err);
@@ -66,7 +66,7 @@ const apiGetMaterialAnalysis = async (dataPayload = {}) => {
 		const headerPayloadSend = {
 			...dataPayload,
 		};
-		const response = await get("/material-analysis/get-related-advertisers", headerPayloadSend);
+		const response = await get("/spy-ad/material-analysis/get-related-advertisers", headerPayloadSend);
 		return response?.data?.data;
 	} catch (err) {
 		console.log(err);
