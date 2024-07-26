@@ -34,7 +34,6 @@ const ExtensionCompetitorResearch = () => {
 		}, 1000);
 	};
 	const handleSearchAli = (url) => {
-		console.log({ url });
 		window.open(url);
 	};
 

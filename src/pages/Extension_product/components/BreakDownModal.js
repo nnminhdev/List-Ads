@@ -25,7 +25,6 @@ const BreakDownModal = ({ open, price, onClose }) => {
 	});
 	const handleChangeNumber = useCallback((numbers) => {
 		const newNumbers = calcNumbers(numbers);
-		console.log({ newNumbers });
 		setNumbersBreakdown(newNumbers);
 	}, []);
 	useEffect(() => {

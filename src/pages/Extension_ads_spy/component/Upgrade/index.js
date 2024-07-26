@@ -32,7 +32,6 @@ const UpgradeComponent = ({ setShowPopupUpgrades, display }) => {
 		};
 		handleFetchDataPopup();
 	}, []);
-	console.log("listDataPopup ======>", listDataPopup);
 	return (
 		<div
 			className={`${styles.upgrade}`}

@@ -9,7 +9,6 @@ const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo, dataRelatedAds, dataRe
 	const [dataTableAnalysis, setDataTableAnalysis] = useState();
 
 	useEffect(() => {
-		console.log("render.........");
 		const dataChannelChar = dataAdsAnalysisInfo?.channel_data?.map((item, index) => {
 			return {
 				name: item.channel === 1 ? "Facebook" : item.channel,
@@ -22,8 +21,6 @@ const CreativeAnalysisComponent = ({ dataAdsAnalysisInfo, dataRelatedAds, dataRe
 				value: item.geo_percent,
 			};
 		});
-		console.log("dataChannelChar ======>", dataChannelChar);
-		console.log("dataGeoChar ======>", dataGeoChar);
 		if (dataChannelChar?.length > 0) setDataChannel(dataChannelChar);
 		if (dataGeoChar?.length > 0) setGeoData(dataGeoChar);
 	}, [dataAdsAnalysisInfo]);

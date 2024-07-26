@@ -33,7 +33,6 @@ const TableProduct = () => {
 		}, 1000);
 	};
 	const handleSearchAli = (url) => {
-		console.log({ url });
 		window.open(url);
 	};
 
@@ -61,7 +60,6 @@ const TableProduct = () => {
 				...filters,
 				...tablePayload,
 			});
-			// console.log({ response });
 			const listProducts = formatDataTable(response?.data?.results);
 			const total = response?.data.total || 0;
 			setPagination((prev) => ({ ...prev, total }));
@@ -84,7 +82,6 @@ const TableProduct = () => {
 		const page = tableInfo.current;
 		const pageSize = tableInfo.pageSize;
 		let orderType = sortOrder.columnKey;
-		console.log({ filters });
 		const orderVal = sortOrder.order;
 		if (orderType && orderVal) {
 			if (orderVal === "descend") {
@@ -132,7 +129,6 @@ const TableProduct = () => {
 					loading={loading}
 					initTable={initTable}
 					onFinish={(filters, isInit) => {
-						console.log({ isInit });
 						const endpoint = isInit ? "/search/default/" : "/search/";
 						setInitTable(false);
 						setFilter({ filters, new_search: true });
@@ -162,7 +158,6 @@ const TableProduct = () => {
 						className="product-database-table"
 						expandable={{
 							expandedRowRender: (record) => {
-								console.log({ record });
 								return <Chart productId={record.product.id} variantId={record.product.variantId} />;
 							},
 							// expandRowByClick: true,
@@ -174,7 +169,6 @@ const TableProduct = () => {
 								),
 						}}
 						onChange={(val, filter, sorter) => {
-							console.log({ val });
 							handleChangeTable(val, sorter, filters);
 						}}
 						pagination={{

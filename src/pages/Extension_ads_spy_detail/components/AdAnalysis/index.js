@@ -1,8 +1,7 @@
 import { Button, Flex, Table, Tooltip, Typography } from "antd";
 import style from "./style.module.scss";
-import { callApiGetEcomDetail, callApiGetRelatedAds, columnRelated, columns, dataSource } from "../../constant";
+import { callApiGetEcomDetail, columnRelated, columns } from "../../constant";
 import { CalendarTwoTone } from "@ant-design/icons";
-import { useEffect, useState } from "react";
 const AdAnalysisComponent = ({ dataDateLine, dataCountryDistribution, dataAdsDetailMoreDetail }) => {
 	return (
 		<div className={style.analysis}>

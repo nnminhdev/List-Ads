@@ -31,6 +31,9 @@ const AudienceAnalysis = ({ funcCallApiSearch, handleBlur }) => {
 			audience_age: listValueAge.join(","),
 		});
 	};
+	const handleClickCancelDropDown = () => {
+		handleBlur();
+	}
 	return (
 		<div className={style.audience__wrap}>
 			<div className={style.audience__top}>
@@ -58,11 +61,13 @@ const AudienceAnalysis = ({ funcCallApiSearch, handleBlur }) => {
 											width: "150px",
 										}}
 										gap={5}
+										// key={index + new Date().getTime()}
 									>
 										<Checkbox value={item?.value} onChange={(e) => handleCheckAudienceSex(e)} />
 										<span
 											style={{
 												color: listValueSex.includes(item?.value) ? "#1890ff" : "#000000",
+												cursor: 'pointer'
 											}}
 											className="hover-item"
 										>
@@ -94,11 +99,13 @@ const AudienceAnalysis = ({ funcCallApiSearch, handleBlur }) => {
 											width: "150px",
 										}}
 										gap={5}
+										key={index}
 									>
 										<Checkbox value={item?.value} onChange={(e) => handleCheckAudienceAge(e)} />
 										<span
 											style={{
 												color: listValueAge.includes(item?.value) ? "#1890ff" : "#000000",
+												cursor: 'pointer'
 											}}
 										>
 											{item.label}
@@ -114,7 +121,7 @@ const AudienceAnalysis = ({ funcCallApiSearch, handleBlur }) => {
 						<Button type="primary" onClick={handleSubmitAudience}>
 							OK
 						</Button>
-						<Button>Cancel</Button>
+						<Button onClick={handleClickCancelDropDown}>Cancel</Button>
 					</Flex>
 				</div>
 			</div>

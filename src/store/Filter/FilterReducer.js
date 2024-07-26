@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { chromeStorage } from "../../utilities/extension/storage";
 import { apiGetDataAds } from "../../services/api/ads";
 
 const initialState = {
@@ -76,9 +75,11 @@ const initialState = {
 export const fetchListAds = createAsyncThunk("listAds/fetchListAds", async (dataPayload, { getState }) => {
 	const currentState = getState()?.filterSlice?.payload;
 	const response = await apiGetDataAds({ ...currentState, ...dataPayload });
-	console.log("data request =====>", { currentState, dataPayload });
-	console.log("response =====>", response);
 	return { data: response ?? [], payload: { ...currentState, ...dataPayload } };
+});
+
+export const resetFilter = createAsyncThunk("resetFilter", async (dataPayload) => {
+    return initialState;
 });
 
 const FilterReducer = createSlice({

@@ -5,8 +5,6 @@ const baseURL = process.env.REACT_APP_API_URL;
 const tokenURL = process.env.REACT_APP_TOKEN_URL;
 const dropshipURL = process.env.REACT_APP_DROPSHIP_URL;
 
-console.log({ baseURL });
-console.log({ tokenURL });
 const instance = axios.create({
 	baseURL: baseURL,
 	headers: {
@@ -32,7 +30,6 @@ const getToken = async () => {
 };
 export const getReq = async (endpoint, payload, callback = () => {}, errors = () => {}) => {
 	// const accessToken = await getToken()
-	console.log({ payload });
 	const url = dropshipURL + endpoint;
 	// const encryptedCode = getEncrypted(payload);
 	// const data = {encrypted: encryptedCode};
@@ -64,7 +61,6 @@ export const getChartReq = async (endpoint, callback = () => {}, errors = () => 
 	instance
 		.post(baseURL, data)
 		.then((response) => {
-			console.log({ response });
 			callback(response.data);
 		})
 		.catch((error) => {

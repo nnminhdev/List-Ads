@@ -9,7 +9,7 @@ import { apiGetDataAds } from "../../services/api/ads";
 import { getTimestampDaysAgo } from "../../utilities/functions/datetime";
 import UpgradeComponent from "./component/Upgrade";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchListAds } from "../../store/Filter/FilterReducer";
+import { fetchListAds, resetFilter } from "../../store/Filter/FilterReducer";
 
 const { Search } = Input;
 
@@ -19,8 +19,6 @@ const AdsSpyComponent = () => {
 
 	const getListAdsFromStore = useSelector(state => state.filterSlice.data);
 	const dispatch = useDispatch();
-
-	console.log('getListAdsFromStore ===========>', getListAdsFromStore)
 
 	const handleSearch = async (value, _e, info) => {
 		await getDataApiAds({
@@ -43,6 +41,10 @@ const AdsSpyComponent = () => {
 		// const responseDataApi = await apiGetDataAds(dataPayload);
 		// if (responseDataApi) setListAds(responseDataApi);
 	};
+
+	const handleClickResetFilter = () => {
+		dispatch(resetFilter())
+	}
 	useEffect(() => {
 		document.title = "Spy Ads";
 	}, []);

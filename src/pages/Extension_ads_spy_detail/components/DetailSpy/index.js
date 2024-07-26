@@ -15,7 +15,6 @@ const DetailSpyComponent = ({ dataDetail }) => {
 	};
 
 	const handleDownloadAsset = () => {
-		console.log(dataDetail?.resource_urls[0]?.video_url);
 		chrome.downloads.download({
 			url:
 				dataDetail?.resource_urls[0]?.type === 1
@@ -88,6 +87,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 												width: "400px",
 												height: "auto",
 												objectFit: "cover",
+												maxHeight: "400px",
 											}}
 											controls
 										/>
@@ -112,6 +112,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 														style={{
 															width: "400px",
 															height: "auto",
+															maxHeight: "400px",
 															objectFit: "cover",
 														}}
 													/>
@@ -122,6 +123,7 @@ const DetailSpyComponent = ({ dataDetail }) => {
 														style={{
 															width: "400px",
 															height: "auto",
+															maxHeight: "400px",
 															objectFit: "cover",
 														}}
 														controls

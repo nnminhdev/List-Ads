@@ -27,7 +27,6 @@ const FilterStorage = ({keyName, onLoad, showDropFilter = false}) => {
         if (keyName) {
             chromeStorage.get(keyName)
                 .then((data) => {
-                    console.log('data', data)
                     setFilters(data || []);
                 });
         }

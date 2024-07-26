@@ -20,7 +20,6 @@ const NumberResult = ({
 	prefix = false,
 }) => {
 	const handleChangeSlider = (value) => {
-		console.log({ value });
 	};
 	return (
 		<Flex vertical gap={5} className="number-result-wrapper">

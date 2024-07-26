@@ -10,9 +10,7 @@ const Country = ({ funcCallApiSearch, handleBlur }) => {
 	const [listDataCountry, setListDataCountry] = useState(listCountry);
 	const [listDataCountrySelect, setListDataCountrySelect] = useState([]);
 	const [topicSelect, setTopicSelect] = useState("");
-	const handleSelectMultiSelect = () => {
-		setSelectMulti((prev) => !prev);
-	};
+
 
 	const handleSearchSelect = (e) => {
 		setSearchSelect(e.target.value);
@@ -44,12 +42,18 @@ const Country = ({ funcCallApiSearch, handleBlur }) => {
 	};
 
 	const handleClickFilterItemList = () => {
+		handleBlur();
 		funcCallApiSearch({
 			geo: listDataCountrySelect.join(","),
 		});
 	};
 
+	const handleClickCancelDropDown = () => {
+		handleBlur();
+	}
+
 	const handleSelectAllFilterItemList = () => {
+		handleBlur();
 		funcCallApiSearch();
 	};
 
@@ -80,19 +84,21 @@ const Country = ({ funcCallApiSearch, handleBlur }) => {
 								width: "100%",
 								marginTop: "10px",
 							}}
+							key={index}
 						>
 							<Flex justify="start" gap={5} align="center">
 								{selectMulti && <Checkbox value={item.topic} onChange={(e) => handleSelectTopic(e)} />}
 								<p className={`${style.country__list__topic}`}>{item.topic}</p>
 							</Flex>
 							<Flex justify="start" gap={15} wrap>
-								{item?.list_country?.map((element, index) => {
+								{item?.list_country?.map((element, index2) => {
 									return (
 										<Flex
 											gap={5}
 											style={{
 												width: "150px",
 											}}
+											key={index2}
 										>
 											{/* {selectMulti && <Checkbox checked={topicSelect === item.topic} />} */}
 											<Checkbox
@@ -150,7 +156,7 @@ const Country = ({ funcCallApiSearch, handleBlur }) => {
 					<Button type="primary" onClick={handleClickFilterItemList}>
 						OK
 					</Button>
-					<Button>Cancel</Button>
+					<Button onClick={handleClickCancelDropDown}>Cancel</Button>
 				</Flex>
 			</div>
 		</div>

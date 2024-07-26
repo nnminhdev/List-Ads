@@ -4,6 +4,7 @@
 		--tw-shadow: 0 2px 15px 2px rgba(0, 0, 0, 0.1);
 		--tw-shadow-colored: 0 2px 15px 2px var(--tw-shadow-color);
 		box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+		font-family: 'Inter';
 		.preview {
 			width: 100%;
 			display: flex;
@@ -13,6 +14,7 @@
 		}
 	}
 	&__info {
+		font-family: 'Inter';
 		border: 1px solid #eee;
 		border-radius: 10px;
 		margin-top: 20px;

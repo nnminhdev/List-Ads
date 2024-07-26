@@ -4,7 +4,7 @@ import axios from "axios";
 
 const instance = axios.create({
 	baseURL: process.env.REACT_APP_BASE_API_URL,
-	timeout: 5000,
+	timeout: 15000,
 });
 
 export const get = async (endpoint, data) => {

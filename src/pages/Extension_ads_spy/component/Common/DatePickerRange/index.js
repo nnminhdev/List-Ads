@@ -9,7 +9,6 @@ dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
 const dateFormat = "YYYY/MM/DD";
-const weekFormat = "MM/DD";
 
 const DatePickerRange = ({ funcCallApiSearch }) => {
 	const handleChangeDatePicker = (date, dateString) => {

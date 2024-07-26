@@ -31,7 +31,6 @@ export default React.memo(function Chart({ id = null, productId, variantId }) {
 		if (chartRefValue) {
 			const container = chartRefValue.container;
 			const containerWidth = container.offsetWidth;
-			console.log({ container });
 			document.querySelector(`#chart-id-${id}`)?.setAttribute("viewBox", `0 0 100% 200`);
 		}
 	}, [data, id]);

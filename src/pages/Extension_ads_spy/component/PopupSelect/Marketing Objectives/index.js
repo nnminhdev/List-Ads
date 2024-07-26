@@ -22,6 +22,10 @@ const MarketingObjectives = ({ funcCallApiSearch, handleBlur }) => {
 
 	const handleClickCancel = (e) => {
 		// e.target.blur();
+		handleBlur();
+	};
+	const handleClickCancelDropDown = () => {
+		handleBlur();
 	};
 	return (
 		<div className={style.marketing__wrap}>
@@ -30,7 +34,10 @@ const MarketingObjectives = ({ funcCallApiSearch, handleBlur }) => {
 					<Typography>Marketing Objectives(CTA)</Typography>
 					<Flex justify="start" gap={10}>
 						{/* <Button onClick={handleClickMultiSelect}>MultiSelect</Button> */}
-						<Button onClick={() => funcCallApiSearch()}>All</Button>
+						<Button onClick={() => {
+							handleBlur();
+							funcCallApiSearch()
+						}}>All</Button>
 					</Flex>
 				</Flex>
 			</div>
@@ -38,7 +45,7 @@ const MarketingObjectives = ({ funcCallApiSearch, handleBlur }) => {
 				<div className={style.marketing__menu__list}>
 					{MarketingObjectivesConstant.map((item, index) => {
 						return (
-							<div className={style.marketing__menu}>
+							<div className={style.marketing__menu} key={index}>
 								<Typography className={style.marketing__menu__title} key={index}>
 									{" "}
 									{item.topic}
@@ -52,6 +59,7 @@ const MarketingObjectives = ({ funcCallApiSearch, handleBlur }) => {
 												style={{
 													width: "150px",
 												}}
+												key={index}
 											>
 												{/* {showCheckBox && <Checkbox />} */}
 												<Checkbox onChange={(e) => handleChangeSelect(e)} value={item?.value} />
@@ -76,9 +84,12 @@ const MarketingObjectives = ({ funcCallApiSearch, handleBlur }) => {
 												) : (
 													<Typography
 														onClick={() =>
+														{
+															handleBlur();
 															funcCallApiSearch({
 																cta_type: item?.value,
 															})
+														}
 														}
 														className={style.language__bottom__item + " " + `hover-item`}
 														key={index}

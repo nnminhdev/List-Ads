@@ -159,12 +159,6 @@ const EngagementComponent = ({ funcCallApiSearch, handleBlur }) => {
 		const end = e.target.getAttribute("data-end");
 		const indexElement = e.target.getAttribute("data-index");
 
-		console.log({
-			type,
-			start,
-			end,
-		});
-
 		const newListFilterEngagement = listDataFilterEngagement.map((item) => {
 			if (item?.title === type) {
 				return {
@@ -224,6 +218,10 @@ const EngagementComponent = ({ funcCallApiSearch, handleBlur }) => {
 
 	const renderValueInput = (typeInput, typeValue) => listValue[typeInput][typeValue];
 
+	const handleClickCancelDropDown = () => {
+		handleBlur();
+	};
+
 	return (
 		<div className={style.engagement}>
 			<div className={`${style.engagement__top}`}>
@@ -242,6 +240,7 @@ const EngagementComponent = ({ funcCallApiSearch, handleBlur }) => {
 							style={{
 								marginTop: "10px",
 							}}
+							
 						>
 							<Flex
 								style={{
@@ -331,10 +330,10 @@ const EngagementComponent = ({ funcCallApiSearch, handleBlur }) => {
 							width: "95%",
 						}}
 					>
-						<Button>Cancel</Button>
 						<Button type="primary" onClick={handleFilterEngagement}>
 							OK
 						</Button>
+						<Button onClick={handleClickCancelDropDown}>Cancel</Button>
 					</Flex>
 				</Flex>
 			</div>

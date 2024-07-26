@@ -1,5 +1,5 @@
 /* global chrome */
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdAnalysisComponent from "./components/AdAnalysis";
 import CreativeAnalysisComponent from "./components/CreativeAnalysis";
 import DetailSpyComponent from "./components/DetailSpy";
@@ -12,8 +12,7 @@ import {
 	apiGetMaterialAnalysis,
 	apiGetRelatedAds,
 } from "../../services/api/ads";
-import DefaultLayoutDetail from "../../components/layouts/detail/DefaultLayout";
-import { Button, Flex } from "antd";
+import { Flex } from "antd";
 import { LeftCircleTwoTone } from "@ant-design/icons";
 const ExtensionAdsDetail = () => {
 	const [dataAdsDetail, setDataAdsDetail] = useState(detail);

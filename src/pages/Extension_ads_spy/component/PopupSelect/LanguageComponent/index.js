@@ -30,6 +30,10 @@ const Language = ({ funcCallApiSearch, handleBlur }) => {
 			language: AllLanguages.join(","),
 		});
 	};
+
+	const handleClickCancelDropDown = () => {
+		handleBlur();
+	};
 	return (
 		<div className={style.language__wrap}>
 			<div className={style.language__top}>
@@ -51,6 +55,7 @@ const Language = ({ funcCallApiSearch, handleBlur }) => {
 								style={{
 									width: "150px",
 								}}
+								key={index}
 							>
 								{/* {showCheckBox && ( */}
 								<Checkbox value={item?.value} onChange={(e) => handleChangeLanguage(e)} />
@@ -73,11 +78,12 @@ const Language = ({ funcCallApiSearch, handleBlur }) => {
 									</Tooltip>
 								) : (
 									<Typography
-										onClick={() =>
+										onClick={() => {
+											handleBlur();
 											funcCallApiSearch({
 												language: item?.value,
-											})
-										}
+											});
+										}}
 										className={`${style.language__bottom__item} hover-item`}
 										key={index}
 										style={{
@@ -114,7 +120,7 @@ const Language = ({ funcCallApiSearch, handleBlur }) => {
 					<Button type="primary" onClick={handleFilterLanguage}>
 						OK
 					</Button>
-					<Button>Cancel</Button>
+					<Button onClick={handleClickCancelDropDown}>Cancel</Button>
 				</Flex>
 				{/* )} */}
 			</div>
