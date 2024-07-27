@@ -23,7 +23,7 @@
 	"manifest_version": 3,
 	"version": "1.0.0.0",
 	"host_permissions": ["https://*/*", "http://*/*"],
-	"permissions": ["storage", "declarativeNetRequest", "downloads"],
+	"permissions": ["storage", "declarativeNetRequest", "downloads", "webRequest"],
 	"declarative_net_request": {
 		"rule_resources": [
 			{

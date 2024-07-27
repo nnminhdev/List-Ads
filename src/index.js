@@ -11,6 +11,7 @@ import ExtensionUninstall from "./pages/Extension_uninstall";
 import ExtensionAdsDetail from "./pages/Extension_ads_spy_detail";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import ContentScript from "./contents";
 
 // console.log = () => {}
 const root = document.getElementById(`Oq465NRHaOKegSCssrnhCql2WEIDuYU0`);
@@ -59,18 +60,18 @@ if (root) {
 	// 		break;
 	// }
 } else {
-	// const extensionBox = document.createElement("div");
-	// extensionBox.id = `${chrome.runtime.id}`;
-	// const body = document.getElementsByTagName("body")[0];
-	// body.append(extensionBox);
-	// const extensionCodeRoot = ReactDOM.createRoot(extensionBox);
-	// extensionCodeRoot.render(
-	// 	<React.StrictMode>
-	// 		{/* <Provider store={storeContent}> */}
-	// 		{/* <ContentScript /> */}
-	// 		{/* </Provider> */}
-	// 	</React.StrictMode>
-	// );
+	const extensionBox = document.createElement("div");
+	extensionBox.id = `${chrome.runtime.id}`;
+	const body = document.getElementsByTagName("body")[0];
+	body.append(extensionBox);
+	const extensionCodeRoot = ReactDOM.createRoot(extensionBox);
+	extensionCodeRoot.render(
+		<React.StrictMode>
+			{/* <Provider store={storeContent}> */}
+			<ContentScript />
+			{/* </Provider> */}
+		</React.StrictMode>
+	);
 }
 
 // If you want to start measuring performance in your app, pass a function
