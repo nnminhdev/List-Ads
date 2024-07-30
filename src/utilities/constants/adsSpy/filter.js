@@ -8,7 +8,7 @@ const listFilterNetworks = [
 	{
 		platForm: "All Networks",
 		icon: SelectAllIcon,
-		value: 1,
+		value: '5,1,2,4',
 	},
 	{
 		platForm: "Facebook",
@@ -28,7 +28,7 @@ const listFilterNetworks = [
 	{
 		platForm: "TikTok",
 		icon: TikTokIcon,
-		value: 1,
+		value: 4,
 	},
 ];
 

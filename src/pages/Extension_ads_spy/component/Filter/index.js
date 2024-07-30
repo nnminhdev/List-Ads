@@ -9,8 +9,11 @@ import Country from "../PopupSelect/Country";
 import MarketingObjectives from "../PopupSelect/Marketing Objectives";
 import Language from "../PopupSelect/LanguageComponent";
 import EngagementComponent from "../PopupSelect/Engagement";
+import { useState } from "react";
 
 const FilterComponent = ({ funcCallApiSearch }) => {
+	const [valueChoose, setValueChoose] = useState();
+
 	return (
 		<div className={`shadow-common-light ${style.filter__container}`}>
 			<div
@@ -33,6 +36,8 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 										value={item?.value}
 										funcCallApiSearch={funcCallApiSearch}
 										key={index}
+										setValueChoose={setValueChoose}
+										valueChoose={valueChoose}
 									/>
 								);
 							})}
@@ -111,10 +116,10 @@ const FilterComponent = ({ funcCallApiSearch }) => {
 
 export default FilterComponent;
 
-const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
+const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch, valueChoose, setValueChoose }) => {
 	const handleClickFilterPlatform = (e) => {
 		const valuePlatform = {
-			'All Networks': '5,1,2,4',
+			"All Networks": "5,1,2,4",
 			Instagram: 5,
 			Facebook: 1,
 			Twitter: 2,
@@ -123,10 +128,13 @@ const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 		if (valuePlatform[e.target.textContent] === 4) {
 			window.open(process.env.REACT_APP_TOP_ADS, "_blank");
 		}
+		setValueChoose(valuePlatform[e.target.textContent]);
+
 		funcCallApiSearch({
 			platform: valuePlatform[e.target.textContent] || 1,
 		});
 	};
+	console.log("valueChoose", valueChoose);
 	return (
 		<Flex
 			justify="start"
@@ -143,7 +151,7 @@ const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 				style={{
 					width: "18px",
 					height: "auto",
-					objectFit: "conver",
+					objectFit: "cover",
 				}}
 				src={icon}
 				alt="icon-platform"
@@ -152,6 +160,7 @@ const NetWorkComponent = ({ icon, platForm, value, funcCallApiSearch }) => {
 			<span
 				style={{
 					marginLeft: "5px",
+					color: valueChoose == value ? "#0084FF" : "black",
 				}}
 				value={value}
 				className="hover-item"
