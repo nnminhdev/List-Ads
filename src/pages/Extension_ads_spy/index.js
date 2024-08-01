@@ -38,6 +38,7 @@ const AdsSpyComponent = () => {
 	};
 	const getDataApiAds = async (dataPayload) => {
 		setListAds({});
+		setLoading(true);
 		dispatch(fetchListAds(dataPayload));
 		// const responseDataApi = await apiGetDataAds(dataPayload);
 		// if (responseDataApi) setListAds(responseDataApi);
@@ -63,7 +64,6 @@ const AdsSpyComponent = () => {
 	useEffect(() => {
 		setLoading(getListAdsFromStore.loading);
 	}, [getListAdsFromStore]);
-
 	return (
 		<div>
 			<>
