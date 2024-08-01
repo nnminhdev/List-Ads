@@ -1,4 +1,4 @@
-import { Flex, Pagination, Input, Space, Spin, Button } from "antd";
+import { Flex, Pagination, Input, Space, Spin, Button, Empty } from "antd";
 
 import style from "./styles/index.module.scss";
 import CardAdsComponent from "./component/Card";
@@ -16,8 +16,9 @@ const { Search } = Input;
 const AdsSpyComponent = () => {
 	const [isSearch, setSearch] = useState(false);
 	const [listDataAds, setListAds] = useState({});
+	const [isLoading, setLoading] = useState(true);
 
-	const getListAdsFromStore = useSelector(state => state.filterSlice.data);
+	const getListAdsFromStore = useSelector((state) => state.filterSlice);
 	const dispatch = useDispatch();
 
 	const handleSearch = async (value, _e, info) => {
@@ -43,8 +44,8 @@ const AdsSpyComponent = () => {
 	};
 
 	const handleClickResetFilter = () => {
-		dispatch(resetFilter())
-	}
+		dispatch(resetFilter());
+	};
 	useEffect(() => {
 		document.title = "Spy Ads";
 	}, []);
@@ -56,8 +57,12 @@ const AdsSpyComponent = () => {
 	}, []);
 
 	useEffect(() => {
-		if (getListAdsFromStore) setListAds(getListAdsFromStore);
-	}, [getListAdsFromStore])
+		if (getListAdsFromStore) setListAds(getListAdsFromStore?.data);
+	}, [getListAdsFromStore]);
+
+	useEffect(() => {
+		setLoading(getListAdsFromStore.loading);
+	}, [getListAdsFromStore]);
 
 	return (
 		<div>
@@ -86,13 +91,25 @@ const AdsSpyComponent = () => {
 				<FilterComponent funcCallApiSearch={getDataApiAds} />
 				<div className={style.content__list}>
 					<Flex justify="start" wrap gap={15}>
-						{listDataAds?.data?.length > 0 ? (
-							listDataAds?.data
-								?.filter((elm) => !elm.domain)
-								.map((item, index) => {
-									return <CardAdsComponent dataComponentCard={item} key={index} />;
-								})
-						) : (
+						{listDataAds?.data?.length > 0
+							? listDataAds?.data
+									?.filter((elm) => !elm.domain)
+									.map((item, index) => {
+										return <CardAdsComponent dataComponentCard={item} key={index} />;
+									})
+							: !isLoading && (
+									<Flex
+										style={{
+											width: "100%",
+											marginTop: "200px",
+										}}
+										justify="center"
+										align="center"
+									>
+										<Empty />
+									</Flex>
+							  )}
+						{isLoading && (
 							<Flex
 								style={{
 									width: "100%",

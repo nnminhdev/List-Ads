@@ -69,7 +69,7 @@ const initialState = {
 		redirect_filter_type: "",
 	},
 	data: {},
-	loading: false,
+	loading: true,
 };
 
 export const fetchListAds = createAsyncThunk("listAds/fetchListAds", async (dataPayload, { getState }) => {
